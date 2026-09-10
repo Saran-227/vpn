@@ -1,0 +1,245 @@
+{
+  "traffic_classifier": {
+    "model_name": "XGBoost",
+    "test_accuracy": 0.7842323651452282,
+    "test_f1_weighted": 0.7871819505073684,
+    "classes": [
+      "bulk",
+      "chat",
+      "email",
+      "icmp",
+      "mixed",
+      "video",
+      "voip",
+      "web"
+    ],
+    "classification_report": {
+      "bulk": {
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1-score": 0.9473684210526315,
+        "support": 9.0
+      },
+      "chat": {
+        "precision": 0.8181818181818182,
+        "recall": 0.6923076923076923,
+        "f1-score": 0.75,
+        "support": 26.0
+      },
+      "email": {
+        "precision": 0.5483870967741935,
+        "recall": 0.6538461538461539,
+        "f1-score": 0.5964912280701754,
+        "support": 26.0
+      },
+      "icmp": {
+        "precision": 0.8857142857142857,
+        "recall": 0.8857142857142857,
+        "f1-score": 0.8857142857142857,
+        "support": 35.0
+      },
+      "mixed": {
+        "precision": 0.6764705882352942,
+        "recall": 0.6764705882352942,
+        "f1-score": 0.6764705882352942,
+        "support": 34.0
+      },
+      "video": {
+        "precision": 0.9736842105263158,
+        "recall": 0.925,
+        "f1-score": 0.9487179487179487,
+        "support": 40.0
+      },
+      "voip": {
+        "precision": 0.9743589743589743,
+        "recall": 0.95,
+        "f1-score": 0.9620253164556962,
+        "support": 40.0
+      },
+      "web": {
+        "precision": 0.5,
+        "recall": 0.5161290322580645,
+        "f1-score": 0.5079365079365079,
+        "support": 31.0
+      },
+      "accuracy": 0.7842323651452282,
+      "macro avg": {
+        "precision": 0.7845996217238602,
+        "recall": 0.7874334690451863,
+        "f1-score": 0.7843405370228175,
+        "support": 241.0
+      },
+      "weighted avg": {
+        "precision": 0.7927490422583731,
+        "recall": 0.7842323651452282,
+        "f1-score": 0.7871819505073684,
+        "support": 241.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        2,
+        0,
+        2,
+        1,
+        0,
+        3
+      ],
+      [
+        1,
+        1,
+        17,
+        0,
+        1,
+        0,
+        1,
+        5
+      ],
+      [
+        0,
+        0,
+        0,
+        31,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        1,
+        23,
+        0,
+        0,
+        8
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        0,
+        37,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        38,
+        0
+      ],
+      [
+        0,
+        2,
+        10,
+        0,
+        3,
+        0,
+        0,
+        16
+      ]
+    ],
+    "top_features": [
+      {
+        "feature": "med_pkt_ratio",
+        "importance": 0.20461736619472504
+      },
+      {
+        "feature": "small_pkt_ratio",
+        "importance": 0.10150153934955597
+      },
+      {
+        "feature": "pkt_len_q25",
+        "importance": 0.08945432305335999
+      },
+      {
+        "feature": "pkt_len_mean",
+        "importance": 0.07805901765823364
+      },
+      {
+        "feature": "pkt_len_q75",
+        "importance": 0.049883607774972916
+      },
+      {
+        "feature": "bwd_byte_ratio",
+        "importance": 0.047304246574640274
+      },
+      {
+        "feature": "fwd_pkt_ratio",
+        "importance": 0.047208718955516815
+      },
+      {
+        "feature": "pkt_len_max",
+        "importance": 0.043002232909202576
+      },
+      {
+        "feature": "esp_spi_count",
+        "importance": 0.034224845468997955
+      },
+      {
+        "feature": "pkt_len_std",
+        "importance": 0.033102307468652725
+      },
+      {
+        "feature": "pkt_len_min",
+        "importance": 0.022265540435910225
+      },
+      {
+        "feature": "byte_count",
+        "importance": 0.022101180627942085
+      },
+      {
+        "feature": "pkt_count",
+        "importance": 0.022055895999073982
+      },
+      {
+        "feature": "pkt_len_median",
+        "importance": 0.02012798748910427
+      },
+      {
+        "feature": "fwd_byte_ratio",
+        "importance": 0.017926551401615143
+      }
+    ]
+  },
+  "mode_classifier": {
+    "model_name": "Random Forest",
+    "test_accuracy": 0.941908713692946,
+    "test_f1_weighted": 0.9418286019473316,
+    "classes": [
+      "transport",
+      "tunnel"
+    ],
+    "confusion_matrix": [
+      [
+        94,
+        8
+      ],
+      [
+        6,
+        133
+      ]
+    ]
+  },
+  "total_dataset_samples": 1202,
+  "feature_count": 32
+}
