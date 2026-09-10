@@ -1,0 +1,33 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install strongSwan, networking utilities, traffic generators, and python
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    strongswan \
+    strongswan-pki \
+    strongswan-swanctl \
+    libcharon-extra-plugins \
+    libstrongswan-extra-plugins \
+    iproute2 \
+    iptables \
+    iputils-ping \
+    tcpdump \
+    tshark \
+    iperf3 \
+    curl \
+    net-tools \
+    procps \
+    python3 \
+    python3-pip \
+    python3-scapy \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Pre-create necessary runtime directories
+RUN mkdir -p /etc/ipsec.d /etc/swanctl /shared/dataset /scripts
+
+WORKDIR /scripts
+
+# Default keep-alive entrypoint
+CMD ["tail", "-f", "/dev/null"]

@@ -1,0 +1,45 @@
+services:
+  vpn-initiator:
+    build:
+      context: .
+      dockerfile: Dockerfile.vpn
+    container_name: vpn-initiator
+    hostname: initiator
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    networks:
+      ipsec_net:
+        ipv4_address: 172.28.0.2
+    volumes:
+      - ../dataset/raw_pcapng:/shared/dataset
+      - ./scripts:/scripts
+    restart: unless-stopped
+
+  vpn-responder:
+    build:
+      context: .
+      dockerfile: Dockerfile.vpn
+    container_name: vpn-responder
+    hostname: responder
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    networks:
+      ipsec_net:
+        ipv4_address: 172.28.0.3
+    volumes:
+      - ../dataset/raw_pcapng:/shared/dataset
+      - ./scripts:/scripts
+    restart: unless-stopped
+
+networks:
+  ipsec_net:
+    name: ipsec_testbed_net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
