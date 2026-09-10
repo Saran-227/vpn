@@ -1,245 +1,246 @@
 {
-  "traffic_classifier": {
-    "model_name": "XGBoost",
-    "test_accuracy": 0.7842323651452282,
-    "test_f1_weighted": 0.7871819505073684,
-    "classes": [
-      "bulk",
-      "chat",
-      "email",
-      "icmp",
-      "mixed",
-      "video",
-      "voip",
-      "web"
-    ],
-    "classification_report": {
-      "bulk": {
-        "precision": 0.9,
-        "recall": 1.0,
-        "f1-score": 0.9473684210526315,
-        "support": 9.0
-      },
-      "chat": {
-        "precision": 0.8181818181818182,
-        "recall": 0.6923076923076923,
-        "f1-score": 0.75,
-        "support": 26.0
-      },
-      "email": {
-        "precision": 0.5483870967741935,
-        "recall": 0.6538461538461539,
-        "f1-score": 0.5964912280701754,
-        "support": 26.0
-      },
-      "icmp": {
-        "precision": 0.8857142857142857,
-        "recall": 0.8857142857142857,
-        "f1-score": 0.8857142857142857,
-        "support": 35.0
-      },
-      "mixed": {
-        "precision": 0.6764705882352942,
-        "recall": 0.6764705882352942,
-        "f1-score": 0.6764705882352942,
-        "support": 34.0
-      },
-      "video": {
-        "precision": 0.9736842105263158,
-        "recall": 0.925,
-        "f1-score": 0.9487179487179487,
-        "support": 40.0
-      },
-      "voip": {
-        "precision": 0.9743589743589743,
-        "recall": 0.95,
-        "f1-score": 0.9620253164556962,
-        "support": 40.0
-      },
-      "web": {
-        "precision": 0.5,
-        "recall": 0.5161290322580645,
-        "f1-score": 0.5079365079365079,
-        "support": 31.0
-      },
-      "accuracy": 0.7842323651452282,
-      "macro avg": {
-        "precision": 0.7845996217238602,
-        "recall": 0.7874334690451863,
-        "f1-score": 0.7843405370228175,
-        "support": 241.0
-      },
-      "weighted avg": {
-        "precision": 0.7927490422583731,
-        "recall": 0.7842323651452282,
-        "f1-score": 0.7871819505073684,
-        "support": 241.0
-      }
+  "champion_model": "HistGradientBoosting",
+  "test_accuracy": 0.805,
+  "test_f1_weighted": 0.8091,
+  "classes": [
+    "bulk",
+    "chat",
+    "email",
+    "icmp",
+    "mixed",
+    "video",
+    "voip",
+    "web"
+  ],
+  "classification_report": {
+    "bulk": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1-score": 0.8571428571428571,
+      "support": 9.0
     },
-    "confusion_matrix": [
-      [
-        9,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        18,
-        2,
-        0,
-        2,
-        1,
-        0,
-        3
-      ],
-      [
-        1,
-        1,
-        17,
-        0,
-        1,
-        0,
-        1,
-        5
-      ],
-      [
-        0,
-        0,
-        0,
-        31,
-        4,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        2,
-        1,
-        23,
-        0,
-        0,
-        8
-      ],
-      [
-        0,
-        0,
-        0,
-        3,
-        0,
-        37,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        38,
-        0
-      ],
-      [
-        0,
-        2,
-        10,
-        0,
-        3,
-        0,
-        0,
-        16
-      ]
-    ],
-    "top_features": [
-      {
-        "feature": "med_pkt_ratio",
-        "importance": 0.20461736619472504
-      },
-      {
-        "feature": "small_pkt_ratio",
-        "importance": 0.10150153934955597
-      },
-      {
-        "feature": "pkt_len_q25",
-        "importance": 0.08945432305335999
-      },
-      {
-        "feature": "pkt_len_mean",
-        "importance": 0.07805901765823364
-      },
-      {
-        "feature": "pkt_len_q75",
-        "importance": 0.049883607774972916
-      },
-      {
-        "feature": "bwd_byte_ratio",
-        "importance": 0.047304246574640274
-      },
-      {
-        "feature": "fwd_pkt_ratio",
-        "importance": 0.047208718955516815
-      },
-      {
-        "feature": "pkt_len_max",
-        "importance": 0.043002232909202576
-      },
-      {
-        "feature": "esp_spi_count",
-        "importance": 0.034224845468997955
-      },
-      {
-        "feature": "pkt_len_std",
-        "importance": 0.033102307468652725
-      },
-      {
-        "feature": "pkt_len_min",
-        "importance": 0.022265540435910225
-      },
-      {
-        "feature": "byte_count",
-        "importance": 0.022101180627942085
-      },
-      {
-        "feature": "pkt_count",
-        "importance": 0.022055895999073982
-      },
-      {
-        "feature": "pkt_len_median",
-        "importance": 0.02012798748910427
-      },
-      {
-        "feature": "fwd_byte_ratio",
-        "importance": 0.017926551401615143
-      }
-    ]
+    "chat": {
+      "precision": 0.782608695652174,
+      "recall": 0.6923076923076923,
+      "f1-score": 0.7346938775510204,
+      "support": 26.0
+    },
+    "email": {
+      "precision": 0.5666666666666667,
+      "recall": 0.6538461538461539,
+      "f1-score": 0.6071428571428571,
+      "support": 26.0
+    },
+    "icmp": {
+      "precision": 0.967741935483871,
+      "recall": 0.8571428571428571,
+      "f1-score": 0.9090909090909091,
+      "support": 35.0
+    },
+    "mixed": {
+      "precision": 0.7741935483870968,
+      "recall": 0.7058823529411765,
+      "f1-score": 0.7384615384615385,
+      "support": 34.0
+    },
+    "video": {
+      "precision": 0.95,
+      "recall": 0.95,
+      "f1-score": 0.95,
+      "support": 40.0
+    },
+    "voip": {
+      "precision": 0.972972972972973,
+      "recall": 0.9,
+      "f1-score": 0.935064935064935,
+      "support": 40.0
+    },
+    "web": {
+      "precision": 0.5945945945945946,
+      "recall": 0.7096774193548387,
+      "f1-score": 0.6470588235294118,
+      "support": 31.0
+    },
+    "accuracy": 0.8049792531120332,
+    "macro avg": {
+      "precision": 0.794847301719672,
+      "recall": 0.8086070594490898,
+      "f1-score": 0.7973319747479412,
+      "support": 241.0
+    },
+    "weighted avg": {
+      "precision": 0.8189877973391617,
+      "recall": 0.8049792531120332,
+      "f1-score": 0.8090843812207876,
+      "support": 241.0
+    }
   },
-  "mode_classifier": {
-    "model_name": "Random Forest",
-    "test_accuracy": 0.941908713692946,
-    "test_f1_weighted": 0.9418286019473316,
-    "classes": [
-      "transport",
-      "tunnel"
+  "confusion_matrix": [
+    [
+      9,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
     ],
-    "confusion_matrix": [
-      [
-        94,
-        8
-      ],
-      [
-        6,
-        133
-      ]
+    [
+      0,
+      18,
+      1,
+      0,
+      2,
+      0,
+      0,
+      5
+    ],
+    [
+      1,
+      1,
+      17,
+      0,
+      2,
+      1,
+      0,
+      4
+    ],
+    [
+      0,
+      0,
+      2,
+      30,
+      2,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      3,
+      0,
+      24,
+      1,
+      0,
+      6
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      38,
+      0,
+      0
+    ],
+    [
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      36,
+      0
+    ],
+    [
+      0,
+      1,
+      7,
+      0,
+      1,
+      0,
+      0,
+      22
     ]
-  },
+  ],
+  "leaderboard": [
+    {
+      "model_name": "HistGradientBoosting",
+      "cv_accuracy": 0.7253,
+      "cv_acc_std": 0.0292,
+      "cv_f1": 0.7241,
+      "test_accuracy": 0.805,
+      "test_f1": 0.8091,
+      "train_time_sec": 10.84
+    },
+    {
+      "model_name": "Soft Voting Ensemble",
+      "cv_accuracy": 0.7388,
+      "cv_acc_std": 0.0213,
+      "cv_f1": 0.7373,
+      "test_accuracy": 0.7967,
+      "test_f1": 0.8012,
+      "train_time_sec": 20.69
+    },
+    {
+      "model_name": "XGBoost (Boosting)",
+      "cv_accuracy": 0.7367,
+      "cv_acc_std": 0.03,
+      "cv_f1": 0.734,
+      "test_accuracy": 0.7925,
+      "test_f1": 0.795,
+      "train_time_sec": 5.88
+    },
+    {
+      "model_name": "LightGBM (Boosting)",
+      "cv_accuracy": 0.7346,
+      "cv_acc_std": 0.0231,
+      "cv_f1": 0.7321,
+      "test_accuracy": 0.7925,
+      "test_f1": 0.7979,
+      "train_time_sec": 4.88
+    },
+    {
+      "model_name": "Stacking Ensemble",
+      "cv_accuracy": 0.7347,
+      "cv_acc_std": 0.0194,
+      "cv_f1": 0.7311,
+      "test_accuracy": 0.7884,
+      "test_f1": 0.7913,
+      "train_time_sec": 51.96
+    },
+    {
+      "model_name": "Extra Trees (Bagging)",
+      "cv_accuracy": 0.7346,
+      "cv_acc_std": 0.024,
+      "cv_f1": 0.7316,
+      "test_accuracy": 0.7759,
+      "test_f1": 0.7804,
+      "train_time_sec": 1.89
+    },
+    {
+      "model_name": "Random Forest (Bagging)",
+      "cv_accuracy": 0.7326,
+      "cv_acc_std": 0.0248,
+      "cv_f1": 0.7302,
+      "test_accuracy": 0.7718,
+      "test_f1": 0.777,
+      "train_time_sec": 2.3
+    },
+    {
+      "model_name": "CatBoost (Boosting)",
+      "cv_accuracy": 0.7149,
+      "cv_acc_std": 0.0283,
+      "cv_f1": 0.7112,
+      "test_accuracy": 0.751,
+      "test_f1": 0.7542,
+      "train_time_sec": 23.05
+    },
+    {
+      "model_name": "Multi-Layer Perceptron (MLP)",
+      "cv_accuracy": 0.6555,
+      "cv_acc_std": 0.0338,
+      "cv_f1": 0.6515,
+      "test_accuracy": 0.6929,
+      "test_f1": 0.6992,
+      "train_time_sec": 1.25
+    }
+  ],
+  "operational_mode_extra_trees_accuracy": 0.9544,
   "total_dataset_samples": 1202,
-  "feature_count": 32
+  "feature_count": 48
 }
