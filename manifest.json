@@ -1,0 +1,5648 @@
+{
+  "last_updated": "2026-09-10T13:38:54.729929+00:00",
+  "profile": "massive",
+  "completed_captures": 120,
+  "total_planned": 120,
+  "captures": [
+    {
+      "capture_id": "exp_001_voip_tunnel_aes_gcm_16_256_1789042363",
+      "pcap_file": "exp_001_voip_tunnel_aes_gcm_16_256_1789042363.pcapng",
+      "timestamp": "2026-09-10T12:13:23.880577+00:00",
+      "experiment_name": "[001/120] VOIP in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 328,
+        "ike_packets": 323,
+        "esp_packets": 0,
+        "file_size_bytes": 106115
+      }
+    },
+    {
+      "capture_id": "exp_002_voip_transport_aes_gcm_16_128_1789042405",
+      "pcap_file": "exp_002_voip_transport_aes_gcm_16_128_1789042405.pcapng",
+      "timestamp": "2026-09-10T12:14:07.768705+00:00",
+      "experiment_name": "[002/120] VOIP in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 414,
+        "ike_packets": 5,
+        "esp_packets": 407,
+        "file_size_bytes": 126804
+      }
+    },
+    {
+      "capture_id": "exp_003_voip_tunnel_aes_cbc_256_1789042449",
+      "pcap_file": "exp_003_voip_tunnel_aes_cbc_256_1789042449.pcapng",
+      "timestamp": "2026-09-10T12:14:51.814407+00:00",
+      "experiment_name": "[003/120] VOIP in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 419,
+        "ike_packets": 18,
+        "esp_packets": 399,
+        "file_size_bytes": 141382
+      }
+    },
+    {
+      "capture_id": "exp_004_voip_transport_aes_cbc_128_1789042493",
+      "pcap_file": "exp_004_voip_transport_aes_cbc_128_1789042493.pcapng",
+      "timestamp": "2026-09-10T12:15:33.745550+00:00",
+      "experiment_name": "[004/120] VOIP in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 322,
+        "ike_packets": 4,
+        "esp_packets": 316,
+        "file_size_bytes": 101356
+      }
+    },
+    {
+      "capture_id": "exp_005_voip_tunnel_3des_cbc_1789042535",
+      "pcap_file": "exp_005_voip_tunnel_3des_cbc_1789042535.pcapng",
+      "timestamp": "2026-09-10T12:16:16.796015+00:00",
+      "experiment_name": "[005/120] VOIP in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 369,
+        "ike_packets": 367,
+        "esp_packets": 0,
+        "file_size_bytes": 120719
+      }
+    },
+    {
+      "capture_id": "exp_006_voip_transport_3des_cbc_1789042578",
+      "pcap_file": "exp_006_voip_transport_3des_cbc_1789042578.pcapng",
+      "timestamp": "2026-09-10T12:16:58.866347+00:00",
+      "experiment_name": "[006/120] VOIP in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 302,
+        "ike_packets": 1,
+        "esp_packets": 297,
+        "file_size_bytes": 91092
+      }
+    },
+    {
+      "capture_id": "exp_007_voip_tunnel_aes_gcm_16_256_1789042620",
+      "pcap_file": "exp_007_voip_tunnel_aes_gcm_16_256_1789042620.pcapng",
+      "timestamp": "2026-09-10T12:17:40.844024+00:00",
+      "experiment_name": "[007/120] VOIP in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 319,
+        "ike_packets": 19,
+        "esp_packets": 295,
+        "file_size_bytes": 100406
+      }
+    },
+    {
+      "capture_id": "exp_008_voip_transport_aes_gcm_16_128_1789042662",
+      "pcap_file": "exp_008_voip_transport_aes_gcm_16_128_1789042662.pcapng",
+      "timestamp": "2026-09-10T12:18:24.021758+00:00",
+      "experiment_name": "[008/120] VOIP in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 353,
+        "ike_packets": 6,
+        "esp_packets": 343,
+        "file_size_bytes": 108306
+      }
+    },
+    {
+      "capture_id": "exp_009_voip_tunnel_aes_cbc_256_1789042705",
+      "pcap_file": "exp_009_voip_tunnel_aes_cbc_256_1789042705.pcapng",
+      "timestamp": "2026-09-10T12:19:05.946793+00:00",
+      "experiment_name": "[009/120] VOIP in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 322,
+        "ike_packets": 318,
+        "esp_packets": 0,
+        "file_size_bytes": 110435
+      }
+    },
+    {
+      "capture_id": "exp_010_voip_transport_aes_cbc_128_1789042747",
+      "pcap_file": "exp_010_voip_transport_aes_cbc_128_1789042747.pcapng",
+      "timestamp": "2026-09-10T12:19:47.993017+00:00",
+      "experiment_name": "[010/120] VOIP in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 323,
+        "ike_packets": 4,
+        "esp_packets": 315,
+        "file_size_bytes": 101206
+      }
+    },
+    {
+      "capture_id": "exp_011_voip_tunnel_3des_cbc_1789042789",
+      "pcap_file": "exp_011_voip_tunnel_3des_cbc_1789042789.pcapng",
+      "timestamp": "2026-09-10T12:20:31.019978+00:00",
+      "experiment_name": "[011/120] VOIP in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 370,
+        "ike_packets": 15,
+        "esp_packets": 353,
+        "file_size_bytes": 119222
+      }
+    },
+    {
+      "capture_id": "exp_012_voip_transport_3des_cbc_1789042832",
+      "pcap_file": "exp_012_voip_transport_3des_cbc_1789042832.pcapng",
+      "timestamp": "2026-09-10T12:21:14.203770+00:00",
+      "experiment_name": "[012/120] VOIP in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 363,
+        "ike_packets": 11,
+        "esp_packets": 350,
+        "file_size_bytes": 108550
+      }
+    },
+    {
+      "capture_id": "exp_013_voip_tunnel_aes_gcm_16_256_1789042875",
+      "pcap_file": "exp_013_voip_tunnel_aes_gcm_16_256_1789042875.pcapng",
+      "timestamp": "2026-09-10T12:21:57.461931+00:00",
+      "experiment_name": "[013/120] VOIP in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 380,
+        "ike_packets": 377,
+        "esp_packets": 0,
+        "file_size_bytes": 124946
+      }
+    },
+    {
+      "capture_id": "exp_014_voip_transport_aes_gcm_16_128_1789042918",
+      "pcap_file": "exp_014_voip_transport_aes_gcm_16_128_1789042918.pcapng",
+      "timestamp": "2026-09-10T12:22:39.532191+00:00",
+      "experiment_name": "[014/120] VOIP in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 307,
+        "ike_packets": 6,
+        "esp_packets": 299,
+        "file_size_bytes": 93546
+      }
+    },
+    {
+      "capture_id": "exp_015_voip_tunnel_aes_cbc_256_1789042961",
+      "pcap_file": "exp_015_voip_tunnel_aes_cbc_256_1789042961.pcapng",
+      "timestamp": "2026-09-10T12:23:23.799946+00:00",
+      "experiment_name": "[015/120] VOIP in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "voip",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 412,
+        "ike_packets": 21,
+        "esp_packets": 389,
+        "file_size_bytes": 138758
+      }
+    },
+    {
+      "capture_id": "exp_016_video_tunnel_aes_gcm_16_256_1789043005",
+      "pcap_file": "exp_016_video_tunnel_aes_gcm_16_256_1789043005.pcapng",
+      "timestamp": "2026-09-10T12:24:06.956891+00:00",
+      "experiment_name": "[016/120] VIDEO in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 715,
+        "ike_packets": 705,
+        "esp_packets": 0,
+        "file_size_bytes": 785907
+      }
+    },
+    {
+      "capture_id": "exp_017_video_transport_aes_gcm_16_128_1789043048",
+      "pcap_file": "exp_017_video_transport_aes_gcm_16_128_1789043048.pcapng",
+      "timestamp": "2026-09-10T12:24:50.004947+00:00",
+      "experiment_name": "[017/120] VIDEO in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 717,
+        "ike_packets": 8,
+        "esp_packets": 705,
+        "file_size_bytes": 786342
+      }
+    },
+    {
+      "capture_id": "exp_018_video_tunnel_aes_cbc_256_1789043091",
+      "pcap_file": "exp_018_video_tunnel_aes_cbc_256_1789043091.pcapng",
+      "timestamp": "2026-09-10T12:25:36.060325+00:00",
+      "experiment_name": "[018/120] VIDEO in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 639,
+        "ike_packets": 16,
+        "esp_packets": 613,
+        "file_size_bytes": 723278
+      }
+    },
+    {
+      "capture_id": "exp_019_video_transport_aes_cbc_128_1789043137",
+      "pcap_file": "exp_019_video_transport_aes_cbc_128_1789043137.pcapng",
+      "timestamp": "2026-09-10T12:26:19.318969+00:00",
+      "experiment_name": "[019/120] VIDEO in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 751,
+        "ike_packets": 9,
+        "esp_packets": 738,
+        "file_size_bytes": 831998
+      }
+    },
+    {
+      "capture_id": "exp_020_video_tunnel_3des_cbc_1789043180",
+      "pcap_file": "exp_020_video_tunnel_3des_cbc_1789043180.pcapng",
+      "timestamp": "2026-09-10T12:27:03.623020+00:00",
+      "experiment_name": "[020/120] VIDEO in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 812,
+        "ike_packets": 765,
+        "esp_packets": 0,
+        "file_size_bytes": 852284
+      }
+    },
+    {
+      "capture_id": "exp_021_video_transport_3des_cbc_1789043225",
+      "pcap_file": "exp_021_video_transport_3des_cbc_1789043225.pcapng",
+      "timestamp": "2026-09-10T12:27:45.768474+00:00",
+      "experiment_name": "[021/120] VIDEO in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 607,
+        "ike_packets": 3,
+        "esp_packets": 577,
+        "file_size_bytes": 642186
+      }
+    },
+    {
+      "capture_id": "exp_022_video_tunnel_aes_gcm_16_256_1789043267",
+      "pcap_file": "exp_022_video_tunnel_aes_gcm_16_256_1789043267.pcapng",
+      "timestamp": "2026-09-10T12:28:28.708939+00:00",
+      "experiment_name": "[022/120] VIDEO in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 762,
+        "ike_packets": 20,
+        "esp_packets": 664,
+        "file_size_bytes": 762956
+      }
+    },
+    {
+      "capture_id": "exp_023_video_transport_aes_gcm_16_128_1789043310",
+      "pcap_file": "exp_023_video_transport_aes_gcm_16_128_1789043310.pcapng",
+      "timestamp": "2026-09-10T12:29:11.408543+00:00",
+      "experiment_name": "[023/120] VIDEO in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 613,
+        "ike_packets": 9,
+        "esp_packets": 546,
+        "file_size_bytes": 614946
+      }
+    },
+    {
+      "capture_id": "exp_024_video_tunnel_aes_cbc_256_1789043352",
+      "pcap_file": "exp_024_video_tunnel_aes_cbc_256_1789043352.pcapng",
+      "timestamp": "2026-09-10T12:29:54.859394+00:00",
+      "experiment_name": "[024/120] VIDEO in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 707,
+        "ike_packets": 686,
+        "esp_packets": 0,
+        "file_size_bytes": 787070
+      }
+    },
+    {
+      "capture_id": "exp_025_video_transport_aes_cbc_128_1789043396",
+      "pcap_file": "exp_025_video_transport_aes_cbc_128_1789043396.pcapng",
+      "timestamp": "2026-09-10T12:30:37.045384+00:00",
+      "experiment_name": "[025/120] VIDEO in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 588,
+        "ike_packets": 6,
+        "esp_packets": 580,
+        "file_size_bytes": 630048
+      }
+    },
+    {
+      "capture_id": "exp_026_video_tunnel_3des_cbc_1789043438",
+      "pcap_file": "exp_026_video_tunnel_3des_cbc_1789043438.pcapng",
+      "timestamp": "2026-09-10T12:31:20.527583+00:00",
+      "experiment_name": "[026/120] VIDEO in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 688,
+        "ike_packets": 14,
+        "esp_packets": 671,
+        "file_size_bytes": 763996
+      }
+    },
+    {
+      "capture_id": "exp_027_video_transport_3des_cbc_1789043482",
+      "pcap_file": "exp_027_video_transport_3des_cbc_1789043482.pcapng",
+      "timestamp": "2026-09-10T12:32:03.937570+00:00",
+      "experiment_name": "[027/120] VIDEO in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 600,
+        "ike_packets": 13,
+        "esp_packets": 585,
+        "file_size_bytes": 661356
+      }
+    },
+    {
+      "capture_id": "exp_028_video_tunnel_aes_gcm_16_256_1789043525",
+      "pcap_file": "exp_028_video_tunnel_aes_gcm_16_256_1789043525.pcapng",
+      "timestamp": "2026-09-10T12:32:46.149019+00:00",
+      "experiment_name": "[028/120] VIDEO in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 607,
+        "ike_packets": 580,
+        "esp_packets": 0,
+        "file_size_bytes": 631090
+      }
+    },
+    {
+      "capture_id": "exp_029_video_transport_aes_gcm_16_128_1789043567",
+      "pcap_file": "exp_029_video_transport_aes_gcm_16_128_1789043567.pcapng",
+      "timestamp": "2026-09-10T12:33:28.313192+00:00",
+      "experiment_name": "[029/120] VIDEO in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 595,
+        "ike_packets": 6,
+        "esp_packets": 558,
+        "file_size_bytes": 630810
+      }
+    },
+    {
+      "capture_id": "exp_030_video_tunnel_aes_cbc_256_1789043609",
+      "pcap_file": "exp_030_video_tunnel_aes_cbc_256_1789043609.pcapng",
+      "timestamp": "2026-09-10T12:34:12.560521+00:00",
+      "experiment_name": "[030/120] VIDEO in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "video",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 860,
+        "ike_packets": 21,
+        "esp_packets": 727,
+        "file_size_bytes": 853360
+      }
+    },
+    {
+      "capture_id": "exp_031_web_tunnel_aes_gcm_16_256_1789043654",
+      "pcap_file": "exp_031_web_tunnel_aes_gcm_16_256_1789043654.pcapng",
+      "timestamp": "2026-09-10T12:34:56.735940+00:00",
+      "experiment_name": "[031/120] WEB in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 56,
+        "ike_packets": 35,
+        "esp_packets": 0,
+        "file_size_bytes": 8972
+      }
+    },
+    {
+      "capture_id": "exp_032_web_transport_aes_gcm_16_128_1789043698",
+      "pcap_file": "exp_032_web_transport_aes_gcm_16_128_1789043698.pcapng",
+      "timestamp": "2026-09-10T12:35:41.442313+00:00",
+      "experiment_name": "[032/120] WEB in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 20,
+        "ike_packets": 4,
+        "esp_packets": 12,
+        "file_size_bytes": 3336
+      }
+    },
+    {
+      "capture_id": "exp_033_web_tunnel_aes_cbc_256_1789043742",
+      "pcap_file": "exp_033_web_tunnel_aes_cbc_256_1789043742.pcapng",
+      "timestamp": "2026-09-10T12:36:25.228685+00:00",
+      "experiment_name": "[033/120] WEB in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 26,
+        "ike_packets": 5,
+        "esp_packets": 12,
+        "file_size_bytes": 4116
+      }
+    },
+    {
+      "capture_id": "exp_034_web_transport_aes_cbc_128_1789043786",
+      "pcap_file": "exp_034_web_transport_aes_cbc_128_1789043786.pcapng",
+      "timestamp": "2026-09-10T12:37:09.346338+00:00",
+      "experiment_name": "[034/120] WEB in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 46,
+        "ike_packets": 4,
+        "esp_packets": 38,
+        "file_size_bytes": 8196
+      }
+    },
+    {
+      "capture_id": "exp_035_web_tunnel_3des_cbc_1789043830",
+      "pcap_file": "exp_035_web_tunnel_3des_cbc_1789043830.pcapng",
+      "timestamp": "2026-09-10T12:37:58.772585+00:00",
+      "experiment_name": "[035/120] WEB in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 37,
+        "ike_packets": 25,
+        "esp_packets": 0,
+        "file_size_bytes": 5006
+      }
+    },
+    {
+      "capture_id": "exp_036_web_transport_3des_cbc_1789043880",
+      "pcap_file": "exp_036_web_transport_3des_cbc_1789043880.pcapng",
+      "timestamp": "2026-09-10T12:38:44.195366+00:00",
+      "experiment_name": "[036/120] WEB in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 18,
+        "ike_packets": 0,
+        "esp_packets": 14,
+        "file_size_bytes": 1852
+      }
+    },
+    {
+      "capture_id": "exp_037_web_tunnel_aes_gcm_16_256_1789043925",
+      "pcap_file": "exp_037_web_tunnel_aes_gcm_16_256_1789043925.pcapng",
+      "timestamp": "2026-09-10T12:39:28.510190+00:00",
+      "experiment_name": "[037/120] WEB in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 65,
+        "ike_packets": 5,
+        "esp_packets": 38,
+        "file_size_bytes": 11050
+      }
+    },
+    {
+      "capture_id": "exp_038_web_transport_aes_gcm_16_128_1789043970",
+      "pcap_file": "exp_038_web_transport_aes_gcm_16_128_1789043970.pcapng",
+      "timestamp": "2026-09-10T12:40:13.612240+00:00",
+      "experiment_name": "[038/120] WEB in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 20,
+        "ike_packets": 4,
+        "esp_packets": 12,
+        "file_size_bytes": 3336
+      }
+    },
+    {
+      "capture_id": "exp_039_web_tunnel_aes_cbc_256_1789044015",
+      "pcap_file": "exp_039_web_tunnel_aes_cbc_256_1789044015.pcapng",
+      "timestamp": "2026-09-10T12:40:57.028767+00:00",
+      "experiment_name": "[039/120] WEB in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 22,
+        "ike_packets": 16,
+        "esp_packets": 0,
+        "file_size_bytes": 3980
+      }
+    },
+    {
+      "capture_id": "exp_040_web_transport_aes_cbc_128_1789044058",
+      "pcap_file": "exp_040_web_transport_aes_cbc_128_1789044058.pcapng",
+      "timestamp": "2026-09-10T12:41:41.411957+00:00",
+      "experiment_name": "[040/120] WEB in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 42,
+        "ike_packets": 4,
+        "esp_packets": 38,
+        "file_size_bytes": 8188
+      }
+    },
+    {
+      "capture_id": "exp_041_web_tunnel_3des_cbc_1789044102",
+      "pcap_file": "exp_041_web_tunnel_3des_cbc_1789044102.pcapng",
+      "timestamp": "2026-09-10T12:42:27.077329+00:00",
+      "experiment_name": "[041/120] WEB in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 24,
+        "ike_packets": 0,
+        "esp_packets": 16,
+        "file_size_bytes": 2728
+      }
+    },
+    {
+      "capture_id": "exp_042_web_transport_3des_cbc_1789044148",
+      "pcap_file": "exp_042_web_transport_3des_cbc_1789044148.pcapng",
+      "timestamp": "2026-09-10T12:43:10.871852+00:00",
+      "experiment_name": "[042/120] WEB in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 27,
+        "ike_packets": 9,
+        "esp_packets": 14,
+        "file_size_bytes": 3718
+      }
+    },
+    {
+      "capture_id": "exp_043_web_tunnel_aes_gcm_16_256_1789044192",
+      "pcap_file": "exp_043_web_tunnel_aes_gcm_16_256_1789044192.pcapng",
+      "timestamp": "2026-09-10T12:43:56.507674+00:00",
+      "experiment_name": "[043/120] WEB in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 69,
+        "ike_packets": 45,
+        "esp_packets": 0,
+        "file_size_bytes": 11735
+      }
+    },
+    {
+      "capture_id": "exp_044_web_transport_aes_gcm_16_128_1789044238",
+      "pcap_file": "exp_044_web_transport_aes_gcm_16_128_1789044238.pcapng",
+      "timestamp": "2026-09-10T12:44:41.001883+00:00",
+      "experiment_name": "[044/120] WEB in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 14,
+        "ike_packets": 4,
+        "esp_packets": 10,
+        "file_size_bytes": 2872
+      }
+    },
+    {
+      "capture_id": "exp_045_web_tunnel_aes_cbc_256_1789044282",
+      "pcap_file": "exp_045_web_tunnel_aes_cbc_256_1789044282.pcapng",
+      "timestamp": "2026-09-10T12:45:23.286433+00:00",
+      "experiment_name": "[045/120] WEB in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "web",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 16,
+        "ike_packets": 4,
+        "esp_packets": 8,
+        "file_size_bytes": 3160
+      }
+    },
+    {
+      "capture_id": "exp_046_chat_tunnel_aes_gcm_16_256_1789044324",
+      "pcap_file": "exp_046_chat_tunnel_aes_gcm_16_256_1789044324.pcapng",
+      "timestamp": "2026-09-10T12:46:07.573915+00:00",
+      "experiment_name": "[046/120] CHAT in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 44,
+        "ike_packets": 28,
+        "esp_packets": 0,
+        "file_size_bytes": 8909
+      }
+    },
+    {
+      "capture_id": "exp_047_chat_transport_aes_gcm_16_128_1789044369",
+      "pcap_file": "exp_047_chat_transport_aes_gcm_16_128_1789044369.pcapng",
+      "timestamp": "2026-09-10T12:46:51.014557+00:00",
+      "experiment_name": "[047/120] CHAT in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 20,
+        "ike_packets": 4,
+        "esp_packets": 12,
+        "file_size_bytes": 5312
+      }
+    },
+    {
+      "capture_id": "exp_048_chat_tunnel_aes_cbc_256_1789044412",
+      "pcap_file": "exp_048_chat_tunnel_aes_cbc_256_1789044412.pcapng",
+      "timestamp": "2026-09-10T12:47:33.462054+00:00",
+      "experiment_name": "[048/120] CHAT in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 21,
+        "ike_packets": 4,
+        "esp_packets": 10,
+        "file_size_bytes": 6215
+      }
+    },
+    {
+      "capture_id": "exp_049_chat_transport_aes_cbc_128_1789044454",
+      "pcap_file": "exp_049_chat_transport_aes_cbc_128_1789044454.pcapng",
+      "timestamp": "2026-09-10T12:48:16.510362+00:00",
+      "experiment_name": "[049/120] CHAT in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 34,
+        "ike_packets": 4,
+        "esp_packets": 28,
+        "file_size_bytes": 7996
+      }
+    },
+    {
+      "capture_id": "exp_050_chat_tunnel_3des_cbc_1789044498",
+      "pcap_file": "exp_050_chat_tunnel_3des_cbc_1789044498.pcapng",
+      "timestamp": "2026-09-10T12:49:01.131717+00:00",
+      "experiment_name": "[050/120] CHAT in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 31,
+        "ike_packets": 21,
+        "esp_packets": 0,
+        "file_size_bytes": 8044
+      }
+    },
+    {
+      "capture_id": "exp_051_chat_transport_3des_cbc_1789044542",
+      "pcap_file": "exp_051_chat_transport_3des_cbc_1789044542.pcapng",
+      "timestamp": "2026-09-10T12:49:43.486017+00:00",
+      "experiment_name": "[051/120] CHAT in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 10,
+        "ike_packets": 0,
+        "esp_packets": 6,
+        "file_size_bytes": 1796
+      }
+    },
+    {
+      "capture_id": "exp_052_chat_tunnel_aes_gcm_16_256_1789044584",
+      "pcap_file": "exp_052_chat_tunnel_aes_gcm_16_256_1789044584.pcapng",
+      "timestamp": "2026-09-10T12:50:30.234822+00:00",
+      "experiment_name": "[052/120] CHAT in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 47,
+        "ike_packets": 4,
+        "esp_packets": 27,
+        "file_size_bytes": 9912
+      }
+    },
+    {
+      "capture_id": "exp_053_chat_transport_aes_gcm_16_128_1789044631",
+      "pcap_file": "exp_053_chat_transport_aes_gcm_16_128_1789044631.pcapng",
+      "timestamp": "2026-09-10T12:51:14.462249+00:00",
+      "experiment_name": "[053/120] CHAT in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 14,
+        "ike_packets": 4,
+        "esp_packets": 6,
+        "file_size_bytes": 3688
+      }
+    },
+    {
+      "capture_id": "exp_054_chat_tunnel_aes_cbc_256_1789044675",
+      "pcap_file": "exp_054_chat_tunnel_aes_cbc_256_1789044675.pcapng",
+      "timestamp": "2026-09-10T12:51:58.576279+00:00",
+      "experiment_name": "[054/120] CHAT in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 14,
+        "ike_packets": 8,
+        "esp_packets": 0,
+        "file_size_bytes": 3605
+      }
+    },
+    {
+      "capture_id": "exp_055_chat_transport_aes_cbc_128_1789044720",
+      "pcap_file": "exp_055_chat_transport_aes_cbc_128_1789044720.pcapng",
+      "timestamp": "2026-09-10T12:52:44.306243+00:00",
+      "experiment_name": "[055/120] CHAT in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 42,
+        "ike_packets": 4,
+        "esp_packets": 34,
+        "file_size_bytes": 9756
+      }
+    },
+    {
+      "capture_id": "exp_056_chat_tunnel_3des_cbc_1789044765",
+      "pcap_file": "exp_056_chat_tunnel_3des_cbc_1789044765.pcapng",
+      "timestamp": "2026-09-10T12:53:30.157101+00:00",
+      "experiment_name": "[056/120] CHAT in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 22,
+        "ike_packets": 0,
+        "esp_packets": 12,
+        "file_size_bytes": 5481
+      }
+    },
+    {
+      "capture_id": "exp_057_chat_transport_3des_cbc_1789044811",
+      "pcap_file": "exp_057_chat_transport_3des_cbc_1789044811.pcapng",
+      "timestamp": "2026-09-10T12:54:14.277925+00:00",
+      "experiment_name": "[057/120] CHAT in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 29,
+        "ike_packets": 9,
+        "esp_packets": 16,
+        "file_size_bytes": 7170
+      }
+    },
+    {
+      "capture_id": "exp_058_chat_tunnel_aes_gcm_16_256_1789044855",
+      "pcap_file": "exp_058_chat_tunnel_aes_gcm_16_256_1789044855.pcapng",
+      "timestamp": "2026-09-10T12:54:58.775836+00:00",
+      "experiment_name": "[058/120] CHAT in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 49,
+        "ike_packets": 33,
+        "esp_packets": 0,
+        "file_size_bytes": 10753
+      }
+    },
+    {
+      "capture_id": "exp_059_chat_transport_aes_gcm_16_128_1789044900",
+      "pcap_file": "exp_059_chat_transport_aes_gcm_16_128_1789044900.pcapng",
+      "timestamp": "2026-09-10T12:55:45.836190+00:00",
+      "experiment_name": "[059/120] CHAT in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 20,
+        "ike_packets": 4,
+        "esp_packets": 12,
+        "file_size_bytes": 4952
+      }
+    },
+    {
+      "capture_id": "exp_060_chat_tunnel_aes_cbc_256_1789044947",
+      "pcap_file": "exp_060_chat_tunnel_aes_cbc_256_1789044947.pcapng",
+      "timestamp": "2026-09-10T12:56:29.604158+00:00",
+      "experiment_name": "[060/120] CHAT in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "chat",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 20,
+        "ike_packets": 4,
+        "esp_packets": 8,
+        "file_size_bytes": 5364
+      }
+    },
+    {
+      "capture_id": "exp_061_email_tunnel_aes_gcm_16_256_1789044991",
+      "pcap_file": "exp_061_email_tunnel_aes_gcm_16_256_1789044991.pcapng",
+      "timestamp": "2026-09-10T12:57:13.903463+00:00",
+      "experiment_name": "[061/120] EMAIL in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 49,
+        "ike_packets": 30,
+        "esp_packets": 0,
+        "file_size_bytes": 7573
+      }
+    },
+    {
+      "capture_id": "exp_062_email_transport_aes_gcm_16_128_1789045035",
+      "pcap_file": "exp_062_email_transport_aes_gcm_16_128_1789045035.pcapng",
+      "timestamp": "2026-09-10T12:57:58.670020+00:00",
+      "experiment_name": "[062/120] EMAIL in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 16,
+        "ike_packets": 4,
+        "esp_packets": 8,
+        "file_size_bytes": 2872
+      }
+    },
+    {
+      "capture_id": "exp_063_email_tunnel_aes_cbc_256_1789045080",
+      "pcap_file": "exp_063_email_tunnel_aes_cbc_256_1789045080.pcapng",
+      "timestamp": "2026-09-10T12:58:41.747847+00:00",
+      "experiment_name": "[063/120] EMAIL in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 20,
+        "ike_packets": 4,
+        "esp_packets": 8,
+        "file_size_bytes": 3392
+      }
+    },
+    {
+      "capture_id": "exp_064_email_transport_aes_cbc_128_1789045123",
+      "pcap_file": "exp_064_email_transport_aes_cbc_128_1789045123.pcapng",
+      "timestamp": "2026-09-10T12:59:26.724338+00:00",
+      "experiment_name": "[064/120] EMAIL in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 44,
+        "ike_packets": 5,
+        "esp_packets": 35,
+        "file_size_bytes": 8224
+      }
+    },
+    {
+      "capture_id": "exp_065_email_tunnel_3des_cbc_1789045168",
+      "pcap_file": "exp_065_email_tunnel_3des_cbc_1789045168.pcapng",
+      "timestamp": "2026-09-10T13:00:13.092060+00:00",
+      "experiment_name": "[065/120] EMAIL in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 25,
+        "ike_packets": 17,
+        "esp_packets": 0,
+        "file_size_bytes": 3590
+      }
+    },
+    {
+      "capture_id": "exp_066_email_transport_3des_cbc_1789045214",
+      "pcap_file": "exp_066_email_transport_3des_cbc_1789045214.pcapng",
+      "timestamp": "2026-09-10T13:00:59.584038+00:00",
+      "experiment_name": "[066/120] EMAIL in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 12,
+        "ike_packets": 0,
+        "esp_packets": 8,
+        "file_size_bytes": 1168
+      }
+    },
+    {
+      "capture_id": "exp_067_email_tunnel_aes_gcm_16_256_1789045261",
+      "pcap_file": "exp_067_email_tunnel_aes_gcm_16_256_1789045261.pcapng",
+      "timestamp": "2026-09-10T13:01:42.993803+00:00",
+      "experiment_name": "[067/120] EMAIL in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 41,
+        "ike_packets": 4,
+        "esp_packets": 22,
+        "file_size_bytes": 7069
+      }
+    },
+    {
+      "capture_id": "exp_068_email_transport_aes_gcm_16_128_1789045304",
+      "pcap_file": "exp_068_email_transport_aes_gcm_16_128_1789045304.pcapng",
+      "timestamp": "2026-09-10T13:02:25.954135+00:00",
+      "experiment_name": "[068/120] EMAIL in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 14,
+        "ike_packets": 4,
+        "esp_packets": 6,
+        "file_size_bytes": 2640
+      }
+    },
+    {
+      "capture_id": "exp_069_email_tunnel_aes_cbc_256_1789045347",
+      "pcap_file": "exp_069_email_tunnel_aes_cbc_256_1789045347.pcapng",
+      "timestamp": "2026-09-10T13:03:12.003609+00:00",
+      "experiment_name": "[069/120] EMAIL in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 26,
+        "ike_packets": 16,
+        "esp_packets": 0,
+        "file_size_bytes": 4212
+      }
+    },
+    {
+      "capture_id": "exp_070_email_transport_aes_cbc_128_1789045393",
+      "pcap_file": "exp_070_email_transport_aes_cbc_128_1789045393.pcapng",
+      "timestamp": "2026-09-10T13:03:56.434325+00:00",
+      "experiment_name": "[070/120] EMAIL in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 44,
+        "ike_packets": 4,
+        "esp_packets": 36,
+        "file_size_bytes": 8064
+      }
+    },
+    {
+      "capture_id": "exp_071_email_tunnel_3des_cbc_1789045437",
+      "pcap_file": "exp_071_email_tunnel_3des_cbc_1789045437.pcapng",
+      "timestamp": "2026-09-10T13:04:41.593836+00:00",
+      "experiment_name": "[071/120] EMAIL in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 19,
+        "ike_packets": 0,
+        "esp_packets": 10,
+        "file_size_bytes": 1946
+      }
+    },
+    {
+      "capture_id": "exp_072_email_transport_3des_cbc_1789045483",
+      "pcap_file": "exp_072_email_transport_3des_cbc_1789045483.pcapng",
+      "timestamp": "2026-09-10T13:05:27.901177+00:00",
+      "experiment_name": "[072/120] EMAIL in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 23,
+        "ike_packets": 9,
+        "esp_packets": 10,
+        "file_size_bytes": 3262
+      }
+    },
+    {
+      "capture_id": "exp_073_email_tunnel_aes_gcm_16_256_1789045529",
+      "pcap_file": "exp_073_email_tunnel_aes_gcm_16_256_1789045529.pcapng",
+      "timestamp": "2026-09-10T13:06:12.722896+00:00",
+      "experiment_name": "[073/120] EMAIL in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 56,
+        "ike_packets": 37,
+        "esp_packets": 0,
+        "file_size_bytes": 9833
+      }
+    },
+    {
+      "capture_id": "exp_074_email_transport_aes_gcm_16_128_1789045574",
+      "pcap_file": "exp_074_email_transport_aes_gcm_16_128_1789045574.pcapng",
+      "timestamp": "2026-09-10T13:06:56.122479+00:00",
+      "experiment_name": "[074/120] EMAIL in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 16,
+        "ike_packets": 4,
+        "esp_packets": 8,
+        "file_size_bytes": 2872
+      }
+    },
+    {
+      "capture_id": "exp_075_email_tunnel_aes_cbc_256_1789045617",
+      "pcap_file": "exp_075_email_tunnel_aes_cbc_256_1789045617.pcapng",
+      "timestamp": "2026-09-10T13:07:39.561300+00:00",
+      "experiment_name": "[075/120] EMAIL in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "email",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 17,
+        "ike_packets": 4,
+        "esp_packets": 6,
+        "file_size_bytes": 3030
+      }
+    },
+    {
+      "capture_id": "exp_076_bulk_tunnel_aes_gcm_16_256_1789045661",
+      "pcap_file": "exp_076_bulk_tunnel_aes_gcm_16_256_1789045661.pcapng",
+      "timestamp": "2026-09-10T13:08:15.522390+00:00",
+      "experiment_name": "[076/120] BULK in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 6,
+        "ike_packets": 4,
+        "esp_packets": 0,
+        "file_size_bytes": 943
+      }
+    },
+    {
+      "capture_id": "exp_077_bulk_transport_aes_gcm_16_128_1789045697",
+      "pcap_file": "exp_077_bulk_transport_aes_gcm_16_128_1789045697.pcapng",
+      "timestamp": "2026-09-10T13:08:51.505639+00:00",
+      "experiment_name": "[077/120] BULK in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 6,
+        "ike_packets": 4,
+        "esp_packets": 2,
+        "file_size_bytes": 1944
+      }
+    },
+    {
+      "capture_id": "exp_078_bulk_tunnel_aes_cbc_256_1789045733",
+      "pcap_file": "exp_078_bulk_tunnel_aes_cbc_256_1789045733.pcapng",
+      "timestamp": "2026-09-10T13:09:27.448731+00:00",
+      "experiment_name": "[078/120] BULK in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 7,
+        "ike_packets": 4,
+        "esp_packets": 2,
+        "file_size_bytes": 2074
+      }
+    },
+    {
+      "capture_id": "exp_079_bulk_transport_aes_cbc_128_1789045768",
+      "pcap_file": "exp_079_bulk_transport_aes_cbc_128_1789045768.pcapng",
+      "timestamp": "2026-09-10T13:10:03.429307+00:00",
+      "experiment_name": "[079/120] BULK in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 8,
+        "ike_packets": 4,
+        "esp_packets": 4,
+        "file_size_bytes": 2408
+      }
+    },
+    {
+      "capture_id": "exp_080_bulk_tunnel_3des_cbc_1789045804",
+      "pcap_file": "exp_080_bulk_tunnel_3des_cbc_1789045804.pcapng",
+      "timestamp": "2026-09-10T13:10:39.580108+00:00",
+      "experiment_name": "[080/120] BULK in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 12,
+        "ike_packets": 11,
+        "esp_packets": 0,
+        "file_size_bytes": 2296
+      }
+    },
+    {
+      "capture_id": "exp_081_bulk_transport_3des_cbc_1789045841",
+      "pcap_file": "exp_081_bulk_transport_3des_cbc_1789045841.pcapng",
+      "timestamp": "2026-09-10T13:11:15.751610+00:00",
+      "experiment_name": "[081/120] BULK in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 2,
+        "ike_packets": 0,
+        "esp_packets": 2,
+        "file_size_bytes": 252
+      }
+    },
+    {
+      "capture_id": "exp_082_bulk_tunnel_aes_gcm_16_256_1789045877",
+      "pcap_file": "exp_082_bulk_tunnel_aes_gcm_16_256_1789045877.pcapng",
+      "timestamp": "2026-09-10T13:11:51.824034+00:00",
+      "experiment_name": "[082/120] BULK in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 10,
+        "ike_packets": 4,
+        "esp_packets": 4,
+        "file_size_bytes": 2547
+      }
+    },
+    {
+      "capture_id": "exp_083_bulk_transport_aes_gcm_16_128_1789045913",
+      "pcap_file": "exp_083_bulk_transport_aes_gcm_16_128_1789045913.pcapng",
+      "timestamp": "2026-09-10T13:12:28.049559+00:00",
+      "experiment_name": "[083/120] BULK in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 6,
+        "ike_packets": 4,
+        "esp_packets": 2,
+        "file_size_bytes": 1944
+      }
+    },
+    {
+      "capture_id": "exp_084_bulk_tunnel_aes_cbc_256_1789045949",
+      "pcap_file": "exp_084_bulk_tunnel_aes_cbc_256_1789045949.pcapng",
+      "timestamp": "2026-09-10T13:13:04.051347+00:00",
+      "experiment_name": "[084/120] BULK in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 7,
+        "ike_packets": 6,
+        "esp_packets": 0,
+        "file_size_bytes": 2090
+      }
+    },
+    {
+      "capture_id": "exp_085_bulk_transport_aes_cbc_128_1789045985",
+      "pcap_file": "exp_085_bulk_transport_aes_cbc_128_1789045985.pcapng",
+      "timestamp": "2026-09-10T13:13:40.188173+00:00",
+      "experiment_name": "[085/120] BULK in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 8,
+        "ike_packets": 4,
+        "esp_packets": 4,
+        "file_size_bytes": 2328
+      }
+    },
+    {
+      "capture_id": "exp_086_bulk_tunnel_3des_cbc_1789046021",
+      "pcap_file": "exp_086_bulk_tunnel_3des_cbc_1789046021.pcapng",
+      "timestamp": "2026-09-10T13:14:16.221811+00:00",
+      "experiment_name": "[086/120] BULK in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 3,
+        "ike_packets": 0,
+        "esp_packets": 2,
+        "file_size_bytes": 362
+      }
+    },
+    {
+      "capture_id": "exp_087_bulk_transport_3des_cbc_1789046057",
+      "pcap_file": "exp_087_bulk_transport_3des_cbc_1789046057.pcapng",
+      "timestamp": "2026-09-10T13:14:52.357758+00:00",
+      "experiment_name": "[087/120] BULK in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 11,
+        "ike_packets": 9,
+        "esp_packets": 2,
+        "file_size_bytes": 2118
+      }
+    },
+    {
+      "capture_id": "exp_088_bulk_tunnel_aes_gcm_16_256_1789046093",
+      "pcap_file": "exp_088_bulk_tunnel_aes_gcm_16_256_1789046093.pcapng",
+      "timestamp": "2026-09-10T13:15:29.657535+00:00",
+      "experiment_name": "[088/120] BULK in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 10,
+        "ike_packets": 8,
+        "esp_packets": 0,
+        "file_size_bytes": 2519
+      }
+    },
+    {
+      "capture_id": "exp_089_bulk_transport_aes_gcm_16_128_1789046131",
+      "pcap_file": "exp_089_bulk_transport_aes_gcm_16_128_1789046131.pcapng",
+      "timestamp": "2026-09-10T13:16:05.805973+00:00",
+      "experiment_name": "[089/120] BULK in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 6,
+        "ike_packets": 4,
+        "esp_packets": 2,
+        "file_size_bytes": 1944
+      }
+    },
+    {
+      "capture_id": "exp_090_bulk_tunnel_aes_cbc_256_1789046167",
+      "pcap_file": "exp_090_bulk_tunnel_aes_cbc_256_1789046167.pcapng",
+      "timestamp": "2026-09-10T13:16:42.078450+00:00",
+      "experiment_name": "[090/120] BULK in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "bulk",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 7,
+        "ike_packets": 5,
+        "esp_packets": 1,
+        "file_size_bytes": 2074
+      }
+    },
+    {
+      "capture_id": "exp_091_icmp_tunnel_aes_gcm_16_256_1789046203",
+      "pcap_file": "exp_091_icmp_tunnel_aes_gcm_16_256_1789046203.pcapng",
+      "timestamp": "2026-09-10T13:17:24.300276+00:00",
+      "experiment_name": "[091/120] ICMP in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 100,
+        "ike_packets": 64,
+        "esp_packets": 0,
+        "file_size_bytes": 53251
+      }
+    },
+    {
+      "capture_id": "exp_092_icmp_transport_aes_gcm_16_128_1789046245",
+      "pcap_file": "exp_092_icmp_transport_aes_gcm_16_128_1789046245.pcapng",
+      "timestamp": "2026-09-10T13:18:07.400119+00:00",
+      "experiment_name": "[092/120] ICMP in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 50,
+        "ike_packets": 4,
+        "esp_packets": 42,
+        "file_size_bytes": 31924
+      }
+    },
+    {
+      "capture_id": "exp_093_icmp_tunnel_aes_cbc_256_1789046288",
+      "pcap_file": "exp_093_icmp_tunnel_aes_cbc_256_1789046288.pcapng",
+      "timestamp": "2026-09-10T13:18:50.444482+00:00",
+      "experiment_name": "[093/120] ICMP in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 71,
+        "ike_packets": 25,
+        "esp_packets": 21,
+        "file_size_bytes": 28654
+      }
+    },
+    {
+      "capture_id": "exp_094_icmp_transport_aes_cbc_128_1789046331",
+      "pcap_file": "exp_094_icmp_transport_aes_cbc_128_1789046331.pcapng",
+      "timestamp": "2026-09-10T13:19:32.659911+00:00",
+      "experiment_name": "[094/120] ICMP in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 68,
+        "ike_packets": 4,
+        "esp_packets": 60,
+        "file_size_bytes": 27984
+      }
+    },
+    {
+      "capture_id": "exp_095_icmp_tunnel_3des_cbc_1789046374",
+      "pcap_file": "exp_095_icmp_tunnel_3des_cbc_1789046374.pcapng",
+      "timestamp": "2026-09-10T13:20:20.951750+00:00",
+      "experiment_name": "[095/120] ICMP in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 69,
+        "ike_packets": 46,
+        "esp_packets": 0,
+        "file_size_bytes": 33154
+      }
+    },
+    {
+      "capture_id": "exp_096_icmp_transport_3des_cbc_1789046422",
+      "pcap_file": "exp_096_icmp_transport_3des_cbc_1789046422.pcapng",
+      "timestamp": "2026-09-10T13:21:04.014947+00:00",
+      "experiment_name": "[096/120] ICMP in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 30,
+        "ike_packets": 0,
+        "esp_packets": 24,
+        "file_size_bytes": 13508
+      }
+    },
+    {
+      "capture_id": "exp_097_icmp_tunnel_aes_gcm_16_256_1789046465",
+      "pcap_file": "exp_097_icmp_tunnel_aes_gcm_16_256_1789046465.pcapng",
+      "timestamp": "2026-09-10T13:21:48.126446+00:00",
+      "experiment_name": "[097/120] ICMP in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 83,
+        "ike_packets": 4,
+        "esp_packets": 49,
+        "file_size_bytes": 20031
+      }
+    },
+    {
+      "capture_id": "exp_098_icmp_transport_aes_gcm_16_128_1789046509",
+      "pcap_file": "exp_098_icmp_transport_aes_gcm_16_128_1789046509.pcapng",
+      "timestamp": "2026-09-10T13:22:31.509844+00:00",
+      "experiment_name": "[098/120] ICMP in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 41,
+        "ike_packets": 5,
+        "esp_packets": 29,
+        "file_size_bytes": 19034
+      }
+    },
+    {
+      "capture_id": "exp_099_icmp_tunnel_aes_cbc_256_1789046553",
+      "pcap_file": "exp_099_icmp_tunnel_aes_cbc_256_1789046553.pcapng",
+      "timestamp": "2026-09-10T13:23:14.393839+00:00",
+      "experiment_name": "[099/120] ICMP in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 86,
+        "ike_packets": 53,
+        "esp_packets": 0,
+        "file_size_bytes": 41844
+      }
+    },
+    {
+      "capture_id": "exp_100_icmp_transport_aes_cbc_128_1789046595",
+      "pcap_file": "exp_100_icmp_transport_aes_cbc_128_1789046595.pcapng",
+      "timestamp": "2026-09-10T13:23:57.599749+00:00",
+      "experiment_name": "[100/120] ICMP in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 74,
+        "ike_packets": 4,
+        "esp_packets": 66,
+        "file_size_bytes": 30028
+      }
+    },
+    {
+      "capture_id": "exp_101_icmp_tunnel_3des_cbc_1789046639",
+      "pcap_file": "exp_101_icmp_tunnel_3des_cbc_1789046639.pcapng",
+      "timestamp": "2026-09-10T13:24:41.676463+00:00",
+      "experiment_name": "[101/120] ICMP in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 82,
+        "ike_packets": 1,
+        "esp_packets": 51,
+        "file_size_bytes": 48884
+      }
+    },
+    {
+      "capture_id": "exp_102_icmp_transport_3des_cbc_1789046683",
+      "pcap_file": "exp_102_icmp_transport_3des_cbc_1789046683.pcapng",
+      "timestamp": "2026-09-10T13:25:23.782325+00:00",
+      "experiment_name": "[102/120] ICMP in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 41,
+        "ike_packets": 9,
+        "esp_packets": 28,
+        "file_size_bytes": 23906
+      }
+    },
+    {
+      "capture_id": "exp_103_icmp_tunnel_aes_gcm_16_256_1789046725",
+      "pcap_file": "exp_103_icmp_tunnel_aes_gcm_16_256_1789046725.pcapng",
+      "timestamp": "2026-09-10T13:26:07.229444+00:00",
+      "experiment_name": "[103/120] ICMP in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 91,
+        "ike_packets": 59,
+        "esp_packets": 0,
+        "file_size_bytes": 35007
+      }
+    },
+    {
+      "capture_id": "exp_104_icmp_transport_aes_gcm_16_128_1789046768",
+      "pcap_file": "exp_104_icmp_transport_aes_gcm_16_128_1789046768.pcapng",
+      "timestamp": "2026-09-10T13:26:49.687898+00:00",
+      "experiment_name": "[104/120] ICMP in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 28,
+        "ike_packets": 4,
+        "esp_packets": 17,
+        "file_size_bytes": 11668
+      }
+    },
+    {
+      "capture_id": "exp_105_icmp_tunnel_aes_cbc_256_1789046811",
+      "pcap_file": "exp_105_icmp_tunnel_aes_cbc_256_1789046811.pcapng",
+      "timestamp": "2026-09-10T13:27:36.226393+00:00",
+      "experiment_name": "[105/120] ICMP in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "icmp",
+        "is_mixed": false
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 47,
+        "ike_packets": 4,
+        "esp_packets": 26,
+        "file_size_bytes": 19718
+      }
+    },
+    {
+      "capture_id": "exp_106_mixed_tunnel_aes_gcm_16_256_1789046857",
+      "pcap_file": "exp_106_mixed_tunnel_aes_gcm_16_256_1789046857.pcapng",
+      "timestamp": "2026-09-10T13:28:25.571662+00:00",
+      "experiment_name": "[106/120] MIXED in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 69,
+        "ike_packets": 46,
+        "esp_packets": 0,
+        "file_size_bytes": 13237
+      }
+    },
+    {
+      "capture_id": "exp_107_mixed_transport_aes_gcm_16_128_1789046907",
+      "pcap_file": "exp_107_mixed_transport_aes_gcm_16_128_1789046907.pcapng",
+      "timestamp": "2026-09-10T13:29:12.619011+00:00",
+      "experiment_name": "[107/120] MIXED in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 42,
+        "ike_packets": 4,
+        "esp_packets": 34,
+        "file_size_bytes": 8952
+      }
+    },
+    {
+      "capture_id": "exp_108_mixed_tunnel_aes_cbc_256_1789046954",
+      "pcap_file": "exp_108_mixed_tunnel_aes_cbc_256_1789046954.pcapng",
+      "timestamp": "2026-09-10T13:29:58.149343+00:00",
+      "experiment_name": "[108/120] MIXED in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 50,
+        "ike_packets": 4,
+        "esp_packets": 28,
+        "file_size_bytes": 10885
+      }
+    },
+    {
+      "capture_id": "exp_109_mixed_transport_aes_cbc_128_1789046999",
+      "pcap_file": "exp_109_mixed_transport_aes_cbc_128_1789046999.pcapng",
+      "timestamp": "2026-09-10T13:30:42.685828+00:00",
+      "experiment_name": "[109/120] MIXED in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 55,
+        "ike_packets": 4,
+        "esp_packets": 47,
+        "file_size_bytes": 10766
+      }
+    },
+    {
+      "capture_id": "exp_110_mixed_tunnel_3des_cbc_1789047044",
+      "pcap_file": "exp_110_mixed_tunnel_3des_cbc_1789047044.pcapng",
+      "timestamp": "2026-09-10T13:31:25.523676+00:00",
+      "experiment_name": "[110/120] MIXED in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 43,
+        "ike_packets": 29,
+        "esp_packets": 0,
+        "file_size_bytes": 8347
+      }
+    },
+    {
+      "capture_id": "exp_111_mixed_transport_3des_cbc_1789047087",
+      "pcap_file": "exp_111_mixed_transport_3des_cbc_1789047087.pcapng",
+      "timestamp": "2026-09-10T13:32:11.016040+00:00",
+      "experiment_name": "[111/120] MIXED in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 30,
+        "ike_packets": 0,
+        "esp_packets": 26,
+        "file_size_bytes": 5772
+      }
+    },
+    {
+      "capture_id": "exp_112_mixed_tunnel_aes_gcm_16_256_1789047132",
+      "pcap_file": "exp_112_mixed_tunnel_aes_gcm_16_256_1789047132.pcapng",
+      "timestamp": "2026-09-10T13:32:54.130560+00:00",
+      "experiment_name": "[112/120] MIXED in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 60,
+        "ike_packets": 6,
+        "esp_packets": 37,
+        "file_size_bytes": 11663
+      }
+    },
+    {
+      "capture_id": "exp_113_mixed_transport_aes_gcm_16_128_1789047175",
+      "pcap_file": "exp_113_mixed_transport_aes_gcm_16_128_1789047175.pcapng",
+      "timestamp": "2026-09-10T13:33:39.228289+00:00",
+      "experiment_name": "[113/120] MIXED in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 30,
+        "ike_packets": 4,
+        "esp_packets": 24,
+        "file_size_bytes": 6052
+      }
+    },
+    {
+      "capture_id": "exp_114_mixed_tunnel_aes_cbc_256_1789047220",
+      "pcap_file": "exp_114_mixed_tunnel_aes_cbc_256_1789047220.pcapng",
+      "timestamp": "2026-09-10T13:34:24.763188+00:00",
+      "experiment_name": "[114/120] MIXED in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 51,
+        "ike_packets": 35,
+        "esp_packets": 0,
+        "file_size_bytes": 11709
+      }
+    },
+    {
+      "capture_id": "exp_115_mixed_transport_aes_cbc_128_1789047266",
+      "pcap_file": "exp_115_mixed_transport_aes_cbc_128_1789047266.pcapng",
+      "timestamp": "2026-09-10T13:35:09.311750+00:00",
+      "experiment_name": "[115/120] MIXED in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_CBC_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 0,
+        "jitter_ms": 0,
+        "packet_loss_pct": 0.0,
+        "reorder_pct": 0.0,
+        "mtu": 1500,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 48,
+        "ike_packets": 4,
+        "esp_packets": 40,
+        "file_size_bytes": 10264
+      }
+    },
+    {
+      "capture_id": "exp_116_mixed_tunnel_3des_cbc_1789047310",
+      "pcap_file": "exp_116_mixed_tunnel_3des_cbc_1789047310.pcapng",
+      "timestamp": "2026-09-10T13:35:53.234400+00:00",
+      "experiment_name": "[116/120] MIXED in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_SHA1_96",
+        "prf": "PRF_HMAC_SHA1",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": false,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 43,
+        "ike_packets": 0,
+        "esp_packets": 26,
+        "file_size_bytes": 7864
+      }
+    },
+    {
+      "capture_id": "exp_117_mixed_transport_3des_cbc_1789047354",
+      "pcap_file": "exp_117_mixed_transport_3des_cbc_1789047354.pcapng",
+      "timestamp": "2026-09-10T13:36:36.633689+00:00",
+      "experiment_name": "[117/120] MIXED in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 1,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "3DES_CBC",
+        "esp_encryption": "3DES_CBC",
+        "integrity": "HMAC_MD5_96",
+        "prf": "PRF_HMAC_MD5",
+        "dh_group": 2,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 25,
+        "jitter_ms": 6,
+        "packet_loss_pct": 1.0,
+        "reorder_pct": 1.0,
+        "mtu": 1500,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "CRITICAL_FAIL",
+        "score": 0,
+        "violations": [
+          "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+          "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+          "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 29,
+        "ike_packets": 9,
+        "esp_packets": 18,
+        "file_size_bytes": 5114
+      }
+    },
+    {
+      "capture_id": "exp_118_mixed_tunnel_aes_gcm_16_256_1789047398",
+      "pcap_file": "exp_118_mixed_tunnel_aes_gcm_16_256_1789047398.pcapng",
+      "timestamp": "2026-09-10T13:37:21.202603+00:00",
+      "experiment_name": "[118/120] MIXED in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": true,
+        "encapsulation": "UDP_4500"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_GCM_16_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": true
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 64,
+        "ike_packets": 43,
+        "esp_packets": 0,
+        "file_size_bytes": 12811
+      }
+    },
+    {
+      "capture_id": "exp_119_mixed_transport_aes_gcm_16_128_1789047442",
+      "pcap_file": "exp_119_mixed_transport_aes_gcm_16_128_1789047442.pcapng",
+      "timestamp": "2026-09-10T13:38:07.157511+00:00",
+      "experiment_name": "[119/120] MIXED in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "transport",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_128",
+        "esp_encryption": "AES_GCM_16_128",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": false
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 50,
+        "jitter_ms": 15,
+        "packet_loss_pct": 3.0,
+        "reorder_pct": 2.0,
+        "mtu": 1440,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 85,
+        "violations": [
+          "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+        ]
+      },
+      "capture_statistics": {
+        "total_packets": 34,
+        "ike_packets": 4,
+        "esp_packets": 26,
+        "file_size_bytes": 6720
+      }
+    },
+    {
+      "capture_id": "exp_120_mixed_tunnel_aes_cbc_256_1789047488",
+      "pcap_file": "exp_120_mixed_tunnel_aes_cbc_256_1789047488.pcapng",
+      "timestamp": "2026-09-10T13:38:54.728844+00:00",
+      "experiment_name": "[120/120] MIXED in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), mobile_degraded)",
+      "protocol_stack": {
+        "ipsec_protocol": "ESP",
+        "ike_version": 2,
+        "operating_mode": "tunnel",
+        "nat_traversal": false,
+        "encapsulation": "IP_PROTO_50"
+      },
+      "crypto_suite": {
+        "ike_encryption": "AES_CBC_256",
+        "esp_encryption": "AES_CBC_256",
+        "integrity": "HMAC_SHA2_256_128",
+        "prf": "PRF_HMAC_SHA2_256",
+        "dh_group": 14,
+        "pfs_enabled": true
+      },
+      "traffic_profile": {
+        "primary_class": "mixed",
+        "is_mixed": true
+      },
+      "network_imperfections": {
+        "has_handshake": true,
+        "latency_base_ms": 80,
+        "jitter_ms": 25,
+        "packet_loss_pct": 4.5,
+        "reorder_pct": 2.5,
+        "mtu": 1380,
+        "background_noise": false
+      },
+      "nist_sp800_77_compliance": {
+        "status": "PASS",
+        "score": 100,
+        "violations": []
+      },
+      "capture_statistics": {
+        "total_packets": 53,
+        "ike_packets": 4,
+        "esp_packets": 30,
+        "file_size_bytes": 12178
+      }
+    }
+  ]
+}

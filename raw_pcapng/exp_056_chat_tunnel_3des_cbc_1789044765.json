@@ -1,0 +1,50 @@
+{
+  "capture_id": "exp_056_chat_tunnel_3des_cbc_1789044765",
+  "pcap_file": "exp_056_chat_tunnel_3des_cbc_1789044765.pcapng",
+  "timestamp": "2026-09-10T12:53:30.157101+00:00",
+  "experiment_name": "[056/120] CHAT in TUNNEL Mode (Legacy 3DES-CBC SHA1 (NIST Critical Fail), wan_standard)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 1,
+    "operating_mode": "tunnel",
+    "nat_traversal": false,
+    "encapsulation": "IP_PROTO_50"
+  },
+  "crypto_suite": {
+    "ike_encryption": "3DES_CBC",
+    "esp_encryption": "3DES_CBC",
+    "integrity": "HMAC_SHA1_96",
+    "prf": "PRF_HMAC_SHA1",
+    "dh_group": 2,
+    "pfs_enabled": false
+  },
+  "traffic_profile": {
+    "primary_class": "chat",
+    "is_mixed": false
+  },
+  "network_imperfections": {
+    "has_handshake": false,
+    "latency_base_ms": 25,
+    "jitter_ms": 6,
+    "packet_loss_pct": 1.0,
+    "reorder_pct": 1.0,
+    "mtu": 1500,
+    "background_noise": false
+  },
+  "nist_sp800_77_compliance": {
+    "status": "CRITICAL_FAIL",
+    "score": 0,
+    "violations": [
+      "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+      "SHA-1 is deprecated by NIST; SHA-2 or AEAD (GCM) is required.",
+      "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+      "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+    ]
+  },
+  "capture_statistics": {
+    "total_packets": 22,
+    "ike_packets": 0,
+    "esp_packets": 12,
+    "file_size_bytes": 5481
+  }
+}

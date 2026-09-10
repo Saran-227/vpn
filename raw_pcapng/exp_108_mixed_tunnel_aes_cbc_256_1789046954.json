@@ -1,0 +1,45 @@
+{
+  "capture_id": "exp_108_mixed_tunnel_aes_cbc_256_1789046954",
+  "pcap_file": "exp_108_mixed_tunnel_aes_cbc_256_1789046954.pcapng",
+  "timestamp": "2026-09-10T13:29:58.149343+00:00",
+  "experiment_name": "[108/120] MIXED in TUNNEL Mode (AES-256-CBC HMAC-SHA256 (Enterprise Standard), wan_standard)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 2,
+    "operating_mode": "tunnel",
+    "nat_traversal": false,
+    "encapsulation": "IP_PROTO_50"
+  },
+  "crypto_suite": {
+    "ike_encryption": "AES_CBC_256",
+    "esp_encryption": "AES_CBC_256",
+    "integrity": "HMAC_SHA2_256_128",
+    "prf": "PRF_HMAC_SHA2_256",
+    "dh_group": 14,
+    "pfs_enabled": true
+  },
+  "traffic_profile": {
+    "primary_class": "mixed",
+    "is_mixed": true
+  },
+  "network_imperfections": {
+    "has_handshake": true,
+    "latency_base_ms": 25,
+    "jitter_ms": 6,
+    "packet_loss_pct": 1.0,
+    "reorder_pct": 1.0,
+    "mtu": 1500,
+    "background_noise": false
+  },
+  "nist_sp800_77_compliance": {
+    "status": "PASS",
+    "score": 100,
+    "violations": []
+  },
+  "capture_statistics": {
+    "total_packets": 50,
+    "ike_packets": 4,
+    "esp_packets": 28,
+    "file_size_bytes": 10885
+  }
+}

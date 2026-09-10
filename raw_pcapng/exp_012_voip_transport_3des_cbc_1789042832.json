@@ -1,0 +1,50 @@
+{
+  "capture_id": "exp_012_voip_transport_3des_cbc_1789042832",
+  "pcap_file": "exp_012_voip_transport_3des_cbc_1789042832.pcapng",
+  "timestamp": "2026-09-10T12:21:14.203770+00:00",
+  "experiment_name": "[012/120] VOIP in TRANSPORT Mode (Legacy 3DES-CBC MD5 (Sweet32 Vulnerable), wan_standard)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 1,
+    "operating_mode": "transport",
+    "nat_traversal": false,
+    "encapsulation": "IP_PROTO_50"
+  },
+  "crypto_suite": {
+    "ike_encryption": "3DES_CBC",
+    "esp_encryption": "3DES_CBC",
+    "integrity": "HMAC_MD5_96",
+    "prf": "PRF_HMAC_MD5",
+    "dh_group": 2,
+    "pfs_enabled": false
+  },
+  "traffic_profile": {
+    "primary_class": "voip",
+    "is_mixed": false
+  },
+  "network_imperfections": {
+    "has_handshake": true,
+    "latency_base_ms": 25,
+    "jitter_ms": 6,
+    "packet_loss_pct": 1.0,
+    "reorder_pct": 1.0,
+    "mtu": 1500,
+    "background_noise": false
+  },
+  "nist_sp800_77_compliance": {
+    "status": "CRITICAL_FAIL",
+    "score": 0,
+    "violations": [
+      "3DES/DES encryption is obsolete and vulnerable to Sweet32 attack (NIST SP 800-77 Rev. 1 Section 3.1).",
+      "MD5 integrity hashing is cryptographically broken with known collision vulnerabilities.",
+      "Diffie-Hellman Group 2 provides < 2048-bit key exchange strength, violating NIST requirements.",
+      "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+    ]
+  },
+  "capture_statistics": {
+    "total_packets": 363,
+    "ike_packets": 11,
+    "esp_packets": 350,
+    "file_size_bytes": 108550
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "capture_id": "exp_025_video_transport_aes_cbc_128_1789043396",
+  "pcap_file": "exp_025_video_transport_aes_cbc_128_1789043396.pcapng",
+  "timestamp": "2026-09-10T12:30:37.045384+00:00",
+  "experiment_name": "[025/120] VIDEO in TRANSPORT Mode (AES-128-CBC HMAC-SHA256 (PFS Disabled), clean)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 2,
+    "operating_mode": "transport",
+    "nat_traversal": false,
+    "encapsulation": "IP_PROTO_50"
+  },
+  "crypto_suite": {
+    "ike_encryption": "AES_CBC_128",
+    "esp_encryption": "AES_CBC_128",
+    "integrity": "HMAC_SHA2_256_128",
+    "prf": "PRF_HMAC_SHA2_256",
+    "dh_group": 14,
+    "pfs_enabled": false
+  },
+  "traffic_profile": {
+    "primary_class": "video",
+    "is_mixed": false
+  },
+  "network_imperfections": {
+    "has_handshake": true,
+    "latency_base_ms": 0,
+    "jitter_ms": 0,
+    "packet_loss_pct": 0.0,
+    "reorder_pct": 0.0,
+    "mtu": 1500,
+    "background_noise": true
+  },
+  "nist_sp800_77_compliance": {
+    "status": "PASS",
+    "score": 85,
+    "violations": [
+      "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+    ]
+  },
+  "capture_statistics": {
+    "total_packets": 588,
+    "ike_packets": 6,
+    "esp_packets": 580,
+    "file_size_bytes": 630048
+  }
+}

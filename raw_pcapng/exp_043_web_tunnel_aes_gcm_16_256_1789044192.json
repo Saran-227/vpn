@@ -1,0 +1,45 @@
+{
+  "capture_id": "exp_043_web_tunnel_aes_gcm_16_256_1789044192",
+  "pcap_file": "exp_043_web_tunnel_aes_gcm_16_256_1789044192.pcapng",
+  "timestamp": "2026-09-10T12:43:56.507674+00:00",
+  "experiment_name": "[043/120] WEB in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), wan_lossy)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 2,
+    "operating_mode": "tunnel",
+    "nat_traversal": true,
+    "encapsulation": "UDP_4500"
+  },
+  "crypto_suite": {
+    "ike_encryption": "AES_CBC_256",
+    "esp_encryption": "AES_GCM_16_256",
+    "integrity": "HMAC_SHA2_256_128",
+    "prf": "PRF_HMAC_SHA2_256",
+    "dh_group": 14,
+    "pfs_enabled": true
+  },
+  "traffic_profile": {
+    "primary_class": "web",
+    "is_mixed": false
+  },
+  "network_imperfections": {
+    "has_handshake": true,
+    "latency_base_ms": 50,
+    "jitter_ms": 15,
+    "packet_loss_pct": 3.0,
+    "reorder_pct": 2.0,
+    "mtu": 1440,
+    "background_noise": true
+  },
+  "nist_sp800_77_compliance": {
+    "status": "PASS",
+    "score": 100,
+    "violations": []
+  },
+  "capture_statistics": {
+    "total_packets": 69,
+    "ike_packets": 45,
+    "esp_packets": 0,
+    "file_size_bytes": 11735
+  }
+}

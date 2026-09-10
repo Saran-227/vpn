@@ -1,0 +1,47 @@
+{
+  "capture_id": "exp_089_bulk_transport_aes_gcm_16_128_1789046131",
+  "pcap_file": "exp_089_bulk_transport_aes_gcm_16_128_1789046131.pcapng",
+  "timestamp": "2026-09-10T13:16:05.805973+00:00",
+  "experiment_name": "[089/120] BULK in TRANSPORT Mode (AES-128-GCM (AEAD Modern High-Throughput), wan_lossy)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 2,
+    "operating_mode": "transport",
+    "nat_traversal": false,
+    "encapsulation": "IP_PROTO_50"
+  },
+  "crypto_suite": {
+    "ike_encryption": "AES_CBC_128",
+    "esp_encryption": "AES_GCM_16_128",
+    "integrity": "HMAC_SHA2_256_128",
+    "prf": "PRF_HMAC_SHA2_256",
+    "dh_group": 14,
+    "pfs_enabled": false
+  },
+  "traffic_profile": {
+    "primary_class": "bulk",
+    "is_mixed": false
+  },
+  "network_imperfections": {
+    "has_handshake": true,
+    "latency_base_ms": 50,
+    "jitter_ms": 15,
+    "packet_loss_pct": 3.0,
+    "reorder_pct": 2.0,
+    "mtu": 1440,
+    "background_noise": false
+  },
+  "nist_sp800_77_compliance": {
+    "status": "PASS",
+    "score": 85,
+    "violations": [
+      "Perfect Forward Secrecy (PFS) is disabled; compromise of long-term key compromises all past sessions."
+    ]
+  },
+  "capture_statistics": {
+    "total_packets": 6,
+    "ike_packets": 4,
+    "esp_packets": 2,
+    "file_size_bytes": 1944
+  }
+}

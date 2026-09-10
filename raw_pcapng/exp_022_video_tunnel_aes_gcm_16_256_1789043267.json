@@ -1,0 +1,45 @@
+{
+  "capture_id": "exp_022_video_tunnel_aes_gcm_16_256_1789043267",
+  "pcap_file": "exp_022_video_tunnel_aes_gcm_16_256_1789043267.pcapng",
+  "timestamp": "2026-09-10T12:28:28.708939+00:00",
+  "experiment_name": "[022/120] VIDEO in TUNNEL Mode (AES-256-GCM (NIST SP 800-77 Standard), mobile_degraded)",
+  "protocol_stack": {
+    "ipsec_protocol": "ESP",
+    "ike_version": 2,
+    "operating_mode": "tunnel",
+    "nat_traversal": false,
+    "encapsulation": "IP_PROTO_50"
+  },
+  "crypto_suite": {
+    "ike_encryption": "AES_CBC_256",
+    "esp_encryption": "AES_GCM_16_256",
+    "integrity": "HMAC_SHA2_256_128",
+    "prf": "PRF_HMAC_SHA2_256",
+    "dh_group": 14,
+    "pfs_enabled": true
+  },
+  "traffic_profile": {
+    "primary_class": "video",
+    "is_mixed": false
+  },
+  "network_imperfections": {
+    "has_handshake": true,
+    "latency_base_ms": 80,
+    "jitter_ms": 25,
+    "packet_loss_pct": 4.5,
+    "reorder_pct": 2.5,
+    "mtu": 1380,
+    "background_noise": true
+  },
+  "nist_sp800_77_compliance": {
+    "status": "PASS",
+    "score": 100,
+    "violations": []
+  },
+  "capture_statistics": {
+    "total_packets": 762,
+    "ike_packets": 20,
+    "esp_packets": 664,
+    "file_size_bytes": 762956
+  }
+}
