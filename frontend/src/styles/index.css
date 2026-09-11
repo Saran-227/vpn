@@ -3,12 +3,12 @@
   /* ── Background gradient ── */
   --bg-gradient: radial-gradient(
     ellipse at 20% 20%,
-    #1a3a8f 0%,
-    #2d5be3 28%,
+    #3b69e8 0%,
+    #040e12 28%,
     #4a3fa0 52%,
-    #7b5fc4 68%,
-    #c4a8d0 88%,
-    #d4b8c8 100%
+    #2f136c 68%,
+    #3e0b54 88%,
+    #391128 100%
   );
 
   /* ── Glass surfaces ── */
