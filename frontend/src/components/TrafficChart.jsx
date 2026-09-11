@@ -55,12 +55,11 @@ function LiveDot({ cx, cy, index, dataLength, color }) {
   )
 }
 
-export function TrafficChart({ history = [] }) {
+function TrafficInner({ history }) {
   const data = history.map(item => ({ ...item, time: shortTime(item.timestamp) }))
   const liveDot = (props) => <LiveDot {...props} dataLength={data.length} color="#93c5fd" />
-
   return (
-    <GlassCard className="chart-card traffic">
+    <div className="tc-inner">
       <div className="card-title-row">
         <div>
           <div className="section-kicker">NETWORK ACTIVITY</div>
@@ -81,18 +80,20 @@ export function TrafficChart({ history = [] }) {
             <XAxis dataKey="time" hide />
             <YAxis width={44} tick={{ fill: 'rgba(255,255,255,0.40)', fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
             <Tooltip {...TOOLTIP} formatter={v => [`${v} pkt/s`, 'Rate']} />
-            <Area
-              type="monotone"
-              dataKey="packets_per_second"
-              stroke="#93c5fd"
-              strokeWidth={2}
-              fill="url(#packetFill)"
-              dot={liveDot}
-              isAnimationActive={false}
-            />
+            <Area type="monotone" dataKey="packets_per_second" stroke="#93c5fd" strokeWidth={2}
+              fill="url(#packetFill)" dot={liveDot} isAnimationActive={false} />
           </AreaChart>
         </ResponsiveContainer>
       </div>
+    </div>
+  )
+}
+
+export function TrafficChart({ history = [], inline }) {
+  if (inline) return <TrafficInner history={history}/>
+  return (
+    <GlassCard className="chart-card traffic">
+      <TrafficInner history={history}/>
     </GlassCard>
   )
 }

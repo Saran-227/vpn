@@ -1,4 +1,4 @@
-import { LockKeyhole, Server, Clock3 } from 'lucide-react'
+import { Monitor, Clock3 } from 'lucide-react'
 import GlassCard from './GlassCard'
 
 function fmt(s) {
@@ -7,6 +7,18 @@ function fmt(s) {
 }
 
 const PACKETS = [0, 1, 2]
+
+function Computer({ label, ip }) {
+  return (
+    <div className="vpn-computer">
+      <div className="vpn-monitor">
+        <Monitor size={38} strokeWidth={1.4} />
+      </div>
+      <span className="vpn-computer-label">{label}</span>
+      <span className="vpn-computer-ip">{ip}</span>
+    </div>
+  )
+}
 
 export default function VPNStatus({ vpn }) {
   const connected = vpn.status === 'CONNECTED'
@@ -22,10 +34,7 @@ export default function VPNStatus({ vpn }) {
       </div>
 
       <div className="tunnel">
-        <div className="endpoint">
-          <span className="endpoint-icon"><Server size={17} /></span>
-          <div><b>Endpoint A</b><span>{vpn.endpoint_a}</span></div>
-        </div>
+        <Computer label={vpn.endpoint_a} ip={vpn.endpoint_a_ip} />
 
         <div className="tunnel-track" data-active={String(connected)}>
           {connected && PACKETS.map(i => (
@@ -33,10 +42,7 @@ export default function VPNStatus({ vpn }) {
           ))}
         </div>
 
-        <div className="endpoint">
-          <span className="endpoint-icon"><LockKeyhole size={17} /></span>
-          <div><b>{vpn.tunnel}</b><span>{vpn.endpoint_b}</span></div>
-        </div>
+        <Computer label={vpn.endpoint_b} ip={vpn.endpoint_b_ip} />
       </div>
 
       <div className="vpn-meta">

@@ -9,7 +9,9 @@ Severity = Literal['INFO', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL']
 class VPNState(BaseModel):
     status: VPNStatus
     endpoint_a: str
+    endpoint_a_ip: str = ''
     endpoint_b: str
+    endpoint_b_ip: str = ''
     tunnel: str
     uptime_seconds: int = Field(ge=0)
     protocol: str

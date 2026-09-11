@@ -1,4 +1,6 @@
 import { ShieldCheck, Radio, SunMoon } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const NAV_ITEMS = [
   { label: 'HOME',     href: '#top' },
@@ -9,9 +11,40 @@ const NAV_ITEMS = [
 ]
 
 export default function Header({ connection, mode, theme, toggleTheme }) {
+  const [active, setActive] = useState('#top')
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isAbout = location.pathname === '/about'
+
+  useEffect(() => {
+    if (isAbout) return
+    const ids = NAV_ITEMS.map(n => n.href.slice(1))
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActive(`#${e.target.id}`)
+        })
+      },
+      { rootMargin: '-60px 0px -60% 0px', threshold: 0 }
+    )
+    ids.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [isAbout])
+
   const handleNav = (href) => {
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (isAbout) {
+      navigate('/')
+      setTimeout(() => {
+        const el = document.querySelector(href)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    } else {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   return (
@@ -28,12 +61,18 @@ export default function Header({ connection, mode, theme, toggleTheme }) {
         {NAV_ITEMS.map(({ label, href }) => (
           <button
             key={label}
-            className={`nav-link${href === '#top' ? ' active' : ''}`}
+            className={`nav-link${!isAbout && active === href ? ' active' : ''}`}
             onClick={() => handleNav(href)}
           >
             {label}
           </button>
         ))}
+        <Link
+          to="/about"
+          className={`nav-link${isAbout ? ' active' : ''}`}
+        >
+          ABOUT
+        </Link>
       </nav>
 
       <div className="top-actions">

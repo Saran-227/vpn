@@ -489,16 +489,41 @@ button { font: inherit; cursor: pointer; }
   .sys-status__text { transition: none; }
 }
 
-/* ─── Top grid ───────────────────────────────────────────────────────────── */
-.top-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 1.5fr .8fr;
-  gap: 14px;
+#top, #security, #traffic, #events, #vpn { scroll-margin-top: 80px; }
+
+/* ─── Card 1: Security + VPN combo ──────────────────────────────────────── */
+.combo-card {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 14px;
+}
+.combo-half {
+  flex: 1;
+  min-width: 0;
+}
+.combo-half > * {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  height: 100%;
+}
+.combo-divider {
+  width: 1px;
+  background: var(--glass-border);
+  flex: none;
+  align-self: stretch;
+  margin: 16px 0;
 }
 
 /* ─── Security score ─────────────────────────────────────────────────────── */
 .score-card { padding: 28px 28px 32px; }
-.score-wrap { display: flex; align-items: center; gap: 28px; }
+.score-wrap { display: flex; align-items: center; gap: 28px; margin-top: 18px; }
 
 .score-ring {
   --size: 168px;
@@ -584,6 +609,40 @@ button { font: inherit; cursor: pointer; }
 
 /* ─── VPN status ─────────────────────────────────────────────────────────── */
 .vpn-card { padding: 24px 26px; align-self: start; }
+
+.vpn-computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+.vpn-monitor {
+  width: 80px; height: 80px;
+  display: grid; place-items: center;
+  background: rgba(147,197,253,0.10);
+  border: 1px solid rgba(147,197,253,0.25);
+  border-radius: var(--radius-sm);
+  color: #93c5fd;
+  box-shadow: 0 0 14px rgba(147,197,253,0.12);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.vpn-monitor:hover {
+  border-color: rgba(147,197,253,0.45);
+  box-shadow: 0 0 20px rgba(147,197,253,0.22);
+}
+.vpn-computer-label {
+  font-size: 10px;
+  font-weight: 650;
+  color: var(--text-primary);
+  letter-spacing: .2px;
+}
+.vpn-computer-ip {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: .3px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
 
 .status-badge {
   display: flex; align-items: center; gap: 7px;
@@ -708,25 +767,75 @@ button { font: inherit; cursor: pointer; }
   box-shadow: var(--glass-shadow);
 }
 
-/* ─── Metric cards ───────────────────────────────────────────────────────── */
-.metric-stack { display: grid; gap: 14px; }
-.metric-card  { padding: 22px 24px; min-height: 124px; }
-.metric-head  {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  color: var(--text-muted); font-size: 10px; letter-spacing: .3px;
+/* ─── Card 2: Telemetry + Traffic chart combo ────────────────────────────── */
+.telem-card {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 14px;
+  align-items: stretch;
 }
-.metric-value {
-  font-size: 32px; font-weight: 800; letter-spacing: -1.8px;
-  margin-top: 16px; color: var(--text-primary); line-height: 1;
+.telem-divider {
+  width: 1px;
+  background: var(--glass-border);
+  flex: none;
+  align-self: stretch;
+  margin: 20px 0;
 }
-.metric-value small {
-  font-size: 10px; color: var(--text-muted); font-weight: 600;
-  margin-left: 5px; letter-spacing: .5px; vertical-align: middle;
+/* MetricsPanel inline */
+.mp-inner {
+  padding: 24px 24px 20px;
+  width: 300px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
 }
-.metric-detail { font-size: 10px; color: var(--text-muted); margin-top: 6px; letter-spacing: .1px; }
+.mp-inner h3 { margin: 6px 0 0; }
+.mp-hero { display: flex; gap: 8px; margin: 14px 0 12px; }
+.mp-big {
+  flex: 1; display: flex; align-items: baseline; gap: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-inner);
+  padding: 10px 12px;
+}
+.mp-big strong {
+  font-size: 24px; font-weight: 800; letter-spacing: -1px;
+  color: var(--text-primary); line-height: 1;
+}
+.mp-big small { font-size: 10px; color: var(--text-muted); font-weight: 600; letter-spacing: .4px; }
+.mp-rows { display: flex; flex-direction: column; gap: 5px; }
+.mp-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xs);
+}
+.mp-row-icon {
+  display: grid; place-items: center;
+  width: 22px; height: 22px; flex: none;
+  background: rgba(147,197,253,0.10);
+  border: 1px solid rgba(147,197,253,0.18);
+  border-radius: 5px;
+  color: var(--accent-blue);
+}
+.mp-row-label { flex: 1; color: var(--text-secondary); font-size: 10px; letter-spacing: .2px; }
+.mp-row-value { font-weight: 700; font-size: 11px; color: var(--text-primary); letter-spacing: -.2px; }
+/* TrafficChart inline */
+.tc-inner {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 24px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.tc-inner .chart { flex: 1; height: 220px; margin: 18px -10px -6px; }
 
 /* ─── Charts ─────────────────────────────────────────────────────────────── */
-.chart-card { margin-top: 14px; padding: 24px 26px 14px; }
+.chart-card { padding: 24px 26px 14px; }
 .chart      { height: 245px; margin: 18px -10px -6px; }
 /* .chart-live removed — use .live-badge instead */
 .chart-caption {
@@ -788,9 +897,40 @@ button { font: inherit; cursor: pointer; }
   .risk-chart[data-risk] { transition: none; }
 }
 
-/* ─── Stats grid ─────────────────────────────────────────────────────────── */
-.lower-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
-.stats-card, .risk-chart { padding: 24px 26px; }
+/* ─── Card 3: Risk chart ─────────────────────────────────────────────────── */
+.risk-chart { padding: 24px 26px; margin-top: 14px; }
+
+/* ─── Card 4: Globe combo ────────────────────────────────────────────────── */
+.globe-combo {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 14px;
+  align-items: stretch;
+}
+.globe-combo-left {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 26px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.globe-combo-right {
+  width: 420px;
+  flex: none;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+}
+.globe-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  flex: 1;
+}
 .stat-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 10px; margin-top: 20px;
@@ -1133,8 +1273,9 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 12px;
   max-height: 340px;
+  overflow: hidden;
 }
 .globe-hint {
   font-size: 9px;
@@ -1189,10 +1330,16 @@ body::after {
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 1050px) {
-  .top-grid { grid-template-columns: 1fr 1fr; }
-  .metric-stack { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
-  .lower-grid { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .combo-card, .telem-card, .globe-combo { flex-direction: column; }
+  .combo-divider, .telem-divider { width: auto; height: 1px; margin: 0 20px; }
+  .mp-inner { width: 100%; }
+  .globe-combo-right { width: 100%; }
+  .tc-inner .chart { height: 180px; }
+}
+@media (max-width: 700px) {
+  .mp-hero { flex-direction: row; }
+  .globe-combo { display: none; }
 }
 @media (max-width: 700px) {
   .shell { padding: 82px 15px 20px; }

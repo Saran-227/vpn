@@ -19,12 +19,26 @@ const ENDPOINTS = [
 // Static reference visualization. Replace source/target with real endpoint
 // geolocation data when available. Not derived from vpn.peer_ip or any live feed.
 const DEMO_TUNNEL = {
-  source: { name: 'Delhi',     lat: 28.6139, lng: 77.2090 },
-  target: { name: 'Bangalore', lat: 12.9716, lng: 77.5946 },
+  source: { name: 'Delhi',        lat: 28.6139, lng:  77.2090 },
+  target: { name: 'Washington DC', lat: 38.9072, lng: -77.0369 },
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Arc pairs between endpoints (index pairs)
+// ── Globe-specific color constants (isolated from website theme) ────────────
+const G = {
+  OCEAN_INNER:    '#071A2D',
+  OCEAN_OUTER:    '#030C17',
+  ATMO_COLOR:     '30,100,200',
+  GRID_COLOR:     'rgba(40,120,200,0.13)',
+  LAND_FILL:      'rgba(15,55,120,0.70)',
+  LAND_GLOW:      'rgba(50,130,220,0.28)',
+  LAND_EDGE:      'rgba(80,180,255,0.85)',
+  DOT_COLOR:      'rgba(0,255,136,0.60)',
+  ARC_COLOR:      'rgba(60,140,230,0.32)',
+  PKT_COLOR:      '60,160,255',
+  BORDER_COLOR:   'rgba(60,140,230,0.40)',
+  SPECULAR:       'rgba(255,255,255,0.18)',
+}
 const ARC_PAIRS = [
   [0, 1], [1, 2], [0, 3], [3, 4], [1, 6], [3, 6],
   [4, 7], [0, 9], [2, 8], [5, 0], [6, 3], [7, 4],
@@ -49,16 +63,30 @@ export default function RotatingEarth({ size = 320 }) {
 
     const cx = S / 2, cy = S / 2
     let radius = S / 2 - 12
+    let canvasSize = S  // tracks current logical canvas dimension
+
+    // Resize canvas to fit radius + glow margin
+    const resizeCanvas = () => {
+      const needed = Math.ceil((radius + 32) * 2)
+      if (needed === canvasSize) return
+      canvasSize = needed
+      canvas.width  = canvasSize * dpr
+      canvas.height = canvasSize * dpr
+      canvas.style.width  = `${canvasSize}px`
+      canvas.style.height = `${canvasSize}px`
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.scale(dpr, dpr)
+    }
 
     const projection = d3.geoOrthographic()
       .scale(radius)
-      .translate([cx, cy])
+      .translate([S / 2, S / 2])
       .clipAngle(90)
 
     const path = d3.geoPath().projection(projection).context(ctx)
 
-    // Start centered on India so the Delhi→Bangalore demo tunnel is immediately visible
-    const rotation = [-77, -20]
+    // Start centered between Delhi and Washington DC so the tunnel arc is immediately visible
+    const rotation = [-20, -20]
     let landFeatures = null
     const allDots = []
 
@@ -105,16 +133,18 @@ export default function RotatingEarth({ size = 320 }) {
     // ── render ───────────────────────────────────────────────────────────────
 
     const render = () => {
-      ctx.clearRect(0, 0, S, S)
+      const cx = canvasSize / 2
+      const cy = canvasSize / 2
+      ctx.clearRect(0, 0, canvasSize, canvasSize)
 
       // Outer atmospheric glow (multi-layer)
       for (const [r0, r1, a] of [
-        [radius + 2,  radius + 28, 0.14],
-        [radius + 2,  radius + 14, 0.22],
+        [radius + 2,  radius + 28, 0.10],
+        [radius + 2,  radius + 14, 0.18],
       ]) {
         const g = ctx.createRadialGradient(cx, cy, r0, cx, cy, r1)
-        g.addColorStop(0, `rgba(79,143,217,${a})`)
-        g.addColorStop(1, 'rgba(79,143,217,0)')
+        g.addColorStop(0, `rgba(${G.ATMO_COLOR},${a})`)
+        g.addColorStop(1, `rgba(${G.ATMO_COLOR},0)`)
         ctx.beginPath()
         ctx.arc(cx, cy, r1, 0, 2 * Math.PI)
         ctx.fillStyle = g
@@ -124,9 +154,9 @@ export default function RotatingEarth({ size = 320 }) {
       // Ocean
       ctx.beginPath()
       ctx.arc(cx, cy, radius, 0, 2 * Math.PI)
-      const ocean = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, 0, cx, cy, radius)
-      ocean.addColorStop(0, '#c8e0f4')
-      ocean.addColorStop(1, '#a0c8e8')
+      const ocean = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius)
+      ocean.addColorStop(0, G.OCEAN_INNER)
+      ocean.addColorStop(1, G.OCEAN_OUTER)
       ctx.fillStyle = ocean
       ctx.fill()
 
@@ -144,20 +174,20 @@ export default function RotatingEarth({ size = 320 }) {
       const graticule = d3.geoGraticule()()
       ctx.beginPath()
       path(graticule)
-      ctx.strokeStyle = 'rgba(79,143,217,0.12)'
+      ctx.strokeStyle = G.GRID_COLOR
       ctx.lineWidth = 0.4
       ctx.stroke()
 
       // Land fill
       ctx.beginPath()
       landFeatures.features.forEach(f => path(f))
-      ctx.fillStyle = 'rgba(79,143,217,0.12)'
+      ctx.fillStyle = G.LAND_FILL
       ctx.fill()
 
       // Land outline — two passes for glow effect
       for (const [color, width] of [
-        ['rgba(79,143,217,0.20)', 2.5],
-        ['rgba(79,143,217,0.70)', 0.8],
+        [G.LAND_GLOW, 2.5],
+        [G.LAND_EDGE, 0.8],
       ]) {
         ctx.beginPath()
         landFeatures.features.forEach(f => path(f))
@@ -172,7 +202,7 @@ export default function RotatingEarth({ size = 320 }) {
         if (!p) return
         ctx.beginPath()
         ctx.arc(p[0], p[1], 1.1, 0, 2 * Math.PI)
-        ctx.fillStyle = 'rgba(0,255,136,0.55)'
+        ctx.fillStyle = G.DOT_COLOR
         ctx.fill()
       })
 
@@ -196,7 +226,7 @@ export default function RotatingEarth({ size = 320 }) {
         ctx.beginPath()
         ctx.moveTo(pts[0][0], pts[0][1])
         pts.slice(1).forEach(p => ctx.lineTo(p[0], p[1]))
-        ctx.strokeStyle = 'rgba(79,143,217,0.30)'
+        ctx.strokeStyle = G.ARC_COLOR
         ctx.lineWidth = 0.8
         ctx.stroke()
 
@@ -209,8 +239,8 @@ export default function RotatingEarth({ size = 320 }) {
 
         // Packet glow
         const pg = ctx.createRadialGradient(px, py, 0, px, py, 5)
-        pg.addColorStop(0, 'rgba(79,143,217,0.85)')
-        pg.addColorStop(1, 'rgba(79,143,217,0)')
+        pg.addColorStop(0, `rgba(${G.PKT_COLOR},0.85)`)
+        pg.addColorStop(1, `rgba(${G.PKT_COLOR},0)`)
         ctx.beginPath()
         ctx.arc(px, py, 5, 0, 2 * Math.PI)
         ctx.fillStyle = pg
@@ -374,14 +404,14 @@ export default function RotatingEarth({ size = 320 }) {
       // Globe border
       ctx.beginPath()
       ctx.arc(cx, cy, radius, 0, 2 * Math.PI)
-      ctx.strokeStyle = 'rgba(79,143,217,0.35)'
+      ctx.strokeStyle = G.BORDER_COLOR
       ctx.lineWidth = 1.5
       ctx.stroke()
 
       // Inner highlight arc (top-left specular)
       ctx.beginPath()
       ctx.arc(cx, cy, radius - 1, Math.PI * 1.1, Math.PI * 1.6)
-      ctx.strokeStyle = 'rgba(255,255,255,0.35)'
+      ctx.strokeStyle = G.SPECULAR
       ctx.lineWidth = 3
       ctx.stroke()
     }
@@ -420,7 +450,7 @@ export default function RotatingEarth({ size = 320 }) {
       lastTime = elapsed
 
       if (!dragging) rotation[0] += 0.12 * (dt / 16.67)
-      projection.rotate(rotation)
+      projection.rotate(rotation).translate([canvasSize / 2, canvasSize / 2])
 
       // Advance packets
       packets.forEach(pk => {
@@ -457,8 +487,11 @@ export default function RotatingEarth({ size = 320 }) {
 
     const onWheel = e => {
       e.preventDefault()
-      radius = Math.max(60, Math.min(S / 2 - 4, radius - e.deltaY * 0.3))
-      projection.scale(radius)
+      radius = Math.max(60, Math.min(S * 8, radius - e.deltaY * 0.5))
+      resizeCanvas()
+      const cx = canvasSize / 2
+      const cy = canvasSize / 2
+      projection.scale(radius).translate([cx, cy])
     }
 
     canvas.addEventListener('mousedown',  onDown)

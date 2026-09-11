@@ -68,7 +68,7 @@ class MockDataProvider:
             average_packet_size=round(bps / max(pps, 1)),
             inbound_bps=round(bps * 0.52), outbound_bps=round(bps * 0.48),
         )
-        vpn = VPNState(status='CONNECTED', endpoint_a='Computer A · Saran', endpoint_b='Computer B · Shrey', tunnel='IPsec / ESP', uptime_seconds=int((now-self.started_at).total_seconds()), protocol='IKEv2 / ESP', encryption='AES-256-GCM')
+        vpn = VPNState(status='CONNECTED', endpoint_a='Computer A · Saran', endpoint_a_ip='192.168.1.101', endpoint_b='Computer B · Shrey', endpoint_b_ip='10.0.0.47', tunnel='IPsec / ESP', uptime_seconds=int((now-self.started_at).total_seconds()), protocol='IKEv2 / ESP', encryption='AES-256-GCM')
         return DashboardState(timestamp=now, vpn=vpn, metrics=metrics, security=SecurityState(risk_score=risk, risk_level=level, anomaly_detected=anomaly, findings=findings), events=list(self.events), history=list(self.history), mode='MOCK')
 
 provider = MockDataProvider()
