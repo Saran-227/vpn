@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from analyzer.feature_extractor.packet_reader import PacketRecord
@@ -23,6 +23,7 @@ class FlowRecord:
     backward_packet_count: int = 0
     forward_bytes: int = 0
     backward_bytes: int = 0
+    packets: list[PacketRecord] = field(default_factory=list)
 
 
 def _endpoint_sort_key(
@@ -74,7 +75,7 @@ def _find_fragment_flow(
     if packet.src_port is not None or packet.dst_port is not None:
         return None
 
-    for key, flow in flows.items():
+    for key, flow in reversed(list(flows.items())):
         if key.protocol != packet.protocol:
             continue
 
@@ -124,6 +125,8 @@ def build_flows(packets: list[PacketRecord]) -> list[FlowRecord]:
             flow.last_timestamp,
             packet.timestamp,
         )
+
+        flow.packets.append(packet)
 
         if _is_forward(packet, flow.key):
             flow.forward_packet_count += 1

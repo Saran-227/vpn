@@ -1,0 +1,4 @@
+flow_id,src_ip,dst_ip,src_port,dst_port,protocol,packet_count,total_bytes,flow_duration_seconds,min_packet_size,max_packet_size,avg_packet_size,packet_size_std,packets_per_second,bytes_per_second,forward_packet_count,backward_packet_count,forward_bytes,backward_bytes,min_inter_arrival_seconds,max_inter_arrival_seconds,avg_inter_arrival_seconds,inter_arrival_std
+flow_1,172.28.0.2,172.28.0.3,500,500,UDP,2,1020,0.006552934646606445,506,514,510.0,4.0,305.20676732763326,155655.45133709296,1,1,506,514,0.006552934646606445,0.006552934646606445,0.006552934646606445,0.0
+flow_2,172.28.0.2,172.28.0.3,4500,4500,UDP,4,880,2.2198331356048584,130,318,220.0,82.96987405076617,1.80193724286852,396.4261934310744,2,2,464,416,8.0108642578125e-05,2.2057268619537354,0.7399443785349528,1.036480371142339
+flow_3,172.28.0.2,172.28.0.3,59834,5201,TCP,1,54,0.0,54,54,54.0,0.0,0.0,0.0,0,1,0,54,0.0,0.0,0.0,0.0

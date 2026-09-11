@@ -7,26 +7,37 @@ from analyzer.feature_extractor.packet_reader import PacketRecord
 
 def extract_flow_features(
     flow: FlowRecord,
-    packets: list[PacketRecord],
+    packets: list[PacketRecord] | None = None,
 ) -> FlowFeatures:
-    flow_packets = [
-        packet
-        for packet in packets
-        if (
-            packet.src_ip == flow.key.endpoint_a_ip
-            and packet.src_port == flow.key.endpoint_a_port
-            and packet.dst_ip == flow.key.endpoint_b_ip
-            and packet.dst_port == flow.key.endpoint_b_port
-            and packet.protocol == flow.key.protocol
-        )
-        or (
-            packet.src_ip == flow.key.endpoint_b_ip
-            and packet.src_port == flow.key.endpoint_b_port
-            and packet.dst_ip == flow.key.endpoint_a_ip
-            and packet.dst_port == flow.key.endpoint_a_port
-            and packet.protocol == flow.key.protocol
-        )
-    ]
+    if packets is not None:
+        flow_packets = [
+            packet
+            for packet in packets
+            if (
+                (
+                    packet.src_ip == flow.key.endpoint_a_ip
+                    and packet.src_port == flow.key.endpoint_a_port
+                    and packet.dst_ip == flow.key.endpoint_b_ip
+                    and packet.dst_port == flow.key.endpoint_b_port
+                    and packet.protocol == flow.key.protocol
+                )
+                or (
+                    packet.src_ip == flow.key.endpoint_b_ip
+                    and packet.src_port == flow.key.endpoint_b_port
+                    and packet.dst_ip == flow.key.endpoint_a_ip
+                    and packet.dst_port == flow.key.endpoint_a_port
+                    and packet.protocol == flow.key.protocol
+                )
+                or (
+                    getattr(flow, "packets", None)
+                    and packet in flow.packets
+                )
+            )
+        ]
+    elif getattr(flow, "packets", None):
+        flow_packets = flow.packets
+    else:
+        flow_packets = []
 
     if not flow_packets:
         raise ValueError(f"No packets found for flow: {flow.flow_id}")
