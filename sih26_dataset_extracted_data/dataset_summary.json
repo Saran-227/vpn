@@ -1,0 +1,208 @@
+{
+  "input_directory": "/Users/asimmaji/sih26-ipsec-analyzer/sih26-dataset",
+  "output_directory": "/Users/asimmaji/sih26-ipsec-analyzer/extracted_data/sih26_dataset",
+  "total_captures": 24,
+  "successful_captures": 24,
+  "failed_captures": 0,
+  "total_flows": 24,
+  "total_packets": 710495,
+  "total_bytes": 675479536,
+  "tshark_mismatches": 0,
+  "csv_json_consistent": true,
+  "consistency_errors": [],
+  "category_summary": {
+    "bulk_transfer": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 507100,
+      "total_bytes": 488831720
+    },
+    "chat": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 1102,
+      "total_bytes": 185704
+    },
+    "email": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 18067,
+      "total_bytes": 17592952
+    },
+    "fragmented": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 300,
+      "total_bytes": 363600
+    },
+    "icmp": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 600,
+      "total_bytes": 490400
+    },
+    "video": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 169519,
+      "total_bytes": 159785332
+    },
+    "voip_audio": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 4878,
+      "total_bytes": 1428548
+    },
+    "web": {
+      "capture_count": 3,
+      "successful_capture_count": 3,
+      "failed_capture_count": 0,
+      "flow_count": 3,
+      "packet_count": 8929,
+      "total_bytes": 6801280
+    }
+  },
+  "feature_statistics": {
+    "packet_count": {
+      "min": 100.0,
+      "max": 253357.0,
+      "mean": 29603.958333333332,
+      "median": 1431.5,
+      "std": 61688.76508833082
+    },
+    "total_bytes": {
+      "min": 15160.0,
+      "max": 243824412.0,
+      "mean": 28144980.666666668,
+      "median": 400778.0,
+      "std": 59441081.88675337
+    },
+    "flow_duration_seconds": {
+      "min": 21.653170108795166,
+      "max": 1248.2117400169373,
+      "mean": 175.97310215234756,
+      "median": 70.44605207443237,
+      "std": 279.12581370792304
+    },
+    "min_packet_size": {
+      "min": 96.0,
+      "max": 1212.0,
+      "mean": 336.4166666666667,
+      "median": 116.0,
+      "std": 437.5239914056777
+    },
+    "max_packet_size": {
+      "min": 148.0,
+      "max": 1280.0,
+      "mean": 910.8333333333334,
+      "median": 1212.0,
+      "std": 442.71658227609026
+    },
+    "avg_packet_size": {
+      "min": 130.46657571623464,
+      "max": 1212.0,
+      "mean": 699.989167403695,
+      "median": 848.4804541989729,
+      "std": 407.8749025791148
+    },
+    "packet_size_std": {
+      "min": 0.0,
+      "max": 576.4831192422142,
+      "mean": 239.5186569259557,
+      "median": 85.06424239791966,
+      "std": 250.90092414068923
+    },
+    "packets_per_second": {
+      "min": 2.0076811645475923,
+      "max": 612.9458900787375,
+      "mean": 112.17174405065192,
+      "median": 21.169756853622093,
+      "std": 163.36049797828198
+    },
+    "bytes_per_second": {
+      "min": 298.2164250039898,
+      "max": 559277.1113532049,
+      "mean": 99759.03543136267,
+      "median": 8240.246597954729,
+      "std": 154628.0428340529
+    },
+    "forward_packet_count": {
+      "min": 14.0,
+      "max": 85969.0,
+      "mean": 11155.208333333334,
+      "median": 200.5,
+      "std": 22427.368171089474
+    },
+    "backward_packet_count": {
+      "min": 50.0,
+      "max": 184608.0,
+      "mean": 18448.75,
+      "median": 1135.5,
+      "std": 43103.24448562428
+    },
+    "forward_bytes": {
+      "min": 1936.0,
+      "max": 110007566.0,
+      "mean": 7413710.833333333,
+      "median": 60600.0,
+      "std": 22243361.53556654
+    },
+    "backward_bytes": {
+      "min": 6680.0,
+      "max": 235584196.0,
+      "mean": 20731269.833333332,
+      "median": 218864.0,
+      "std": 55333484.0676698
+    },
+    "min_inter_arrival_seconds": {
+      "min": 0.0,
+      "max": 0.137192964553833,
+      "mean": 0.024941782156626385,
+      "median": 1.4066696166992188e-05,
+      "std": 0.045549585397902666
+    },
+    "max_inter_arrival_seconds": {
+      "min": 0.1818370819091797,
+      "max": 297.8400230407715,
+      "mean": 20.160810818274815,
+      "median": 1.709535002708435,
+      "std": 60.785923001703836
+    },
+    "avg_inter_arrival_seconds": {
+      "min": 0.0016315302605713542,
+      "max": 0.5009876164523038,
+      "mean": 0.18710450317729643,
+      "median": 0.061244184222021006,
+      "std": 0.21118540484985834
+    },
+    "inter_arrival_std": {
+      "min": 0.007800462369038565,
+      "max": 1.923947116779513,
+      "mean": 0.3726909913418401,
+      "median": 0.2575318335259885,
+      "std": 0.46908835011096744
+    }
+  },
+  "output_files": {
+    "csv": "extracted_data/sih26_dataset/all_flow_features.csv",
+    "json": "extracted_data/sih26_dataset/all_flow_features.json",
+    "processing_report": "extracted_data/sih26_dataset/processing_report.csv",
+    "failed_captures": "extracted_data/sih26_dataset/failed_captures.csv",
+    "dataset_summary": "extracted_data/sih26_dataset/dataset_summary.json",
+    "readme": "extracted_data/sih26_dataset/DATASET_README.md"
+  }
+}

@@ -4,3 +4,8 @@ __pycache__/
 .env
 raw_pcapng/
 .DS_Store
+.DS_Store
+sih26-dataset/bulk_transfer/bulk_01.pcap
+sih26-dataset/bulk_transfer/bulk_02.pcap
+sih26-dataset/bulk_transfer/bulk_03.pcap
+sih26-dataset/video/video_03.pcap
