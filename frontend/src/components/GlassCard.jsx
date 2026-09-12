@@ -4,14 +4,14 @@ export default function GlassCard({
     children,
     className = '',
     style = {},
-    borderRadius = 22,
-    borderWidth = 0.06,
+    borderRadius = 20,
+    borderWidth = 0.05,
     brightness = 50,
     opacity = 0.85,
-    blur = 2,
+    blur = 0,
     displace = 0,
     backgroundOpacity = 0,
-    saturation = 1.15,
+    saturation = 1.0,
     distortionScale = -180,
     ...props
 }) {
@@ -30,8 +30,8 @@ export default function GlassCard({
             distortionScale={distortionScale}
             className={`glass-card ${className}`}
             style={{
-                border: '2px solid rgba(255, 255, 255, 0.16)',
-                boxShadow: '0 20px 48px rgba(0, 0, 0, 0.35)',
+                border: '1px solid rgba(255, 255, 255, 0.14)',
+                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.25)',
                 transform: 'translate3d(0, 0, 0)',
                 WebkitTransform: 'translate3d(0, 0, 0)',
                 backfaceVisibility: 'hidden',

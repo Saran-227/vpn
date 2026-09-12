@@ -55,14 +55,14 @@ export default function Header() {
         borderRadius={50}
         borderWidth={0.06}
         brightness={50}
-        opacity={0.75}
-        blur={12}
-        backgroundOpacity={0.03}
-        saturation={1.2}
+        opacity={0.8}
+        blur={0}
+        backgroundOpacity={0}
+        saturation={1.0}
         className="nav-glass-pill"
         style={{
-          border: '2px solid rgba(255, 255, 255, 0.20)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.35)',
+          border: '1px solid rgba(255, 255, 255, 0.18)',
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)',
         }}
       >
         <nav className="nav-links" aria-label="Dashboard navigation">

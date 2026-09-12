@@ -196,11 +196,11 @@ const GlassSurface = ({
           ...baseStyles,
           background: backgroundOpacity > 0
             ? `rgba(10, 16, 30, ${backgroundOpacity})`
-            : 'rgba(255, 255, 255, 0.005)',
-          backdropFilter: backdropFilterSupported ? `blur(${blur}px) saturate(${saturation * 100}%) brightness(1.05)` : 'none',
-          WebkitBackdropFilter: backdropFilterSupported ? `blur(${blur}px) saturate(${saturation * 100}%) brightness(1.05)` : 'none',
+            : 'transparent',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none',
           border: '1px solid rgba(255, 255, 255, 0.14)',
-          boxShadow: '0px 8px 32px rgba(0, 0, 0, 0.25)'
+          boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.25)'
         };
       } else {
         return {
