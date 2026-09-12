@@ -16,40 +16,15 @@ const LIVE_COLOR = {
   critical: 'rgba(255,77,109,0.12)',
 }
 
-// Props: events — { timestamp, title, description, severity, category }[]
-// TODO (backend adapter): events mapped via mapEvents() in backendAdapter.js
-export default function EventFeed({ events = [] }) {
-  const [cardRef, cardRevealed] = useScrollReveal()
-  const initialKeysRef = useRef(null)
-  const [liveKeys, setLiveKeys] = useState(new Set())
-
-  const visible = events.slice(0, 7)
-
-  useEffect(() => {
-    if (!cardRevealed) return
-    if (initialKeysRef.current === null) {
-      initialKeysRef.current = new Set(visible.map((e, i) => `${e.timestamp}-${i}`))
-    }
-  }, [cardRevealed])
-
-  useEffect(() => {
-    if (initialKeysRef.current === null) return
-    const newLive = new Set()
-    visible.forEach((e, i) => {
-      const key = `${e.timestamp}-${i}`
-      if (!initialKeysRef.current.has(key)) newLive.add(key)
-    })
-    if (newLive.size) setLiveKeys(prev => new Set([...prev, ...newLive]))
-  }, [events])
-
+function EventFeedInner({ visible, cardRef, liveKeys, cardRevealed, count }) {
   return (
-    <GlassCard className="events-card">
+    <div className="events-inner-wrap">
       <div className="card-title-row">
         <div>
           <div className="section-kicker">EVENT STREAM</div>
           <h3>Recent security events</h3>
         </div>
-        <span className="event-count">{events.length} events</span>
+        <span className="event-count">{count} events</span>
       </div>
 
       <div className="events-list" ref={cardRef}>
@@ -95,6 +70,59 @@ export default function EventFeed({ events = [] }) {
           )
         })}
       </div>
+    </div>
+  )
+}
+
+// Props: events — { timestamp, title, description, severity, category }[], inline — boolean
+// TODO (backend adapter): events mapped via mapEvents() in backendAdapter.js
+export default function EventFeed({ events = [], inline }) {
+  const [cardRef, cardRevealed] = useScrollReveal()
+  const initialKeysRef = useRef(null)
+  const [liveKeys, setLiveKeys] = useState(new Set())
+
+  const visible = events.slice(0, 7)
+
+  useEffect(() => {
+    if (!cardRevealed) return
+    if (initialKeysRef.current === null) {
+      initialKeysRef.current = new Set(visible.map((e, i) => `${e.timestamp}-${i}`))
+    }
+  }, [cardRevealed])
+
+  useEffect(() => {
+    if (initialKeysRef.current === null) return
+    const newLive = new Set()
+    visible.forEach((e, i) => {
+      const key = `${e.timestamp}-${i}`
+      if (!initialKeysRef.current.has(key)) newLive.add(key)
+    })
+    if (newLive.size) setLiveKeys(prev => new Set([...prev, ...newLive]))
+  }, [events])
+
+  if (inline) {
+    return (
+      <div className="events-card-inline">
+        <EventFeedInner
+          visible={visible}
+          cardRef={cardRef}
+          liveKeys={liveKeys}
+          cardRevealed={cardRevealed}
+          count={events.length}
+        />
+      </div>
+    )
+  }
+
+  return (
+    <GlassCard className="events-card">
+      <EventFeedInner
+        visible={visible}
+        cardRef={cardRef}
+        liveKeys={liveKeys}
+        cardRevealed={cardRevealed}
+        count={events.length}
+      />
     </GlassCard>
   )
 }

@@ -216,7 +216,7 @@ const GlassSurface = ({
   };
 
   const glassSurfaceClasses =
-    'relative flex items-center justify-center overflow-hidden transition-all duration-200 ease-out';
+    'relative overflow-hidden transition-all duration-200 ease-out';
 
   const focusVisibleClasses = isDarkMode
     ? 'focus-visible:outline-2 focus-visible:outline-[#0A84FF] focus-visible:outline-offset-2'
@@ -282,7 +282,7 @@ const GlassSurface = ({
         </defs>
       </svg>
 
-      <div className="w-full h-full flex items-center justify-center p-2 rounded-[inherit] relative z-10">
+      <div className="w-full h-full flex flex-col items-stretch justify-start rounded-[inherit] relative z-10">
         {children}
       </div>
     </div>

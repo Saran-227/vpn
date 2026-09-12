@@ -20,18 +20,15 @@ function Computer({ label, ip }) {
   )
 }
 
-// Props: vpn — { status, endpointA, endpointAIp, endpointB, endpointBIp,
-//                 uptimeSeconds, protocol, encryption }
-// TODO (backend adapter): vpn is mapped via mapVpnStatus() in backendAdapter.js
-export default function VPNStatus({ vpn }) {
+function VPNInner({ vpn }) {
   const connected = vpn.status === 'CONNECTED'
 
   return (
-    <GlassCard className="vpn-card">
+    <div className="vpn-inner-wrap">
       <div className="card-title-row">
         <div>
           <div className="section-kicker">TUNNEL STATUS</div>
-          <h3>Encrypted connection</h3>
+          <h3>Encrypted Connection</h3>
         </div>
         <span className="status-badge"><span /> {vpn.status}</span>
       </div>
@@ -49,10 +46,30 @@ export default function VPNStatus({ vpn }) {
       </div>
 
       <div className="vpn-meta">
-        <span><Clock3 size={14} /> Uptime {fmt(vpn.uptimeSeconds)}</span>
+        <span><Clock3 size={13} /> {fmt(vpn.uptimeSeconds)}</span>
         <span>{vpn.protocol}</span>
         <span>{vpn.encryption}</span>
+        {vpn.authMethod && <span>{vpn.authMethod}</span>}
       </div>
+    </div>
+  )
+}
+
+// Props: vpn — { status, endpointA, endpointAIp, endpointB, endpointBIp,
+//                 uptimeSeconds, protocol, encryption }, inline — boolean
+// TODO (backend adapter): vpn is mapped via mapVpnStatus() in backendAdapter.js
+export default function VPNStatus({ vpn, inline }) {
+  if (inline) {
+    return (
+      <div className="vpn-card-inline">
+        <VPNInner vpn={vpn} />
+      </div>
+    )
+  }
+
+  return (
+    <GlassCard className="vpn-card">
+      <VPNInner vpn={vpn} />
     </GlassCard>
   )
 }

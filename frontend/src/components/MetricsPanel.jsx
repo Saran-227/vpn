@@ -11,8 +11,10 @@ const fmtBytes = n =>
 function Row({ icon: Icon, label, value }) {
   return (
     <div className="mp-row">
-      <span className="mp-row-icon"><Icon size={13}/></span>
-      <span className="mp-row-label">{label}</span>
+      <div className="mp-row-left">
+        <span className="mp-row-icon"><Icon size={13}/></span>
+        <span className="mp-row-label">{label}</span>
+      </div>
       <span className="mp-row-value">{value}</span>
     </div>
   )
@@ -30,20 +32,36 @@ function Inner({ metrics }) {
 
   return (
     <div className="mp-inner">
-      <div className="section-kicker">TELEMETRY</div>
-      <h3>Traffic &amp; Metrics</h3>
-      <div className="mp-hero">
-        <div className="mp-big">
-          <Zap size={15} style={{color:'var(--accent-blue)'}}/>
-          <strong>{Math.round(pps).toLocaleString()}</strong>
-          <small>pps</small>
-        </div>
-        <div className="mp-big">
-          <Network size={15} style={{color:'var(--accent-blue)'}}/>
-          <strong>{Math.round(flows)}</strong>
-          <small>flows</small>
+      <div className="card-title-row" style={{ marginBottom: 12 }}>
+        <div>
+          <div className="section-kicker">TELEMETRY</div>
+          <h3>Traffic &amp; Metrics</h3>
         </div>
       </div>
+
+      <div className="mp-hero">
+        <div className="mp-big">
+          <div className="mp-big-head">
+            <Zap size={13} style={{ color: 'var(--accent-blue)' }} />
+            <span>Rate</span>
+          </div>
+          <div className="mp-big-val">
+            <strong>{Math.round(pps).toLocaleString()}</strong>
+            <small>pps</small>
+          </div>
+        </div>
+        <div className="mp-big">
+          <div className="mp-big-head">
+            <Network size={13} style={{ color: 'var(--accent-blue)' }} />
+            <span>Flows</span>
+          </div>
+          <div className="mp-big-val">
+            <strong>{Math.round(flows)}</strong>
+            <small>active</small>
+          </div>
+        </div>
+      </div>
+
       <div className="mp-rows">
         <Row icon={Database}        label="Avg. packet" value={`${Math.round(avgPkt)} B`} />
         <Row icon={ArrowDownToLine} label="Inbound"     value={`${fmtBytes(inbound)}/s`} />

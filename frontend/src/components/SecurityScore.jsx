@@ -56,9 +56,46 @@ function useAnimatedScore(target) {
   return display
 }
 
-// Props: score — number (0–100), level — riskLevel string, anomaly — boolean
+function ScoreInner({ displayScore, animated, level, anomaly }) {
+  const riskClass = level.toLowerCase()
+  return (
+    <div className="score-inner-wrap">
+      <div className="card-title-row">
+        <div>
+          <div className="section-kicker">SECURITY POSTURE</div>
+          <h3>Threat Assessment</h3>
+        </div>
+        <span className={`status-badge risk-badge-${riskClass}`}>
+          <span /> {level}
+        </span>
+      </div>
+
+      <div className={`score-wrap risk-${riskClass}`}>
+        <div className={`score-ring risk-${riskClass}`} style={{ '--score': animated }}>
+          <div className="score-inner">
+            <strong>{displayScore}</strong>
+            <span>/ 100</span>
+          </div>
+        </div>
+        <div className="score-copy">
+          <div className="score-status-tag">
+            {anomaly ? 'ANOMALY DETECTED' : 'SYSTEM HEALTHY'}
+          </div>
+          <p>{anomaly ? 'Behavioral anomaly detected in active tunnels' : 'All cryptographic & traffic parameters nominal'}</p>
+          <div className="risk-scale">
+            <span>LOW</span>
+            <i />
+            <span>CRIT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Props: score — number (0–100), level — riskLevel string, anomaly — boolean, inline — boolean
 // TODO (backend adapter): props come from mapSecurity() in backendAdapter.js
-export default function SecurityScore({ score, level, anomaly }) {
+export default function SecurityScore({ score, level, anomaly, inline }) {
   const animated = useAnimatedScore(score)
   const displayScore = Math.round(animated)
   const flash = useRiskFlash(level)
@@ -67,22 +104,17 @@ export default function SecurityScore({ score, level, anomaly }) {
     ? { boxShadow: FLASH_SHADOW[flash], transition: 'box-shadow 0.15s ease-out' }
     : { transition: 'box-shadow 0.7s ease-out' }
 
+  if (inline) {
+    return (
+      <div className="score-card-inline">
+        <ScoreInner displayScore={displayScore} animated={animated} level={level} anomaly={anomaly} />
+      </div>
+    )
+  }
+
   return (
     <GlassCard className="score-card" style={cardStyle}>
-      <div className="section-kicker">SECURITY POSTURE</div>
-      <div className={`score-wrap risk-${level.toLowerCase()}`}>
-        <div className={`score-ring risk-${level.toLowerCase()}`} style={{ '--score': animated }}>
-          <div className="score-inner">
-            <strong>{displayScore}</strong>
-            <span>/ 100</span>
-          </div>
-        </div>
-        <div className="score-copy">
-          <h2>{level}</h2>
-          <p>{anomaly ? 'Behavioral anomaly detected' : 'No active anomalies detected'}</p>
-          <div className="risk-scale"><span>LOW</span><i /><span>CRITICAL</span></div>
-        </div>
-      </div>
+      <ScoreInner displayScore={displayScore} animated={animated} level={level} anomaly={anomaly} />
     </GlassCard>
   )
 }
