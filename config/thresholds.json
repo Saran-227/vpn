@@ -1,0 +1,26 @@
+{
+    "packets_per_second": {
+        "high": 1000,
+        "critical": 5000
+    },
+    "bytes_per_second": {
+        "high": 5000000,
+        "critical": 10000000
+    },
+    "tcp_connections": {
+        "high": 50
+    },
+    "udp_connections": {
+        "high": 50
+    },
+    "flow_duration": {
+        "high": 7200
+    },
+    "avg_packet_size": {
+        "small": 64,
+        "large": 1500
+    },
+    "traffic_imbalance_ratio": {
+        "high": 5
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "flow_duration": 120,
+    "packet_count": 100000,
+    "bytes_sent": 6000000,
+    "bytes_received": 800000,
+    "avg_packet_size": 700,
+    "packets_per_second": 1200,
+    "bytes_per_second": 5500000,
+    "tcp_connections": 60,
+    "udp_connections": 5
+}

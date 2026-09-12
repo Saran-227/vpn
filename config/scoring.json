@@ -1,0 +1,38 @@
+{
+    "HIGH_PACKET_RATE": {
+        "severity": "HIGH",
+        "score": 25
+    },
+    "CRITICAL_PACKET_RATE": {
+        "severity": "CRITICAL",
+        "score": 40
+    },
+    "HIGH_BYTE_RATE": {
+        "severity": "HIGH",
+        "score": 20
+    },
+    "CRITICAL_BYTE_RATE": {
+        "severity": "CRITICAL",
+        "score": 35
+    },
+    "EXCESSIVE_TCP_CONNECTIONS": {
+        "severity": "HIGH",
+        "score": 20
+    },
+    "EXCESSIVE_UDP_CONNECTIONS": {
+        "severity": "HIGH",
+        "score": 20
+    },
+    "ABNORMAL_FLOW_DURATION": {
+        "severity": "MEDIUM",
+        "score": 10
+    },
+    "TRAFFIC_BURST": {
+        "severity": "HIGH",
+        "score": 20
+    },
+    "INBOUND_OUTBOUND_IMBALANCE": {
+        "severity": "MEDIUM",
+        "score": 10
+    }
+}

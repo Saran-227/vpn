@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+data/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+data/exp_003_packets.csv
