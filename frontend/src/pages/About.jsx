@@ -13,7 +13,7 @@ import {
 /* ── Data ──────────────────────────────────────────────────────────────── */
 
 const FEATURES = [
-  { icon: <Activity size={16}/>, title: 'Real-time Monitoring', desc: 'Live packet-rate, byte-rate and flow telemetry streamed every 2 seconds via WebSocket.' },
+  { icon: <Activity size={16}/>, title: 'Real-time Monitoring', desc: 'Live packet-rate, byte-rate and flow telemetry streamed every 2 seconds via WebSocket.' }, // TODO: update desc when live
   { icon: <ShieldCheck size={16}/>, title: 'Security Risk Score', desc: 'Continuous 0–100 risk score with LOW / MEDIUM / HIGH / CRITICAL classification.' },
   { icon: <Wifi size={16}/>, title: 'Tunnel Status', desc: 'IKEv2/ESP tunnel health, endpoint IPs, encryption cipher and live uptime counter.' },
   { icon: <BarChart2 size={16}/>, title: 'Traffic Analytics', desc: 'Inbound/outbound split, packet-rate history chart and risk-trend chart over 60 data points.' },
@@ -95,10 +95,12 @@ const FAQ = [
 
 /* ── Component ─────────────────────────────────────────────────────────── */
 
+// TODO (backend integration): connection prop will reflect live WebSocket state
+// ('LIVE' | 'RECONNECTING' | 'CONNECTING') once useDashboardData is restored.
 export default function About({ connection, mode }) {
   return (
     <>
-      <Header connection={connection ?? 'CONNECTING'} mode={mode ?? 'MOCK'} theme="dark" toggleTheme={() => {}} />
+      <Header connection={connection ?? 'MOCK'} mode={mode ?? 'MOCK'} theme="dark" toggleTheme={() => {}} />
       <NetworkBackground />
       <main className="about-shell">
 
