@@ -19,12 +19,8 @@
             </div>
         </div>
         <div class="nav-status">
-            <div class="airgap-badge" id="airgap-indicator">
-                <div class="status-dot"></div>
-                <span>AIR-GAPPED &bull; OFFLINE SECURE</span>
-            </div>
             <button class="nav-btn" id="btn-open-leaderboard">📊 Model Tournament</button>
-            <button class="nav-btn" id="btn-export-pdf">🖨️ Export Audit Report</button>
+            <button class="nav-btn" id="btn-export-pdf">🖨️ Export Advisory</button>
         </div>
     </header>
 
@@ -40,7 +36,7 @@
                 <div class="drop-zone" id="drop-zone">
                     <div class="drop-icon">⚡</div>
                     <div class="drop-text">Drop .pcap / .pcapng here</div>
-                    <div class="drop-subtext">or click to browse local filesystem</div>
+                    <div class="drop-subtext">or click to browse</div>
                     <input type="file" id="file-input" accept=".pcap,.pcapng" style="display: none;">
                 </div>
             </div>
@@ -71,7 +67,6 @@
 
             <!-- Banner Meta -->
             <div class="banner-content" id="banner-details">
-                <div class="banner-status-tag" id="banner-status-badge">EVALUATING SECURITY POSTURE...</div>
                 <div class="banner-title" id="banner-posture-title">Loading Capture Telemetry</div>
                 <div class="banner-meta">
                     <div class="meta-item">
@@ -204,7 +199,6 @@
                         <span class="ai-stat-label">Operational Mode</span>
                         <span class="ai-stat-value" id="ai-predicted-mode">--</span>
                         <span class="ai-stat-sub" id="ai-mode-confidence">--</span>
-                        <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.35rem;">IPsec Encapsulation Layer</div>
                     </div>
                 </div>
 

@@ -1,70 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React from 'react'
 import GlassCard from './GlassCard'
 
-const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-const FLASH_SHADOW = {
-  low:      '0 0 0 1px rgba(0,255,136,0.35),  0 0 24px rgba(0,255,136,0.18)',
-  medium:   '0 0 0 1px rgba(251,191,36,0.35),  0 0 24px rgba(251,191,36,0.18)',
-  high:     '0 0 0 1px rgba(251,191,36,0.35),  0 0 24px rgba(251,191,36,0.18)',
-  critical: '0 0 0 1px rgba(248,113,113,0.35), 0 0 24px rgba(248,113,113,0.18)',
-}
-
-function useRiskFlash(level = 'LOW') {
-  const prev = useRef(level)
-  const timer = useRef(null)
-  const [flash, setFlash] = useState(null)
-
-  useEffect(() => {
-    if (prev.current === level) return
-    prev.current = level
-    if (reduced()) return
-    clearTimeout(timer.current)
-    setFlash(level.toLowerCase())
-    timer.current = setTimeout(() => setFlash(null), 700)
-    return () => clearTimeout(timer.current)
-  }, [level])
-
-  return flash
-}
-
-function useAnimatedScore(target = 100) {
-  const [display, setDisplay] = useState(target)
-  const raf = useRef(null)
-  const from = useRef(target)
-
-  useEffect(() => {
-    if (reduced()) { from.current = target; setDisplay(target); return }
-    cancelAnimationFrame(raf.current)
-    const start = from.current
-    const delta = target - start
-    if (delta === 0) return
-    const duration = 600
-    const t0 = performance.now()
-    const tick = (now) => {
-      const p = Math.min((now - t0) / duration, 1)
-      const eased = 1 - Math.pow(1 - p, 3) // ease-out cubic
-      const val = start + delta * eased
-      setDisplay(val)
-      if (p < 1) raf.current = requestAnimationFrame(tick)
-      else from.current = target
-    }
-    raf.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf.current)
-  }, [target])
-
-  return display
-}
-
 export default function SecurityScore({ score = 100, level = 'LOW', anomaly = false, postureLabel, complianceStatus }) {
-  const animated = useAnimatedScore(score)
-  const displayScore = Math.round(animated)
-  const flash = useRiskFlash(level)
-
-  const cardStyle = flash
-    ? { boxShadow: FLASH_SHADOW[flash], transition: 'box-shadow 0.15s ease-out' }
-    : { transition: 'box-shadow 0.7s ease-out' }
-
   const statusColor = (complianceStatus === 'PASS' || level === 'LOW')
     ? 'var(--accent-green)'
     : (complianceStatus === 'FAIL' || level === 'CRITICAL')
@@ -72,9 +9,9 @@ export default function SecurityScore({ score = 100, level = 'LOW', anomaly = fa
       : 'var(--accent-amber)'
 
   return (
-    <GlassCard className="score-card" style={cardStyle}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div className="section-kicker">NIST SP 800-77 REV. 1 COMPLIANCE</div>
+    <GlassCard className="score-card" style={{ padding: '1rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
+        <div className="section-kicker">NIST SP 800-77 REV. 1</div>
         <span style={{
           fontSize: '0.68rem',
           fontWeight: 700,
@@ -87,23 +24,32 @@ export default function SecurityScore({ score = 100, level = 'LOW', anomaly = fa
         </span>
       </div>
 
-      <div className={`score-wrap risk-${(level || 'low').toLowerCase()}`}>
-        <div className={`score-ring risk-${(level || 'low').toLowerCase()}`} style={{ '--score': animated }}>
-          <div className="score-inner">
-            <strong>{displayScore}</strong>
-            <span>/ 100</span>
-          </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+        <div style={{
+          width: 76,
+          height: 76,
+          borderRadius: '50%',
+          border: `4px solid ${statusColor}`,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          background: 'var(--glass-inner)'
+        }}>
+          <strong style={{ fontSize: '1.35rem', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)' }}>
+            {score}
+          </strong>
+          <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>/ 100</span>
         </div>
-        <div className="score-copy">
-          <h2 style={{ fontSize: '1.2rem', margin: 0, color: statusColor }}>{level} RISK</h2>
-          <p style={{ margin: '4px 0 0', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-            {postureLabel || (anomaly ? 'Active security anomaly detected' : 'Compliant defense posture')}
+
+        <div>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, color: statusColor }}>
+            {level} RISK
+          </h2>
+          <p style={{ margin: '3px 0 0', fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.35 }}>
+            {postureLabel || (anomaly ? 'Security anomaly detected' : 'Compliant defense posture')}
           </p>
-          <div className="risk-scale" style={{ marginTop: '0.5rem' }}>
-            <span>LOW</span>
-            <i />
-            <span>CRITICAL</span>
-          </div>
         </div>
       </div>
     </GlassCard>

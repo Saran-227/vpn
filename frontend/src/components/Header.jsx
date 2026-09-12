@@ -97,13 +97,8 @@ export default function Header({ connection = 'LIVE', mode = 'OFFLINE SECURE', o
           title="Print or export advisory report"
         >
           <Printer size={14} />
-          <span>Export Report</span>
+          <span>Export Advisory</span>
         </button>
-
-        <span className={`live-badge live-pill ${connection.toLowerCase()}`}>
-          <span className="live-dot" />{connection}
-        </span>
-        <span className="mode-pill"><Radio size={13} />{mode}</span>
       </div>
     </header>
   )

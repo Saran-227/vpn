@@ -159,6 +159,7 @@ function renderReport(report) {
     currentReport = report;
     const exec = report.executive_summary || {};
     const audit = report.cryptographic_audit || {};
+    const ikeProto = report.ike_protocol_details || {};
     const ai = report.ai_traffic_intelligence || {};
     const tc = ai.traffic_classification || {};
     const op = ai.operational_mode || {};
@@ -169,36 +170,55 @@ function renderReport(report) {
     updateGauge(score, exec.compliance_status);
 
     const bannerEl = document.getElementById("executive-banner");
-    bannerEl.className = "executive-banner " + (
-        exec.compliance_status === "PASS" ? "banner-glow-pass" :
-        exec.compliance_status === "FAIL" ? "banner-glow-fail" : "banner-glow-warn"
-    );
+    if (bannerEl) {
+        bannerEl.className = "executive-banner " + (
+            exec.compliance_status === "PASS" ? "banner-glow-pass" :
+            exec.compliance_status === "FAIL" ? "banner-glow-fail" : "banner-glow-warn"
+        );
+    }
 
-    document.getElementById("target-pcap-name").textContent = report.pcap_file || "Unknown";
+    const targetNameEl = document.getElementById("target-pcap-name");
+    if (targetNameEl) targetNameEl.textContent = report.pcap_file || "Unknown";
+
     const espCount = exec.esp_packets !== undefined ? exec.esp_packets : (ikeProto.esp_stream_summary ? ikeProto.esp_stream_summary.total_esp_packets : 0);
     const ikeCount = exec.ike_packets !== undefined ? exec.ike_packets : (ikeProto.ike_packet_count || 0);
-    if (espCount > 0 || ikeCount > 0) {
-        document.getElementById("stat-total-packets").textContent = `${(exec.total_packets || 0).toLocaleString()} (${espCount} ESP + ${ikeCount} IKE)`;
-    } else {
-        document.getElementById("stat-total-packets").textContent = (exec.total_packets || 0).toLocaleString();
+    const totalPacketsEl = document.getElementById("stat-total-packets");
+    if (totalPacketsEl) {
+        if (espCount > 0 || ikeCount > 0) {
+            totalPacketsEl.textContent = `${(exec.total_packets || 0).toLocaleString()} (${espCount} ESP + ${ikeCount} IKE)`;
+        } else {
+            totalPacketsEl.textContent = (exec.total_packets || 0).toLocaleString();
+        }
     }
-    if (ai.active_payload_duration_sec && ai.session_duration_sec > ai.active_payload_duration_sec) {
-        document.getElementById("stat-duration").textContent = `${ai.session_duration_sec}s (${ai.active_payload_duration_sec}s active)`;
-    } else {
-        document.getElementById("stat-duration").textContent = `${ai.session_duration_sec || 0}s`;
+
+    const durationEl = document.getElementById("stat-duration");
+    if (durationEl) {
+        if (ai.active_payload_duration_sec && ai.session_duration_sec > ai.active_payload_duration_sec) {
+            durationEl.textContent = `${ai.session_duration_sec}s (${ai.active_payload_duration_sec}s active)`;
+        } else {
+            durationEl.textContent = `${ai.session_duration_sec || 0}s`;
+        }
     }
-    document.getElementById("stat-throughput").textContent = `${(ai.average_bytes_sec || 0).toLocaleString()} B/s`;
+
+    const throughputEl = document.getElementById("stat-throughput");
+    if (throughputEl) {
+        throughputEl.textContent = `${(ai.average_bytes_sec || 0).toLocaleString()} B/s`;
+    }
 
     const statusBadge = document.getElementById("banner-status-badge");
-    statusBadge.textContent = `${exec.compliance_status} [${exec.risk_level || "UNKNOWN"} RISK]`;
-    statusBadge.style.color = exec.compliance_status === "PASS" ? "var(--color-pass)" :
-                             exec.compliance_status === "FAIL" ? "var(--color-fail)" : "var(--color-warn)";
+    if (statusBadge) {
+        statusBadge.textContent = `${exec.compliance_status} [${exec.risk_level || "UNKNOWN"} RISK]`;
+        statusBadge.style.color = exec.compliance_status === "PASS" ? "var(--color-green)" :
+                                 exec.compliance_status === "FAIL" ? "var(--color-red)" : "var(--color-amber)";
+    }
 
-    document.getElementById("banner-posture-title").textContent = exec.nist_sp800_77_posture || "ASSESSMENT IN PROGRESS";
+    const postureTitleEl = document.getElementById("banner-posture-title");
+    if (postureTitleEl) {
+        postureTitleEl.textContent = exec.nist_sp800_77_posture || "ASSESSMENT IN PROGRESS";
+    }
 
     // 2. Cryptographic Proposal Details (Deterministic)
     const suite = audit.negotiated_suite || {};
-    const ikeProto = report.ike_protocol_details || {};
     const ikeProp = suite.ike_sa_proposal || ikeProto.ike_sa_proposal || {};
     const espProp = suite.esp_child_sa_proposal || ikeProto.esp_child_sa_proposal || {};
 
