@@ -95,12 +95,12 @@ const FAQ = [
 
 /* ── Component ─────────────────────────────────────────────────────────── */
 
-// TODO (backend integration): connection prop will reflect live WebSocket state
-// ('LIVE' | 'RECONNECTING' | 'CONNECTING') once useDashboardData is restored.
-export default function About({ connection, mode }) {
+// TODO (backend adapter): connection prop will reflect live WebSocket state
+// ('LIVE' | 'RECONNECTING' | 'CONNECTING') once backendAdapter.js is wired in.
+export default function About({ connection }) {
   return (
     <>
-      <Header connection={connection ?? 'MOCK'} mode={mode ?? 'MOCK'} theme="dark" toggleTheme={() => {}} />
+      <Header connection={connection ?? 'MOCK'} mode="MOCK" theme="dark" toggleTheme={() => {}} />
       <NetworkBackground />
       <main className="about-shell">
 

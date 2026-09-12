@@ -56,6 +56,8 @@ function useAnimatedScore(target) {
   return display
 }
 
+// Props: score — number (0–100), level — riskLevel string, anomaly — boolean
+// TODO (backend adapter): props come from mapSecurity() in backendAdapter.js
 export default function SecurityScore({ score, level, anomaly }) {
   const animated = useAnimatedScore(score)
   const displayScore = Math.round(animated)

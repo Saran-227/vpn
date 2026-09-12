@@ -9,9 +9,12 @@ const STATES = {
   normal:   { label: 'Monitoring normally',key: 'normal'   },
 }
 
+// Props: security — { riskLevel, anomalyDetected, findings[] }
+//         events   — { severity, category }[]
+// TODO (backend adapter): both props mapped via backendAdapter.js
 function deriveState(security, events) {
-  const level    = security.risk_level      // LOW | MEDIUM | HIGH | CRITICAL
-  const anomaly  = security.anomaly_detected
+  const level    = security.riskLevel
+  const anomaly  = security.anomalyDetected
   const findings = security.findings ?? []
 
   const hasCriticalFinding = findings.some(f => f.severity === 'CRITICAL')

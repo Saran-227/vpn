@@ -1,45 +1,35 @@
 /**
- * useDashboardData.js — DLS version (backend-independent)
+ * useDashboardData.js — Frontend-independent data hook
  *
- * Returns static mock data immediately. No fetch, no WebSocket.
+ * Returns hardcoded demo data immediately. No fetch, no WebSocket.
+ * Components receive individual models as props — not a backend contract.
  *
- * TODO (backend integration): Restore the original implementation that calls
- * getDashboard() from services/api.js and connectDashboardSocket() from
- * services/websocket.js. The returned shape { data, connection, error, retry }
- * is identical — Dashboard.jsx needs no changes.
- *
- * Original implementation preserved below as reference:
- *
- *   import { useCallback, useEffect, useState } from 'react'
- *   import { getDashboard } from '../services/api'
- *   import { connectDashboardSocket } from '../services/websocket'
- *
- *   export function useDashboardData() {
- *     const [data, setData] = useState(null)
- *     const [connection, setConnection] = useState('CONNECTING')
- *     const [error, setError] = useState('')
- *     const refresh = useCallback(async () => {
- *       try { setError(''); setData(await getDashboard()) }
- *       catch (e) { setError(e.message) }
- *     }, [])
- *     useEffect(() => {
- *       refresh()
- *       return connectDashboardSocket({
- *         onData: d => { setData(d); setError('') },
- *         onStatus: setConnection,
- *       })
- *     }, [refresh])
- *     return { data, connection, error, retry: refresh }
- *   }
+ * TODO (backend adapter): When your friend's backend is ready:
+ *   1. Create src/adapters/backendAdapter.js with mapVpnStatus(), mapMetrics(),
+ *      mapSecurity(), mapEvents(), mapChartData() functions.
+ *   2. Replace the static imports below with useEffect + fetch/WebSocket calls.
+ *   3. Pass raw backend JSON through the adapter before setting state.
+ *   4. The returned shape { vpnStatus, metrics, security, events, chartData,
+ *      endpoints, connection } stays identical — no component changes needed.
  */
 
-import { MOCK_DASHBOARD } from '../data/mockData'
+import {
+  vpnStatus,
+  metrics,
+  security,
+  events,
+  chartData,
+  endpoints,
+} from '../data/mockData'
 
 export function useDashboardData() {
   return {
-    data: MOCK_DASHBOARD,
+    vpnStatus,
+    metrics,
+    security,
+    events,
+    chartData,
+    endpoints,
     connection: 'MOCK',
-    error: '',
-    retry: () => {},
   }
 }

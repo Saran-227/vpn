@@ -18,12 +18,15 @@ function Row({ icon: Icon, label, value }) {
   )
 }
 
+// Props: metrics — { packetsPerSecond, activeFlows, avgPacketSize,
+//                    inboundBps, outboundBps, bandwidthBps }
+// TODO (backend adapter): metrics is mapped via mapMetrics() in backendAdapter.js
 function Inner({ metrics }) {
-  const pps      = useAnimatedNumber(metrics.packets_per_second, 500)
-  const flows    = useAnimatedNumber(metrics.active_flows, 400)
-  const avgPkt   = useAnimatedNumber(metrics.average_packet_size, 400)
-  const inbound  = useAnimatedNumber(metrics.inbound_bps, 400)
-  const outbound = useAnimatedNumber(metrics.outbound_bps, 400)
+  const pps      = useAnimatedNumber(metrics.packetsPerSecond, 500)
+  const flows    = useAnimatedNumber(metrics.activeFlows, 400)
+  const avgPkt   = useAnimatedNumber(metrics.avgPacketSize, 400)
+  const inbound  = useAnimatedNumber(metrics.inboundBps, 400)
+  const outbound = useAnimatedNumber(metrics.outboundBps, 400)
 
   return (
     <div className="mp-inner">
@@ -45,7 +48,7 @@ function Inner({ metrics }) {
         <Row icon={Database}        label="Avg. packet" value={`${Math.round(avgPkt)} B`} />
         <Row icon={ArrowDownToLine} label="Inbound"     value={`${fmtBytes(inbound)}/s`} />
         <Row icon={ArrowUpFromLine} label="Outbound"    value={`${fmtBytes(outbound)}/s`} />
-        <Row icon={Box}             label="Bandwidth"   value={`${Math.round(metrics.bytes_per_second/1000).toLocaleString()} KB/s`} />
+        <Row icon={Box}             label="Bandwidth"   value={`${Math.round(metrics.bandwidthBps/1000).toLocaleString()} KB/s`} />
       </div>
     </div>
   )

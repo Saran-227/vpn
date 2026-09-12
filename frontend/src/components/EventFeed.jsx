@@ -16,6 +16,8 @@ const LIVE_COLOR = {
   critical: 'rgba(255,77,109,0.12)',
 }
 
+// Props: events — { timestamp, title, description, severity, category }[]
+// TODO (backend adapter): events mapped via mapEvents() in backendAdapter.js
 export default function EventFeed({ events = [] }) {
   const [cardRef, cardRevealed] = useScrollReveal()
   const initialKeysRef = useRef(null)
@@ -57,7 +59,7 @@ export default function EventFeed({ events = [] }) {
               ? ShieldAlert
               : event.severity === 'MEDIUM'
                 ? AlertTriangle
-                : event.type === 'FLOW'
+                : event.category === 'FLOW'
                   ? Activity
                   : Info
 

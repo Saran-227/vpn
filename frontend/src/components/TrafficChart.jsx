@@ -55,6 +55,8 @@ function LiveDot({ cx, cy, index, dataLength, color }) {
   )
 }
 
+// Props: history — { timestamp, packetsPerSecond, riskScore }[]
+// TODO (backend adapter): history mapped via mapChartData() in backendAdapter.js
 function TrafficInner({ history }) {
   const data = history.map(item => ({ ...item, time: shortTime(item.timestamp) }))
   const liveDot = (props) => <LiveDot {...props} dataLength={data.length} color="#93c5fd" />
@@ -80,7 +82,7 @@ function TrafficInner({ history }) {
             <XAxis dataKey="time" hide />
             <YAxis width={44} tick={{ fill: 'rgba(255,255,255,0.40)', fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
             <Tooltip {...TOOLTIP} formatter={v => [`${v} pkt/s`, 'Rate']} />
-            <Area type="monotone" dataKey="packets_per_second" stroke="#93c5fd" strokeWidth={2}
+            <Area type="monotone" dataKey="packetsPerSecond" stroke="#93c5fd" strokeWidth={2}
               fill="url(#packetFill)" dot={liveDot} isAnimationActive={false} />
           </AreaChart>
         </ResponsiveContainer>
@@ -98,6 +100,8 @@ export function TrafficChart({ history = [], inline }) {
   )
 }
 
+// Props: history — { timestamp, riskScore }[], level — riskLevel string
+// TODO (backend adapter): history and level mapped via backendAdapter.js
 export function RiskChart({ history = [], level = 'LOW' }) {
   const data = history.map(item => ({ ...item, time: shortTime(item.timestamp) }))
   const liveDot = (props) => <LiveDot {...props} dataLength={data.length} color="#f87171" />
@@ -132,7 +136,7 @@ export function RiskChart({ history = [], level = 'LOW' }) {
             <Tooltip {...TOOLTIP} formatter={v => [`${v}/100`, 'Risk']} />
             <Area
               type="monotone"
-              dataKey="risk_score"
+              dataKey="riskScore"
               stroke="#f87171"
               strokeWidth={2}
               fill="url(#riskFill)"

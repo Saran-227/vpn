@@ -9,14 +9,12 @@ import RotatingEarth from '../components/RotatingEarth'
 import ScrollReveal from '../components/ScrollReveal'
 import SystemStatus from '../components/SystemStatus'
 
-// TODO (backend integration): Restore the loading/error/retry states below
-// when useDashboardData is reconnected to the live API + WebSocket. The
-// props contract (data, connection, error, retry, theme, toggleTheme) is
-// unchanged — just uncomment the guard block.
+// TODO (backend adapter): Restore loading/error/retry states here once
+// useDashboardData is wired to the live backend through backendAdapter.js.
 //
-//   if (!data) return (
+//   if (!vpnStatus) return (
 //     <>
-//       <Header connection={connection} mode="MOCK" theme={theme} toggleTheme={toggleTheme}/>
+//       <Header connection={connection} theme={theme} toggleTheme={toggleTheme}/>
 //       <main className="shell">
 //         <div className="loading">
 //           <div className="spinner"/>
@@ -28,12 +26,23 @@ import SystemStatus from '../components/SystemStatus'
 //     </>
 //   )
 
-export default function Dashboard({ data, connection, theme, toggleTheme }) {
-  const { vpn, metrics, security, events, history, mode, timestamp } = data
+// Props contract:
+//   vpnStatus   — { status, endpointA, endpointAIp, endpointB, endpointBIp,
+//                   uptimeSeconds, protocol, encryption, authMethod, peerIp, uptimeLabel }
+//   metrics     — { packetsPerSecond, activeFlows, avgPacketSize, inboundBps, outboundBps, bandwidthBps }
+//   security    — { riskScore, riskLevel, anomalyDetected, findings[] }
+//   events      — { timestamp, title, description, severity, category }[]
+//   chartData   — { timestamp, packetsPerSecond, riskScore }[]
+//   endpoints   — { peerIp, protocol, encryption, authMethod, uptimeLabel }
+//   connection  — 'MOCK' | 'LIVE' | 'RECONNECTING' | 'CONNECTING'
 
+export default function Dashboard({
+  vpnStatus, metrics, security, events, chartData, endpoints,
+  connection, theme, toggleTheme,
+}) {
   return (
     <>
-      <Header connection={connection} mode={mode} theme={theme} toggleTheme={toggleTheme} />
+      <Header connection={connection} mode="MOCK" theme={theme} toggleTheme={toggleTheme} />
       <main className="shell">
 
         {/* Hero */}
@@ -46,12 +55,10 @@ export default function Dashboard({ data, connection, theme, toggleTheme }) {
                 <p>Live telemetry from the VPN tunnel and behavioral security engine.</p>
               </div>
               <div className="hero-right">
-                {/* TODO (backend integration): SystemStatus derives state from
-                    security.risk_level, security.anomaly_detected, security.findings,
-                    and events[]. All fields are present in the mock — no changes needed. */}
+                {/* TODO (backend adapter): security and events come from backendAdapter.js */}
                 <SystemStatus security={security} events={events} />
                 <div className="timestamp">
-                  Updated {new Date(timestamp).toLocaleTimeString()}
+                  Updated {new Date().toLocaleTimeString()}
                 </div>
               </div>
             </div>
@@ -63,17 +70,17 @@ export default function Dashboard({ data, connection, theme, toggleTheme }) {
           <ScrollReveal>
             <GlassCard className="combo-card">
               <div className="combo-half">
-                {/* TODO (backend integration): Pass security from ws/dashboard .security */}
+                {/* TODO (backend adapter): security mapped via mapSecurity() */}
                 <SecurityScore
-                  score={security.risk_score}
-                  level={security.risk_level}
-                  anomaly={security.anomaly_detected}
+                  score={security.riskScore}
+                  level={security.riskLevel}
+                  anomaly={security.anomalyDetected}
                 />
               </div>
               <div className="combo-divider" />
               <div className="combo-half">
-                {/* TODO (backend integration): Pass vpn from ws/dashboard .vpn */}
-                <VPNStatus vpn={vpn} />
+                {/* TODO (backend adapter): vpnStatus mapped via mapVpnStatus() */}
+                <VPNStatus vpn={vpnStatus} />
               </div>
             </GlassCard>
           </ScrollReveal>
@@ -83,19 +90,19 @@ export default function Dashboard({ data, connection, theme, toggleTheme }) {
         <div id="traffic">
           <ScrollReveal>
             <GlassCard className="telem-card">
-              {/* TODO (backend integration): Pass metrics from ws/dashboard .metrics */}
+              {/* TODO (backend adapter): metrics mapped via mapMetrics() */}
               <MetricsPanel metrics={metrics} inline />
               <div className="telem-divider" />
-              {/* TODO (backend integration): Pass history from ws/dashboard .history */}
-              <TrafficChart history={history} inline />
+              {/* TODO (backend adapter): chartData mapped via mapChartData() */}
+              <TrafficChart history={chartData} inline />
             </GlassCard>
           </ScrollReveal>
         </div>
 
         {/* Card 3 — Security Trend */}
         <ScrollReveal>
-          {/* TODO (backend integration): history[].risk_score drives this chart */}
-          <RiskChart history={history} level={security.risk_level} />
+          {/* TODO (backend adapter): chartData.riskScore and security.riskLevel from adapter */}
+          <RiskChart history={chartData} level={security.riskLevel} />
         </ScrollReveal>
 
         {/* Card 4 — Globe + Tunnel Intelligence */}
@@ -116,24 +123,22 @@ export default function Dashboard({ data, connection, theme, toggleTheme }) {
               <div className="combo-divider" />
               <div className="globe-combo-right">
                 <div className="card-title-row"><h3>Tunnel Intelligence</h3></div>
-                {/* TODO (backend integration): Replace hardcoded fallbacks with
-                    vpn.peer_ip, vpn.protocol, vpn.encryption, vpn.auth, vpn.uptime
-                    and metrics.bytes_per_second from the live payload. */}
+                {/* TODO (backend adapter): endpoints mapped via mapEndpoints() in backendAdapter.js */}
                 <div className="globe-rows">
                   {[
-                    { label: 'Active Endpoints',  value: vpn.peer_ip || '203.0.113.42' },
-                    { label: 'Tunnel Protocol',   value: vpn.protocol || 'IKEv2/ESP' },
-                    { label: 'Encryption',        value: vpn.encryption || 'AES-256-GCM' },
-                    { label: 'Auth Method',       value: vpn.auth || 'RSA-4096' },
-                    { label: 'Uptime',            value: vpn.uptime || '14d 6h 32m' },
-                    { label: 'Bytes Transferred', value: `${(metrics.bytes_per_second / 1000 * 86400).toFixed(0)} MB/day` },
+                    { label: 'Active Endpoints',  value: endpoints.peerIp },
+                    { label: 'Tunnel Protocol',   value: endpoints.protocol },
+                    { label: 'Encryption',        value: endpoints.encryption },
+                    { label: 'Auth Method',       value: endpoints.authMethod },
+                    { label: 'Uptime',            value: endpoints.uptimeLabel },
+                    { label: 'Bytes Transferred', value: `${(metrics.bandwidthBps / 1000 * 86400).toFixed(0)} MB/day` },
                     {
-                      label: 'Threat Level', value: security.risk_level,
-                      color: security.risk_level === 'LOW' ? '#00ff88' : security.risk_level === 'MEDIUM' ? '#fbbf24' : '#f87171',
+                      label: 'Threat Level', value: security.riskLevel,
+                      color: security.riskLevel === 'LOW' ? '#00ff88' : security.riskLevel === 'MEDIUM' ? '#fbbf24' : '#f87171',
                     },
                     {
-                      label: 'Anomalies', value: security.anomaly_detected ? 'DETECTED' : 'None',
-                      color: security.anomaly_detected ? '#f87171' : '#00ff88',
+                      label: 'Anomalies', value: security.anomalyDetected ? 'DETECTED' : 'None',
+                      color: security.anomalyDetected ? '#f87171' : '#00ff88',
                     },
                   ].map(({ label, value, color }) => (
                     <div key={label} className="globe-stat-row">
@@ -150,7 +155,7 @@ export default function Dashboard({ data, connection, theme, toggleTheme }) {
         {/* Card 5 — Event Stream */}
         <div id="events">
           <ScrollReveal>
-            {/* TODO (backend integration): Pass events from ws/dashboard .events */}
+            {/* TODO (backend adapter): events mapped via mapEvents() in backendAdapter.js */}
             <EventFeed events={events} />
           </ScrollReveal>
         </div>

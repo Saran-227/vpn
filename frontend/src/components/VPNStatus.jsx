@@ -20,6 +20,9 @@ function Computer({ label, ip }) {
   )
 }
 
+// Props: vpn — { status, endpointA, endpointAIp, endpointB, endpointBIp,
+//                 uptimeSeconds, protocol, encryption }
+// TODO (backend adapter): vpn is mapped via mapVpnStatus() in backendAdapter.js
 export default function VPNStatus({ vpn }) {
   const connected = vpn.status === 'CONNECTED'
 
@@ -34,7 +37,7 @@ export default function VPNStatus({ vpn }) {
       </div>
 
       <div className="tunnel">
-        <Computer label={vpn.endpoint_a} ip={vpn.endpoint_a_ip} />
+        <Computer label={vpn.endpointA} ip={vpn.endpointAIp} />
 
         <div className="tunnel-track" data-active={String(connected)}>
           {connected && PACKETS.map(i => (
@@ -42,11 +45,11 @@ export default function VPNStatus({ vpn }) {
           ))}
         </div>
 
-        <Computer label={vpn.endpoint_b} ip={vpn.endpoint_b_ip} />
+        <Computer label={vpn.endpointB} ip={vpn.endpointBIp} />
       </div>
 
       <div className="vpn-meta">
-        <span><Clock3 size={14} /> Uptime {fmt(vpn.uptime_seconds)}</span>
+        <span><Clock3 size={14} /> Uptime {fmt(vpn.uptimeSeconds)}</span>
         <span>{vpn.protocol}</span>
         <span>{vpn.encryption}</span>
       </div>
