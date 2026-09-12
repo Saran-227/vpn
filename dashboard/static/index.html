@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NTRO AI-Powered IPsec VPN Protocol Analyzer and Security Assessment Framework (SIH26160)">
+    <title>NTRO IPsec Intelligence Platform | SIH26160 Cyber Defense</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="main-header">
+        <div class="nav-brand">
+            <div class="nav-logo-badge" id="app-logo">🛡️</div>
+            <div class="nav-title">
+                <h1>NTRO IPsec Intelligence Platform</h1>
+                <p>SIH26160 &bull; Automated Cryptographic Audit &bull; AI Traffic Classifier</p>
+            </div>
+        </div>
+        <div class="nav-status">
+            <div class="airgap-badge" id="airgap-indicator">
+                <div class="status-dot"></div>
+                <span>AIR-GAPPED &bull; OFFLINE SECURE</span>
+            </div>
+            <button class="nav-btn" id="btn-open-leaderboard">📊 Model Tournament</button>
+            <button class="nav-btn" id="btn-export-pdf">🖨️ Export Audit Report</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container" id="main-content">
+
+        <!-- Control Bar: Upload PCAP & Quick Scenarios -->
+        <section class="control-bar" id="control-section">
+            <div class="upload-card" id="upload-panel">
+                <div class="card-header-sm">
+                    <span>📁</span> Ingest Wiretap Capture
+                </div>
+                <div class="drop-zone" id="drop-zone">
+                    <div class="drop-icon">⚡</div>
+                    <div class="drop-text">Drop .pcap / .pcapng here</div>
+                    <div class="drop-subtext">or click to browse local filesystem</div>
+                    <input type="file" id="file-input" accept=".pcap,.pcapng" style="display: none;">
+                </div>
+            </div>
+
+            <div class="samples-card" id="samples-panel">
+                <div class="card-header-sm">
+                    <span>🧪</span> Curated Test Scenarios (1-Click Evaluation)
+                </div>
+                <div class="samples-grid" id="samples-container">
+                    <!-- Loaded dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Security Summary Banner -->
+        <section class="executive-banner" id="executive-banner">
+            <!-- Radial SVG Gauge -->
+            <div class="gauge-container" id="gauge-wrapper">
+                <svg class="gauge-svg" viewBox="0 0 120 120">
+                    <circle class="gauge-bg" cx="60" cy="60" r="48"></circle>
+                    <circle class="gauge-fill" id="gauge-fill-circle" cx="60" cy="60" r="48" stroke-dasharray="301.59" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="gauge-center-text">
+                    <span class="gauge-score" id="gauge-score-value">--</span>
+                    <span class="gauge-denom">/ 100</span>
+                </div>
+            </div>
+
+            <!-- Banner Meta -->
+            <div class="banner-content" id="banner-details">
+                <div class="banner-status-tag" id="banner-status-badge">EVALUATING SECURITY POSTURE...</div>
+                <div class="banner-title" id="banner-posture-title">Loading Capture Telemetry</div>
+                <div class="banner-meta">
+                    <div class="meta-item">
+                        <span>Target File:</span>
+                        <span class="meta-val" id="target-pcap-name">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Packets:</span>
+                        <span class="meta-val" id="stat-total-packets">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Duration:</span>
+                        <span class="meta-val" id="stat-duration">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Throughput:</span>
+                        <span class="meta-val" id="stat-throughput">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-actions">
+                <button class="action-btn-primary" onclick="window.print()">
+                    <span>📄</span> Download Official Advisory
+                </button>
+            </div>
+        </section>
+
+        <!-- Dual Column Intelligence Grid -->
+        <section class="intelligence-grid" id="intelligence-section">
+            
+            <!-- Left Panel: Deterministic Cryptographic Security Audit -->
+            <article class="intel-panel" id="crypto-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <span>🔐</span> Deterministic Cryptographic Audit
+                    </div>
+                    <span class="badge-deterministic">NIST SP 800-77 Rev. 1</span>
+                </div>
+
+                <table class="crypto-table" id="crypto-table">
+                    <tbody>
+                        <tr>
+                            <td>ESP Cipher (Phase 2)</td>
+                            <td id="val-enc-cipher" style="font-weight: 600;">--</td>
+                        </tr>
+                        <tr>
+                            <td>IKE Cipher (Phase 1)</td>
+                            <td id="val-ike-cipher">--</td>
+                        </tr>
+                        <tr>
+                            <td>Authentication Method</td>
+                            <td id="val-auth-method">--</td>
+                        </tr>
+                        <tr>
+                            <td>Active ESP SPIs</td>
+                            <td id="val-spi-pair" style="font-family: var(--font-mono); color: var(--color-cyan);">--</td>
+                        </tr>
+                        <tr>
+                            <td>Key Length</td>
+                            <td id="val-key-len">--</td>
+                        </tr>
+                        <tr>
+                            <td>Integrity / MAC Tag</td>
+                            <td id="val-integrity">--</td>
+                        </tr>
+                        <tr>
+                            <td>Pseudo-Random Function</td>
+                            <td id="val-prf">--</td>
+                        </tr>
+                        <tr>
+                            <td>Diffie-Hellman Group</td>
+                            <td id="val-dh-group">--</td>
+                        </tr>
+                        <tr>
+                            <td>Perfect Forward Secrecy (PFS)</td>
+                            <td id="val-pfs">--</td>
+                        </tr>
+                        <tr>
+                            <td>Anti-Replay Window</td>
+                            <td id="val-replay">--</td>
+                        </tr>
+                        <tr>
+                            <td>Replay Buffer Bit-Width</td>
+                            <td id="val-replay-width">--</td>
+                        </tr>
+                        <tr>
+                            <td>Key Lifetime / Rekeying</td>
+                            <td id="val-key-lifetime">--</td>
+                        </tr>
+                        <tr>
+                            <td>Key Exchange Protocol</td>
+                            <td id="val-ike-ver">--</td>
+                        </tr>
+                        <tr>
+                            <td>Encapsulation / NAT-T</td>
+                            <td id="val-nat-t">--</td>
+                        </tr>
+                        <tr>
+                            <td>Control Plane Handshake</td>
+                            <td id="val-ctrl-plane">--</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="threats-container" id="threats-container">
+                    <!-- Threat Cards rendered here -->
+                </div>
+            </article>
+
+            <!-- Right Panel: AI Encrypted Traffic Intelligence -->
+            <article class="intel-panel" id="ai-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <span>🧠</span> AI Encrypted Traffic Intelligence
+                    </div>
+                    <span class="badge-ai" id="active-model-text">HistGradientBoosting (80.5%)</span>
+                </div>
+
+                <!-- AI Hero Predictions -->
+                <div class="ai-hero">
+                    <div class="ai-stat-box" id="ai-app-box">
+                        <span class="ai-stat-label">Predicted Application</span>
+                        <span class="ai-stat-value" id="ai-predicted-app">--</span>
+                        <span class="ai-stat-sub" id="ai-app-confidence">--</span>
+                        <div style="font-size: 0.75rem; margin-top: 0.35rem;" id="ai-concurrency-badge">--</div>
+                    </div>
+
+                    <div class="ai-stat-box" id="ai-mode-box">
+                        <span class="ai-stat-label">Operational Mode</span>
+                        <span class="ai-stat-value" id="ai-predicted-mode">--</span>
+                        <span class="ai-stat-sub" id="ai-mode-confidence">--</span>
+                        <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.35rem;">IPsec Encapsulation Layer</div>
+                    </div>
+                </div>
+
+                <!-- Probability Distribution Bars -->
+                <div>
+                    <div class="card-header-sm">
+                        <span>📊</span> Multi-Class Probability Vector (8 Classes)
+                    </div>
+                    <div class="prob-bars-container" id="prob-bars-container">
+                        <!-- Probability bars rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Key Flow Dynamics (48 Signal Features) -->
+                <div>
+                    <div class="card-header-sm">
+                        <span>📡</span> Extracted Flow Dynamics (ESP Encrypted Payload)
+                    </div>
+                    <div class="dynamics-grid">
+                        <div class="dynamic-item">
+                            <span class="dynamic-label">Mean Packet Size</span>
+                            <span class="dynamic-val" id="dyn-mean-size">--</span>
+                        </div>
+                        <div class="dynamic-item">
+                            <span class="dynamic-label">Size Dispersion (std)</span>
+                            <span class="dynamic-val" id="dyn-size-std">--</span>
+                        </div>
+                        <div class="dynamic-item">
+                            <span class="dynamic-label">Mean IAT Pacing</span>
+                            <span class="dynamic-val" id="dyn-mean-iat">--</span>
+                        </div>
+                        <div class="dynamic-item">
+                            <span class="dynamic-label">Burstiness Index</span>
+                            <span class="dynamic-val" id="dyn-burstiness">--</span>
+                        </div>
+                        <div class="dynamic-item">
+                            <span class="dynamic-label">Small Packets (&lt;250B)</span>
+                            <span class="dynamic-val" id="dyn-small-ratio">--</span>
+                        </div>
+                        <div class="dynamic-item">
+                            <span class="dynamic-label">Large MTU (&gt;900B)</span>
+                            <span class="dynamic-val" id="dyn-large-ratio">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flow Dynamics vs Payload Profile Reconciliation Diagnostic -->
+                <div id="flow-reconciliation-card" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(0, 229, 255, 0.05); border: 1px solid var(--border-glow); border-radius: var(--radius-md);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-cyan);">⚡ Flow Dynamics &amp; Payload Reconciliation</span>
+                        <span style="font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(0,229,255,0.2); color: var(--color-cyan); font-family: var(--font-mono);">BIMODAL CONCURRENCY RESOLVED</span>
+                    </div>
+                    <div style="font-size: 0.78rem; line-height: 1.4; color: var(--text-muted);" id="reconciliation-text">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.75rem;">
+                        <div style="padding: 0.5rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm);">
+                            <div style="font-size: 0.7rem; color: var(--text-dim);">VoIP Voice Sub-stream</div>
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-emerald);" id="substream-voice-val">--</div>
+                            <div style="font-size: 0.7rem; color: var(--text-dim);" id="substream-voice-desc">--</div>
+                        </div>
+                        <div style="padding: 0.5rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm);">
+                            <div style="font-size: 0.7rem; color: var(--text-dim);">MTU Data / Padding Sub-stream</div>
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-cyan);" id="substream-data-val">--</div>
+                            <div style="font-size: 0.7rem; color: var(--text-dim);" id="substream-data-desc">--</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Timeline Window Slices Section -->
+        <section class="timeline-card" id="timeline-section">
+            <div class="panel-header" style="border: none; padding: 0;">
+                <div class="panel-title">
+                    <span>⏱️</span> Sliding Window Temporal Breakdown (1.5s Slices)
+                </div>
+                <span style="font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono);">Active Tunnel Demultiplexing</span>
+            </div>
+            <div class="timeline-slices-grid" id="timeline-slices-grid">
+                <!-- Slices rendered dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal: Model Tournament Leaderboard -->
+    <div id="tournament-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); z-index: 1000; align-items: center; justify-content: center; padding: 2rem;">
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-glow); border-radius: var(--radius-lg); max-width: 900px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2rem; box-shadow: 0 0 50px rgba(0, 229, 255, 0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+                <div>
+                    <h2 style="font-size: 1.25rem; font-weight: 800;">AI Model Tournament &amp; Ensemble Benchmark</h2>
+                    <p style="font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono);">5-Fold Stratified Cross-Validation on 48 Signal Features (1,202 samples)</p>
+                </div>
+                <button id="modal-close-btn" style="background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Model Architecture</th>
+                        <th>5-Fold CV Accuracy</th>
+                        <th>Test Accuracy</th>
+                        <th>Test F1</th>
+                        <th>Training Time</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-tbody">
+                    <!-- Populated dynamically via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

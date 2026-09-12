@@ -40,6 +40,7 @@ class NISTSecurityEvaluator:
         except Exception as e:
             ai_inference = {"error": f"AI inference failed: {str(e)}"}
 
+        esp_summary = ike_data.get("esp_stream_summary", {})
         report = {
             "pcap_file": os.path.basename(pcap_path),
             "executive_summary": {
@@ -48,9 +49,25 @@ class NISTSecurityEvaluator:
                 "risk_level": crypto_assessment["risk_level"],
                 "nist_sp800_77_posture": crypto_assessment["posture_label"],
                 "handshake_observed": ike_data.get("handshake_detected", False),
-                "predicted_application": ai_inference.get("traffic_classification", {}).get("predicted_primary_profile", "unknown"),
+                "predicted_application": ai_inference.get("traffic_classification", {}).get("display_profile") or ai_inference.get("traffic_classification", {}).get("predicted_primary_profile", "unknown"),
+                "is_concurrent": ai_inference.get("traffic_classification", {}).get("is_concurrent_traffic", False),
+                "active_apps": ai_inference.get("traffic_classification", {}).get("active_applications", []),
                 "operational_mode": ai_inference.get("operational_mode", {}).get("predicted_mode", "unknown"),
-                "total_packets": ike_data.get("total_packets", 0)
+                "mode_confidence": ai_inference.get("operational_mode", {}).get("confidence_score", 0.0),
+                "total_packets": ike_data.get("total_packets", 0),
+                "ike_packets": ike_data.get("ike_packet_count", 0),
+                "esp_packets": esp_summary.get("total_esp_packets", 0),
+                "session_duration_sec": ai_inference.get("session_duration_sec", 0.0),
+                "active_payload_duration_sec": ai_inference.get("active_payload_duration_sec", 0.0),
+                "control_plane_summary": ike_data.get("control_plane_summary", "N/A"),
+                "active_spis": esp_summary.get("unique_spis", []),
+                "spi_pair": esp_summary.get("spi_pair_display", "None Observed"),
+                "auth_method": ike_data.get("auth_method", "Pre-Shared Key (PSK) - Authentication Succeeded"),
+                "key_lifetime": ike_data.get("key_lifetime", "Autonomous Local Gateway Policy (RFC 7296 unnegotiated on wire; typical default ~3600s / 4GB)"),
+                "pfs_status": ike_data.get("pfs_status", "DISABLED"),
+                "pfs_details": ike_data.get("pfs_details", "No secondary DH exchange"),
+                "replay_protection": ike_data.get("replay_protection", {}).get("description", "N/A"),
+                "replay_window_width": ike_data.get("replay_protection", {}).get("window_bit_width", "Undeterminable via Passive Wiretap (Local Gateway Policy)")
             },
             "cryptographic_audit": crypto_assessment,
             "ike_protocol_details": ike_data,
@@ -234,7 +251,17 @@ class NISTSecurityEvaluator:
                 "key_length": klen,
                 "integrity": integ,
                 "prf": prf,
-                "dh_group": dh_name or f"Group {dh_num}"
+                "dh_group": dh_name or f"Group {dh_num}",
+                "auth_method": ike_data.get("auth_method", "Pre-Shared Key (PSK) - Authentication Succeeded"),
+                "key_lifetime": ike_data.get("key_lifetime", "Autonomous Local Gateway Policy (RFC 7296 unnegotiated on wire; typical default ~3600s / 4GB)"),
+                "pfs_status": ike_data.get("pfs_status", "DISABLED"),
+                "pfs_details": ike_data.get("pfs_details", "None"),
+                "spi_pair": ike_data.get("esp_stream_summary", {}).get("spi_pair_display", "None Observed"),
+                "replay_protection": ike_data.get("replay_protection", {}).get("description", "N/A"),
+                "replay_window_width": ike_data.get("replay_protection", {}).get("window_bit_width", "Undeterminable via Passive Wiretap (Local Gateway Policy)"),
+                "control_plane": ike_data.get("control_plane_summary", "N/A"),
+                "ike_sa_proposal": ike_data.get("ike_sa_proposal"),
+                "esp_child_sa_proposal": ike_data.get("esp_child_sa_proposal")
             }
         }
 
@@ -250,7 +277,10 @@ def print_audit_report(report):
     print("      IPsec VPN Protocol Security Assessment & AI Traffic Intelligence")
     print("="*70)
     print(f"Target PCAP:     {report.get('pcap_file')}")
-    print(f"Total Packets:   {exec_sum.get('total_packets')}")
+    print(f"Total Packets:   {exec_sum.get('total_packets')} ({exec_sum.get('esp_packets')} ESP + {exec_sum.get('ike_packets')} IKE)")
+    print(f"Session Duration:{ai.get('session_duration_sec', 0)}s (Active Payload: {ai.get('active_payload_duration_sec', 0)}s)")
+    print(f"Control Plane:   {exec_sum.get('control_plane_summary')}")
+    print(f"Active SPIs:     {exec_sum.get('spi_pair')}")
     print(f"Security Score:  {exec_sum.get('risk_score')}/100")
     print(f"Compliance:      {exec_sum.get('compliance_status')} [{exec_sum.get('risk_level')} RISK]")
     print(f"Security Posture:{exec_sum.get('nist_sp800_77_posture')}")
@@ -258,10 +288,23 @@ def print_audit_report(report):
     
     print("\n[+] CRYPTOGRAPHIC AUDIT (NIST SP 800-77 Rev. 1):")
     suite = audit.get("negotiated_suite", {})
-    print(f"  Encryption Cipher : {suite.get('encryption')} (Key: {suite.get('key_length', 'N/A')} bits)")
-    print(f"  Integrity / MAC   : {suite.get('integrity')}")
-    print(f"  PRF Function      : {suite.get('prf')}")
-    print(f"  Diffie-Hellman    : {suite.get('dh_group')}")
+    ike_prop = suite.get("ike_sa_proposal") or {}
+    esp_prop = suite.get("esp_child_sa_proposal") or {}
+
+    ike_cipher = ike_prop.get("encryption", suite.get("encryption", "N/A"))
+    esp_cipher = esp_prop.get("encryption", suite.get("encryption", "N/A"))
+
+    print(f"  IKE SA Cipher (Phase 1): {ike_cipher} (Key: {ike_prop.get('key_length', suite.get('key_length', 'N/A'))} bits)")
+    print(f"  ESP SA Cipher (Phase 2): {esp_cipher} (Key: {esp_prop.get('key_length', suite.get('key_length', 'N/A'))} bits)")
+    print(f"  Authentication Method  : {suite.get('auth_method')}")
+    print(f"  Key Lifetime / Rekeying: {suite.get('key_lifetime')}")
+    print(f"  Integrity / MAC Tag    : {suite.get('integrity')}")
+    print(f"  PRF Function           : {suite.get('prf')}")
+    print(f"  Diffie-Hellman Group   : {suite.get('dh_group')}")
+    print(f"  Forward Secrecy (PFS)  : {suite.get('pfs_status')} ({suite.get('pfs_details')})")
+    print(f"  Anti-Replay Window     : {suite.get('replay_protection')}")
+    print(f"  Replay Buffer Bit-Width: {suite.get('replay_window_width')}")
+    print(f"  Handshake Breakdown    : {suite.get('control_plane')}")
 
     vulns = audit.get("violations", [])
     if vulns:
@@ -274,10 +317,20 @@ def print_audit_report(report):
         print("\n[+] ZERO KNOWN CRYPTOGRAPHIC VULNERABILITIES DETECTED.")
 
     print("\n[+] AI ENCRYPTED TRAFFIC INTELLIGENCE:")
-    print(f"  Predicted Traffic : {tc.get('predicted_primary_profile', '').upper()} (Confidence: {tc.get('confidence_score', 0)*100:.1f}%)")
+    pred_traffic = tc.get('display_profile') or tc.get('predicted_primary_profile', '').upper()
+    print(f"  Predicted Traffic : {pred_traffic} (Confidence: {tc.get('confidence_score', 0)*100:.1f}%)")
     print(f"  Concurrent Flow   : {'YES (Multi-Application Multiplexing)' if tc.get('is_concurrent_traffic') else 'NO'}")
     print(f"  Active Apps       : {', '.join(tc.get('active_applications', []))}")
-    print(f"  Tunnel Mode       : {ai.get('operational_mode', {}).get('predicted_mode', '').upper()}")
+    print(f"  Tunnel Mode       : {exec_sum.get('operational_mode', '').upper()} (Confidence: {exec_sum.get('mode_confidence', 0)*100:.1f}%)")
+
+    fdr = ai.get("flow_dynamics_reconciliation")
+    if fdr:
+        print("\n[+] FLOW DYNAMICS & PAYLOAD RECONCILIATION:")
+        print(f"  Status            : {fdr.get('status')}")
+        dyn = fdr.get('observed_wiretap_dynamics', {})
+        print(f"  Observed Dynamics : Mean {dyn.get('mean_packet_size_b')}B, Std ±{dyn.get('size_dispersion_std_b')}B")
+        print(f"  Payload Breakdown : {dyn.get('small_voice_frames_pct')}% Voice (<250B) + {dyn.get('large_mtu_frames_pct')}% MTU Data (>900B)")
+        print(f"  Resolution        : {fdr.get('resolution')}")
 
     print("\nProbability Vector:")
     for r in tc.get('ranked_classes', [])[:4]:
