@@ -1,14 +1,28 @@
 import { useState, useEffect } from 'react'
 import { fetchHealth, fetchSamples, analyzeSample, analyzeUpload, fetchTournament } from '../services/api'
 import { mapBackendReport } from '../adapters/backendAdapter'
-import {
-  vpnStatus as mockVpnStatus,
-  metrics as mockMetrics,
-  security as mockSecurity,
-  events as mockEvents,
-  chartData as mockChartData,
-  endpoints as mockEndpoints,
-} from '../data/mockData'
+
+const INITIAL_STATE = {
+  security: {
+    riskScore: 100,
+    riskLevel: 'LOW',
+    complianceStatus: 'PASS',
+    postureLabel: 'COMPLIANT DEFENSE POSTURE',
+    anomalyDetected: false,
+    findings: []
+  },
+  endpoints: {
+    peerIp: '172.28.0.2 ↔ 172.28.0.3',
+    protocol: 'IKEv2 / ESP',
+    encryption: 'AES-256-GCM',
+    authMethod: 'Pre-Shared Key (PSK)',
+    uptimeLabel: 'Analyzing...'
+  },
+  auditData: null,
+  ikeDetails: null,
+  aiData: null,
+  execSummary: null
+}
 
 export function useDashboardData() {
   const [connection, setConnection] = useState('CONNECTING')
@@ -19,19 +33,8 @@ export function useDashboardData() {
   const [error, setError] = useState(null)
   const [tournamentData, setTournamentData] = useState(null)
 
-  // Mapped telemetry state
-  const [dashboardData, setDashboardData] = useState({
-    vpnStatus: mockVpnStatus,
-    metrics: mockMetrics,
-    security: mockSecurity,
-    events: mockEvents,
-    chartData: mockChartData,
-    endpoints: mockEndpoints,
-    auditData: null,
-    ikeDetails: null,
-    aiData: null,
-    execSummary: null
-  })
+  // Telemetry state
+  const [dashboardData, setDashboardData] = useState(INITIAL_STATE)
 
   // Initialize live connection and fetch initial data
   useEffect(() => {

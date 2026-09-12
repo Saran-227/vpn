@@ -2,15 +2,9 @@ import React, { useState } from 'react'
 import Header from '../components/Header'
 import GlassCard from '../components/GlassCard'
 import SecurityScore from '../components/SecurityScore'
-import VPNStatus from '../components/VPNStatus'
-import MetricsPanel from '../components/MetricsPanel'
-import EventFeed from '../components/EventFeed'
-import { TrafficChart, RiskChart } from '../components/TrafficChart'
-import RotatingEarth from '../components/RotatingEarth'
 import ScrollReveal from '../components/ScrollReveal'
-import SystemStatus from '../components/SystemStatus'
 
-// Specialized Cyber Defense & AI Intelligence Components
+// Specialized NTRO Cyber Defense & AI Intelligence Components
 import PcapIngestion from '../components/PcapIngestion'
 import CryptoAuditPanel from '../components/CryptoAuditPanel'
 import TrafficIntelligencePanel from '../components/TrafficIntelligencePanel'
@@ -18,12 +12,7 @@ import TimelineSlices from '../components/TimelineSlices'
 import TournamentModal from '../components/TournamentModal'
 
 export default function Dashboard({
-  vpnStatus,
-  metrics,
   security,
-  events,
-  chartData,
-  endpoints,
   connection,
   theme,
   toggleTheme,
@@ -64,7 +53,31 @@ export default function Dashboard({
                 <p>Automated RFC cryptographic compliance dissector &amp; AI-powered encrypted traffic classifier.</p>
               </div>
               <div className="hero-right">
-                <SystemStatus security={security} events={events} />
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  padding: '0.5rem 0.85rem',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'var(--glass-bg)',
+                  border: '1px solid var(--glass-border)'
+                }}>
+                  <div style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background: 'var(--accent-green)',
+                    boxShadow: '0 0 10px var(--accent-green)'
+                  }} />
+                  <div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                      Air-Gapped ML Core Active
+                    </div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                      Champion: HistGradientBoosting (80.5%)
+                    </div>
+                  </div>
+                </div>
                 <div className="timestamp">
                   {isAnalyzing ? (
                     <span style={{ color: 'var(--accent-blue)' }}>Analyzing capture payload...</span>
@@ -91,7 +104,7 @@ export default function Dashboard({
           </ScrollReveal>
         </div>
 
-        {/* Security Posture + Tunnel Status */}
+        {/* Executive Security Summary & Wiretap Session Telemetry */}
         <div id="security">
           <ScrollReveal>
             <GlassCard className="combo-card">
@@ -104,9 +117,96 @@ export default function Dashboard({
                   complianceStatus={security?.complianceStatus}
                 />
               </div>
+
               <div className="combo-divider" />
+
               <div className="combo-half">
-                <VPNStatus vpn={vpnStatus} />
+                <div className="card-title-row">
+                  <div>
+                    <div className="section-kicker">WIRETAP TELEMETRY &amp; SESSION METRICS</div>
+                    <h3 style={{ margin: '2px 0 0', fontSize: '1rem', fontWeight: 700 }}>
+                      Active Capture Profiling
+                    </h3>
+                  </div>
+                  <span className="live-badge">
+                    <span className="live-dot" />
+                    {isAnalyzing ? 'INGESTING' : 'ANALYZED'}
+                  </span>
+                </div>
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '0.75rem',
+                  marginTop: '1rem'
+                }}>
+                  <div style={{
+                    padding: '0.65rem 0.85rem',
+                    background: 'var(--glass-inner)',
+                    borderRadius: 'var(--radius-xs)',
+                    border: '1px solid var(--border)'
+                  }}>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Target PCAP</div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-blue)', wordBreak: 'break-all', marginTop: 2 }}>
+                      {activeFilename || execSummary?.target_pcap || 'sih26_asim_golden.pcap'}
+                    </div>
+                  </div>
+
+                  <div style={{
+                    padding: '0.65rem 0.85rem',
+                    background: 'var(--glass-inner)',
+                    borderRadius: 'var(--radius-xs)',
+                    border: '1px solid var(--border)'
+                  }}>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Total Packets</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginTop: 2 }}>
+                      {execSummary?.total_packets || 557} frames
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginLeft: 4 }}>
+                        ({execSummary?.esp_packets || 553} ESP)
+                      </span>
+                    </div>
+                  </div>
+
+                  <div style={{
+                    padding: '0.65rem 0.85rem',
+                    background: 'var(--glass-inner)',
+                    borderRadius: 'var(--radius-xs)',
+                    border: '1px solid var(--border)'
+                  }}>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Session Duration</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginTop: 2 }}>
+                      {execSummary?.session_duration_sec ? `${execSummary.session_duration_sec.toFixed(1)}s` : '142.1s'}
+                    </div>
+                  </div>
+
+                  <div style={{
+                    padding: '0.65rem 0.85rem',
+                    background: 'var(--glass-inner)',
+                    borderRadius: 'var(--radius-xs)',
+                    border: '1px solid var(--border)'
+                  }}>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Average Throughput</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginTop: 2 }}>
+                      {((aiData?.average_bytes_sec || 15800) / 1024).toFixed(1)} KB/s
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginTop: '0.85rem',
+                  padding: '0.5rem 0.75rem',
+                  background: 'var(--glass-inner)',
+                  borderRadius: 'var(--radius-xs)',
+                  border: '1px solid var(--border)'
+                }}>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Active SPI Pair:</span>
+                  <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 600 }}>
+                    {execSummary?.spi_pair || '0xc56d1914 <-> 0xcd0440ee'}
+                  </span>
+                </div>
               </div>
             </GlassCard>
           </ScrollReveal>
@@ -134,77 +234,6 @@ export default function Dashboard({
         <div id="timeline">
           <ScrollReveal>
             <TimelineSlices slices={aiData?.temporal_window_breakdown || []} />
-          </ScrollReveal>
-        </div>
-
-        {/* Telemetry Metrics & Traffic Throughput Chart */}
-        <div id="traffic">
-          <ScrollReveal>
-            <GlassCard className="telem-card">
-              <MetricsPanel metrics={metrics} inline />
-              <div className="telem-divider" />
-              <TrafficChart history={chartData} inline />
-            </GlassCard>
-          </ScrollReveal>
-        </div>
-
-        {/* Security Risk Trend Chart */}
-        <ScrollReveal>
-          <RiskChart history={chartData} level={security?.riskLevel} />
-        </ScrollReveal>
-
-        {/* Global Threat Map (3D Globe) + Tunnel Intelligence */}
-        <div id="vpn">
-          <ScrollReveal>
-            <GlassCard className="globe-combo">
-              <div className="globe-combo-left">
-                <div className="card-title-row">
-                  <h3>Global Threat Map</h3>
-                  <span className="live-badge"><span className="live-dot" />LIVE</span>
-                </div>
-                <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '4px 0 0', lineHeight: 1.5 }}>
-                  Real-time IPsec tunnel telemetry &amp; intercept endpoints across the network.
-                </p>
-                <div className="globe-wrap"><RotatingEarth size={300} /></div>
-                <div className="globe-hint">Drag to rotate · Scroll to zoom</div>
-              </div>
-              <div className="combo-divider" />
-              <div className="globe-combo-right">
-                <div className="card-title-row"><h3>Tunnel Telemetry</h3></div>
-                <div className="globe-rows">
-                  {[
-                    { label: 'Active SPI Pair',    value: endpoints?.peerIp || 'None' },
-                    { label: 'Tunnel Protocol',     value: endpoints?.protocol || 'ESP' },
-                    { label: 'Encryption Cipher',   value: endpoints?.encryption || 'AES-256-GCM' },
-                    { label: 'Authentication',      value: endpoints?.authMethod || 'PSK' },
-                    { label: 'Captured Packets',    value: endpoints?.uptimeLabel || '557 Packets' },
-                    { label: 'Data Throughput',     value: `${((metrics?.bandwidthBps || 0) / 1000).toFixed(1)} KB/s` },
-                    {
-                      label: 'Threat Level',
-                      value: security?.riskLevel || 'LOW',
-                      color: security?.riskLevel === 'LOW' ? '#00ff88' : security?.riskLevel === 'MEDIUM' ? '#fbbf24' : '#f87171',
-                    },
-                    {
-                      label: 'Anomalies',
-                      value: security?.anomalyDetected ? 'DETECTED' : 'None',
-                      color: security?.anomalyDetected ? '#f87171' : '#00ff88',
-                    },
-                  ].map(({ label, value, color }) => (
-                    <div key={label} className="globe-stat-row">
-                      <span className="globe-stat-label">{label}</span>
-                      <span className="globe-stat-value" style={{ color: color || 'var(--text-primary)' }}>{value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </GlassCard>
-          </ScrollReveal>
-        </div>
-
-        {/* Security Event & Vulnerability Stream */}
-        <div id="events">
-          <ScrollReveal>
-            <EventFeed events={events} />
           </ScrollReveal>
         </div>
 

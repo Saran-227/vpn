@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { ShieldCheck, Trophy, Printer, SunMoon, Radio } from 'lucide-react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const NAV_ITEMS = [
   { label: 'OVERVIEW', href: '#top' },
@@ -12,12 +11,8 @@ const NAV_ITEMS = [
 
 export default function Header({ connection = 'LIVE', mode = 'OFFLINE SECURE', onOpenTournament }) {
   const [active, setActive] = useState('#top')
-  const location = useLocation()
-  const navigate = useNavigate()
-  const isAbout = location.pathname === '/about'
 
   useEffect(() => {
-    if (isAbout) return
     const ids = NAV_ITEMS.map(n => n.href.slice(1))
     const observer = new IntersectionObserver(
       entries => {
@@ -32,24 +27,16 @@ export default function Header({ connection = 'LIVE', mode = 'OFFLINE SECURE', o
       if (el) observer.observe(el)
     })
     return () => observer.disconnect()
-  }, [isAbout])
+  }, [])
 
   const handleNav = (href) => {
-    if (isAbout) {
-      navigate('/')
-      setTimeout(() => {
-        const el = document.querySelector(href)
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 100)
-    } else {
-      const el = document.querySelector(href)
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    const el = document.querySelector(href)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
     <header className="topbar">
-      <div className="brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+      <div className="brand" onClick={() => handleNav('#top')} style={{ cursor: 'pointer' }}>
         <div className="brand-mark"><ShieldCheck size={21} /></div>
         <div>
           <div className="brand-title">NTRO IPsec <em>Intelligence</em></div>
@@ -61,18 +48,12 @@ export default function Header({ connection = 'LIVE', mode = 'OFFLINE SECURE', o
         {NAV_ITEMS.map(({ label, href }) => (
           <button
             key={label}
-            className={`nav-link${!isAbout && active === href ? ' active' : ''}`}
+            className={`nav-link${active === href ? ' active' : ''}`}
             onClick={() => handleNav(href)}
           >
             {label}
           </button>
         ))}
-        <Link
-          to="/about"
-          className={`nav-link${isAbout ? ' active' : ''}`}
-        >
-          ABOUT
-        </Link>
       </nav>
 
       <div className="top-actions">
