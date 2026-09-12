@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import GlassCard from './GlassCard'
 
 const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -10,7 +10,7 @@ const FLASH_SHADOW = {
   critical: '0 0 0 1px rgba(248,113,113,0.35), 0 0 24px rgba(248,113,113,0.18)',
 }
 
-function useRiskFlash(level) {
+function useRiskFlash(level = 'LOW') {
   const prev = useRef(level)
   const timer = useRef(null)
   const [flash, setFlash] = useState(null)
@@ -28,7 +28,7 @@ function useRiskFlash(level) {
   return flash
 }
 
-function useAnimatedScore(target) {
+function useAnimatedScore(target = 100) {
   const [display, setDisplay] = useState(target)
   const raf = useRef(null)
   const from = useRef(target)
@@ -56,9 +56,7 @@ function useAnimatedScore(target) {
   return display
 }
 
-// Props: score — number (0–100), level — riskLevel string, anomaly — boolean
-// TODO (backend adapter): props come from mapSecurity() in backendAdapter.js
-export default function SecurityScore({ score, level, anomaly }) {
+export default function SecurityScore({ score = 100, level = 'LOW', anomaly = false, postureLabel, complianceStatus }) {
   const animated = useAnimatedScore(score)
   const displayScore = Math.round(animated)
   const flash = useRiskFlash(level)
@@ -67,20 +65,45 @@ export default function SecurityScore({ score, level, anomaly }) {
     ? { boxShadow: FLASH_SHADOW[flash], transition: 'box-shadow 0.15s ease-out' }
     : { transition: 'box-shadow 0.7s ease-out' }
 
+  const statusColor = (complianceStatus === 'PASS' || level === 'LOW')
+    ? 'var(--accent-green)'
+    : (complianceStatus === 'FAIL' || level === 'CRITICAL')
+      ? 'var(--accent-red)'
+      : 'var(--accent-amber)'
+
   return (
     <GlassCard className="score-card" style={cardStyle}>
-      <div className="section-kicker">SECURITY POSTURE</div>
-      <div className={`score-wrap risk-${level.toLowerCase()}`}>
-        <div className={`score-ring risk-${level.toLowerCase()}`} style={{ '--score': animated }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="section-kicker">NIST SP 800-77 REV. 1 COMPLIANCE</div>
+        <span style={{
+          fontSize: '0.68rem',
+          fontWeight: 700,
+          padding: '2px 8px',
+          borderRadius: '4px',
+          background: complianceStatus === 'PASS' ? 'var(--green-soft)' : complianceStatus === 'FAIL' ? 'var(--red-soft)' : 'var(--amber-soft)',
+          color: statusColor
+        }}>
+          {complianceStatus || (score >= 85 ? 'PASS' : score < 60 ? 'FAIL' : 'WARNING')}
+        </span>
+      </div>
+
+      <div className={`score-wrap risk-${(level || 'low').toLowerCase()}`}>
+        <div className={`score-ring risk-${(level || 'low').toLowerCase()}`} style={{ '--score': animated }}>
           <div className="score-inner">
             <strong>{displayScore}</strong>
             <span>/ 100</span>
           </div>
         </div>
         <div className="score-copy">
-          <h2>{level}</h2>
-          <p>{anomaly ? 'Behavioral anomaly detected' : 'No active anomalies detected'}</p>
-          <div className="risk-scale"><span>LOW</span><i /><span>CRITICAL</span></div>
+          <h2 style={{ fontSize: '1.2rem', margin: 0, color: statusColor }}>{level} RISK</h2>
+          <p style={{ margin: '4px 0 0', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+            {postureLabel || (anomaly ? 'Active security anomaly detected' : 'Compliant defense posture')}
+          </p>
+          <div className="risk-scale" style={{ marginTop: '0.5rem' }}>
+            <span>LOW</span>
+            <i />
+            <span>CRITICAL</span>
+          </div>
         </div>
       </div>
     </GlassCard>

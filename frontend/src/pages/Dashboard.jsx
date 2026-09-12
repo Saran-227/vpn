@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import GlassCard from '../components/GlassCard'
 import SecurityScore from '../components/SecurityScore'
@@ -9,103 +10,150 @@ import RotatingEarth from '../components/RotatingEarth'
 import ScrollReveal from '../components/ScrollReveal'
 import SystemStatus from '../components/SystemStatus'
 
-// TODO (backend adapter): Restore loading/error/retry states here once
-// useDashboardData is wired to the live backend through backendAdapter.js.
-//
-//   if (!vpnStatus) return (
-//     <>
-//       <Header connection={connection} theme={theme} toggleTheme={toggleTheme}/>
-//       <main className="shell">
-//         <div className="loading">
-//           <div className="spinner"/>
-//           <h2>Initializing secure telemetry</h2>
-//           <p>{error || 'Connecting to the analyzer backend…'}</p>
-//           {error && <button onClick={retry}><RefreshCw size={15}/> Retry</button>}
-//         </div>
-//       </main>
-//     </>
-//   )
-
-// Props contract:
-//   vpnStatus   — { status, endpointA, endpointAIp, endpointB, endpointBIp,
-//                   uptimeSeconds, protocol, encryption, authMethod, peerIp, uptimeLabel }
-//   metrics     — { packetsPerSecond, activeFlows, avgPacketSize, inboundBps, outboundBps, bandwidthBps }
-//   security    — { riskScore, riskLevel, anomalyDetected, findings[] }
-//   events      — { timestamp, title, description, severity, category }[]
-//   chartData   — { timestamp, packetsPerSecond, riskScore }[]
-//   endpoints   — { peerIp, protocol, encryption, authMethod, uptimeLabel }
-//   connection  — 'MOCK' | 'LIVE' | 'RECONNECTING' | 'CONNECTING'
+// Specialized Cyber Defense & AI Intelligence Components
+import PcapIngestion from '../components/PcapIngestion'
+import CryptoAuditPanel from '../components/CryptoAuditPanel'
+import TrafficIntelligencePanel from '../components/TrafficIntelligencePanel'
+import TimelineSlices from '../components/TimelineSlices'
+import TournamentModal from '../components/TournamentModal'
 
 export default function Dashboard({
-  vpnStatus, metrics, security, events, chartData, endpoints,
-  connection, theme, toggleTheme,
+  vpnStatus,
+  metrics,
+  security,
+  events,
+  chartData,
+  endpoints,
+  connection,
+  theme,
+  toggleTheme,
+  samples,
+  selectedSample,
+  activeFilename,
+  isAnalyzing,
+  error,
+  tournamentData,
+  onSelectSample,
+  onUploadFile,
+  auditData,
+  ikeDetails,
+  aiData,
+  execSummary
 }) {
+  const [isTournamentOpen, setIsTournamentOpen] = useState(false)
+
   return (
     <>
-      <Header connection={connection} mode="MOCK" theme={theme} toggleTheme={toggleTheme} />
+      <Header
+        connection={connection}
+        mode={connection === 'LIVE' ? 'AIR-GAPPED OFFLINE' : 'OFFLINE DEMO'}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        onOpenTournament={() => setIsTournamentOpen(true)}
+      />
+
       <main className="shell">
 
-        {/* Hero */}
+        {/* Hero Section */}
         <div id="top">
           <ScrollReveal>
             <div className="hero">
               <div>
-                <span className="eyebrow">SECURITY OPERATIONS · IPSEC · REAL-TIME</span>
-                <h1>Network Security<br />Intelligence.</h1>
-                <p>Live telemetry from the VPN tunnel and behavioral security engine.</p>
+                <span className="eyebrow">NATIONAL TECHNICAL RESEARCH ORGANISATION · SIH26160</span>
+                <h1>IPsec VPN Intelligence<br />&amp; Security Audit.</h1>
+                <p>Automated RFC cryptographic compliance dissector &amp; AI-powered encrypted traffic classifier.</p>
               </div>
               <div className="hero-right">
-                {/* TODO (backend adapter): security and events come from backendAdapter.js */}
                 <SystemStatus security={security} events={events} />
                 <div className="timestamp">
-                  Updated {new Date().toLocaleTimeString()}
+                  {isAnalyzing ? (
+                    <span style={{ color: 'var(--accent-blue)' }}>Analyzing capture payload...</span>
+                  ) : (
+                    <span>Last Analyzed: {new Date().toLocaleTimeString()}</span>
+                  )}
                 </div>
               </div>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Card 1 — Security Posture + Tunnel Status */}
+        {/* Ingestion Section: Drag & Drop + Curated Scenarios */}
+        <div id="ingestion">
+          <ScrollReveal>
+            <PcapIngestion
+              samples={samples}
+              selectedSample={selectedSample}
+              onSelectSample={onSelectSample}
+              onUploadFile={onUploadFile}
+              isAnalyzing={isAnalyzing}
+              activeFilename={activeFilename}
+            />
+          </ScrollReveal>
+        </div>
+
+        {/* Security Posture + Tunnel Status */}
         <div id="security">
           <ScrollReveal>
             <GlassCard className="combo-card">
               <div className="combo-half">
-                {/* TODO (backend adapter): security mapped via mapSecurity() */}
                 <SecurityScore
-                  score={security.riskScore}
-                  level={security.riskLevel}
-                  anomaly={security.anomalyDetected}
+                  score={security?.riskScore}
+                  level={security?.riskLevel}
+                  anomaly={security?.anomalyDetected}
+                  postureLabel={security?.postureLabel}
+                  complianceStatus={security?.complianceStatus}
                 />
               </div>
               <div className="combo-divider" />
               <div className="combo-half">
-                {/* TODO (backend adapter): vpnStatus mapped via mapVpnStatus() */}
                 <VPNStatus vpn={vpnStatus} />
               </div>
             </GlassCard>
           </ScrollReveal>
         </div>
 
-        {/* Card 2 — Telemetry metrics + Traffic chart */}
+        {/* Deterministic Cryptographic Audit Panel (NIST SP 800-77 Rev. 1) */}
+        <div id="audit">
+          <ScrollReveal>
+            <CryptoAuditPanel
+              auditData={auditData}
+              ikeDetails={ikeDetails}
+              execSummary={execSummary}
+            />
+          </ScrollReveal>
+        </div>
+
+        {/* AI Encrypted Traffic Intelligence Panel */}
+        <div id="ai-telemetry">
+          <ScrollReveal>
+            <TrafficIntelligencePanel aiData={aiData} />
+          </ScrollReveal>
+        </div>
+
+        {/* Sliding Window Temporal Breakdown (1.5s slices) */}
+        <div id="timeline">
+          <ScrollReveal>
+            <TimelineSlices slices={aiData?.temporal_window_breakdown || []} />
+          </ScrollReveal>
+        </div>
+
+        {/* Telemetry Metrics & Traffic Throughput Chart */}
         <div id="traffic">
           <ScrollReveal>
             <GlassCard className="telem-card">
-              {/* TODO (backend adapter): metrics mapped via mapMetrics() */}
               <MetricsPanel metrics={metrics} inline />
               <div className="telem-divider" />
-              {/* TODO (backend adapter): chartData mapped via mapChartData() */}
               <TrafficChart history={chartData} inline />
             </GlassCard>
           </ScrollReveal>
         </div>
 
-        {/* Card 3 — Security Trend */}
+        {/* Security Risk Trend Chart */}
         <ScrollReveal>
-          {/* TODO (backend adapter): chartData.riskScore and security.riskLevel from adapter */}
-          <RiskChart history={chartData} level={security.riskLevel} />
+          <RiskChart history={chartData} level={security?.riskLevel} />
         </ScrollReveal>
 
-        {/* Card 4 — Globe + Tunnel Intelligence */}
+        {/* Global Threat Map (3D Globe) + Tunnel Intelligence */}
         <div id="vpn">
           <ScrollReveal>
             <GlassCard className="globe-combo">
@@ -115,30 +163,31 @@ export default function Dashboard({
                   <span className="live-badge"><span className="live-dot" />LIVE</span>
                 </div>
                 <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '4px 0 0', lineHeight: 1.5 }}>
-                  Real-time IPsec tunnel endpoints across the globe.
+                  Real-time IPsec tunnel telemetry &amp; intercept endpoints across the network.
                 </p>
                 <div className="globe-wrap"><RotatingEarth size={300} /></div>
                 <div className="globe-hint">Drag to rotate · Scroll to zoom</div>
               </div>
               <div className="combo-divider" />
               <div className="globe-combo-right">
-                <div className="card-title-row"><h3>Tunnel Intelligence</h3></div>
-                {/* TODO (backend adapter): endpoints mapped via mapEndpoints() in backendAdapter.js */}
+                <div className="card-title-row"><h3>Tunnel Telemetry</h3></div>
                 <div className="globe-rows">
                   {[
-                    { label: 'Active Endpoints',  value: endpoints.peerIp },
-                    { label: 'Tunnel Protocol',   value: endpoints.protocol },
-                    { label: 'Encryption',        value: endpoints.encryption },
-                    { label: 'Auth Method',       value: endpoints.authMethod },
-                    { label: 'Uptime',            value: endpoints.uptimeLabel },
-                    { label: 'Bytes Transferred', value: `${(metrics.bandwidthBps / 1000 * 86400).toFixed(0)} MB/day` },
+                    { label: 'Active SPI Pair',    value: endpoints?.peerIp || 'None' },
+                    { label: 'Tunnel Protocol',     value: endpoints?.protocol || 'ESP' },
+                    { label: 'Encryption Cipher',   value: endpoints?.encryption || 'AES-256-GCM' },
+                    { label: 'Authentication',      value: endpoints?.authMethod || 'PSK' },
+                    { label: 'Captured Packets',    value: endpoints?.uptimeLabel || '557 Packets' },
+                    { label: 'Data Throughput',     value: `${((metrics?.bandwidthBps || 0) / 1000).toFixed(1)} KB/s` },
                     {
-                      label: 'Threat Level', value: security.riskLevel,
-                      color: security.riskLevel === 'LOW' ? '#00ff88' : security.riskLevel === 'MEDIUM' ? '#fbbf24' : '#f87171',
+                      label: 'Threat Level',
+                      value: security?.riskLevel || 'LOW',
+                      color: security?.riskLevel === 'LOW' ? '#00ff88' : security?.riskLevel === 'MEDIUM' ? '#fbbf24' : '#f87171',
                     },
                     {
-                      label: 'Anomalies', value: security.anomalyDetected ? 'DETECTED' : 'None',
-                      color: security.anomalyDetected ? '#f87171' : '#00ff88',
+                      label: 'Anomalies',
+                      value: security?.anomalyDetected ? 'DETECTED' : 'None',
+                      color: security?.anomalyDetected ? '#f87171' : '#00ff88',
                     },
                   ].map(({ label, value, color }) => (
                     <div key={label} className="globe-stat-row">
@@ -152,16 +201,24 @@ export default function Dashboard({
           </ScrollReveal>
         </div>
 
-        {/* Card 5 — Event Stream */}
+        {/* Security Event & Vulnerability Stream */}
         <div id="events">
           <ScrollReveal>
-            {/* TODO (backend adapter): events mapped via mapEvents() in backendAdapter.js */}
             <EventFeed events={events} />
           </ScrollReveal>
         </div>
 
-        <footer>IPsec VPN Analyzer · SIH26 · Integration-ready telemetry layer</footer>
+        <footer>
+          National Technical Research Organisation (NTRO) · Smart India Hackathon 2026 · Problem Statement SIH26160
+        </footer>
       </main>
+
+      {/* 9-Model AI Tournament Modal */}
+      <TournamentModal
+        isOpen={isTournamentOpen}
+        onClose={() => setIsTournamentOpen(false)}
+        tournamentData={tournamentData}
+      />
     </>
   )
 }

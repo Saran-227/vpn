@@ -1,16 +1,16 @@
-import { ShieldCheck, Radio, SunMoon } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { ShieldCheck, Trophy, Printer, SunMoon, Radio } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const NAV_ITEMS = [
-  { label: 'HOME',     href: '#top' },
-  { label: 'SECURITY', href: '#security' },
-  { label: 'TRAFFIC',  href: '#traffic' },
-  { label: 'EVENTS',   href: '#events' },
-  { label: 'VPN',      href: '#vpn' },
+  { label: 'OVERVIEW', href: '#top' },
+  { label: 'INGESTION', href: '#ingestion' },
+  { label: 'SECURITY AUDIT', href: '#audit' },
+  { label: 'AI TELEMETRY', href: '#ai-telemetry' },
+  { label: 'TIMELINE', href: '#timeline' },
 ]
 
-export default function Header({ connection, mode, theme, toggleTheme }) {
+export default function Header({ connection = 'LIVE', mode = 'OFFLINE SECURE', onOpenTournament }) {
   const [active, setActive] = useState('#top')
   const location = useLocation()
   const navigate = useNavigate()
@@ -49,11 +49,11 @@ export default function Header({ connection, mode, theme, toggleTheme }) {
 
   return (
     <header className="topbar">
-      <div className="brand">
+      <div className="brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
         <div className="brand-mark"><ShieldCheck size={21} /></div>
         <div>
-          <div className="brand-title">IPsec VPN <em>Analyzer</em></div>
-          <div className="brand-sub">Real-time Network Security Intelligence</div>
+          <div className="brand-title">NTRO IPsec <em>Intelligence</em></div>
+          <div className="brand-sub">SIH26160 · Automated Cryptographic Audit &amp; AI Classifier</div>
         </div>
       </div>
 
@@ -76,18 +76,53 @@ export default function Header({ connection, mode, theme, toggleTheme }) {
       </nav>
 
       <div className="top-actions">
+        {onOpenTournament && (
+          <button
+            onClick={onOpenTournament}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              padding: '0.4rem 0.75rem',
+              borderRadius: 'var(--radius-xs)',
+              background: 'linear-gradient(135deg, rgba(251,191,36,0.15), rgba(251,191,36,0.05))',
+              border: '1px solid rgba(251,191,36,0.3)',
+              color: 'var(--accent-amber)',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              cursor: 'pointer'
+            }}
+          >
+            <Trophy size={14} />
+            <span>AI Tournament</span>
+          </button>
+        )}
+
+        <button
+          onClick={() => window.print()}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            padding: '0.4rem 0.75rem',
+            borderRadius: 'var(--radius-xs)',
+            background: 'var(--glass-inner)',
+            border: '1px solid var(--border)',
+            color: 'var(--text-primary)',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            cursor: 'pointer'
+          }}
+          title="Print or export advisory report"
+        >
+          <Printer size={14} />
+          <span>Export Report</span>
+        </button>
+
         <span className={`live-badge live-pill ${connection.toLowerCase()}`}>
           <span className="live-dot" />{connection}
         </span>
-        <span className="mode-pill"><Radio size={14} />{mode} DATA</span>
-        <button
-          className="icon-button"
-          onClick={toggleTheme}
-          title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-          aria-label="Toggle theme"
-        >
-          <SunMoon size={17} />
-        </button>
+        <span className="mode-pill"><Radio size={13} />{mode}</span>
       </div>
     </header>
   )
